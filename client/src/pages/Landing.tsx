@@ -257,6 +257,32 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Persona Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl font-bold mb-6">Built for every way you work.</h2>
+            <p className="text-lg text-gray-600">Whether you're a Mac power user or a hardware pioneer, we've got you covered.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: "The Mac Power User", desc: "Instant retrieval of every tab, Slack, and code snippet with Cmd+Shift+Space.", icon: "💻" },
+              { title: "The Pendant Pioneer", desc: "Seamless sync with your Limitless hardware for in-person conversation capture.", icon: "🎙️" },
+              { title: "The Executive Assistant", desc: "Automated meeting action items and summaries delivered to your inbox.", icon: "📅" },
+              { title: "The Privacy Purist", desc: "Local-first processing with zero cloud training. Your data stays yours.", icon: "🔒" },
+              { title: "The Sales Pro", desc: "Search client objections across months of calls to refine your winning pitch.", icon: "📈" },
+              { title: "The Legacy Migrator", desc: "100% compatible with your existing Rewind and Limitless archives.", icon: "📦" }
+            ].map((persona, i) => (
+              <div key={i} className="p-8 bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <div className="text-4xl mb-4">{persona.icon}</div>
+                <h3 className="text-lg font-bold mb-2">{persona.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">{persona.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Pricing Section */}
       <section id="pricing" className="py-24 bg-white">
         <div className="container mx-auto px-6 text-center">

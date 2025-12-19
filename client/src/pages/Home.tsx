@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Search, Clock, Filter, Bookmark, ExternalLink, Play, Pause, ChevronLeft, ChevronRight, MessageSquare, Mic, Monitor, Settings, X, Send } from "lucide-react";
+import { Search, Clock, Filter, Bookmark, ExternalLink, Play, Pause, ChevronLeft, ChevronRight, MessageSquare, Mic, Monitor, Settings, X, Send, Shield } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
@@ -326,9 +326,19 @@ export default function Home() {
             </Button>
           </div>
           <div className="flex items-center space-x-4 text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-            <div className="flex items-center space-x-2 group cursor-pointer">
-              <Settings className="w-3 h-3 group-hover:rotate-90 transition-transform" />
-              <span>Settings</span>
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-1 text-primary/80">
+                <Shield className="w-3 h-3" />
+                <span>Privacy Vault Active</span>
+              </div>
+              <div className="flex items-center space-x-1 text-purple-400">
+                <Mic className="w-3 h-3" />
+                <span>Pendant Synced</span>
+              </div>
+              <div className="flex items-center space-x-2 group cursor-pointer">
+                <Settings className="w-3 h-3 group-hover:rotate-90 transition-transform" />
+                <span>Settings</span>
+              </div>
             </div>
             <div className="h-4 w-px bg-white/10" />
             <span>Recording Active</span>
