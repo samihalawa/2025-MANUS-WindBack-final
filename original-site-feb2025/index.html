@@ -1,0 +1,1312 @@
+<!DOCTYPE html><!-- Last Published: Fri Feb 07 2025 00:18:40 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain="www.rewind.ai" data-wf-page="64b842845c90db90db6ab9e5" data-wf-site="635dda7647d1612d7d877c36"><head><meta charset="utf-8"/><title>Rewind</title><meta content="Rewind is a personalized AI powered by everything you’ve seen, said, or heard." name="description"/><meta content="Rewind" property="og:title"/><meta content="Rewind is a personalized AI powered by everything you’ve seen, said, or heard." property="og:description"/><meta content="https://files.rewind.ai/rewind-ogthumb.jpg" property="og:image"/><meta content="Rewind" property="twitter:title"/><meta content="Rewind is a personalized AI powered by everything you’ve seen, said, or heard." property="twitter:description"/><meta content="https://files.rewind.ai/rewind-ogthumb.jpg" property="twitter:image"/><meta property="og:type" content="website"/><meta content="summary_large_image" name="twitter:card"/><meta content="width=device-width, initial-scale=1" name="viewport"/><link href="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/css/rewindai.f74a03ec3.min.css" rel="stylesheet" type="text/css"/><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/635dda88f95dcc46102a401e_Favicon.png" rel="shortcut icon" type="image/x-icon"/><link href="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/635dda8d70804525a6494d70_webclip.png" rel="apple-touch-icon"/><script src="https://cdn.optimizely.com/js/24614540730.js"></script>
+<script src="https://files.rewind.ai/js.cookie.min.js"></script>
+<!-- Google Tag Manager -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  let currentPage = window.location.pathname;
+  if (typeof Cookies.get('Rewind') === "undefined") {
+    let firstSeenPage = window.location.href;
+    let firstSeenPageNoParams = firstSeenPage.split('?')[0];
+    var object = {
+      firstSeenFullURL: firstSeenPage,
+      hasInstalled: false,
+      hasPaid: false
+    }
+    if (firstSeenPage !== firstSeenPageNoParams) {
+      Object.assign(object, { firstSeenURL: firstSeenPageNoParams })
+    }
+    if (document.referrer !== "") {
+      Object.assign(object, { referrer: document.referrer })
+    }
+    let visitorId = Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+    Object.assign(object, { visitorId: visitorId });
+    window.dataLayer.push({
+      'visitorID': visitorId,
+      'hasInstalled': false,
+      'hasPaid': false
+    });
+    let pageParams = firstSeenPage.split('?')[1];
+    if (typeof pageParams !== "undefined") {
+      pageParams.split('&').forEach(function(param) {
+        var paramParts = param.split('=');
+        object[decodeURIComponent(paramParts[0])] = decodeURIComponent(paramParts[1]);
+      });
+    }
+    Cookies.set('Rewind', JSON.stringify(object), { expires: 7, path: '' })
+  } else {
+    let cookieParams = JSON.parse(Cookies.get('Rewind'));
+    let cookieUpdated = false;
+    if (!cookieParams.hasOwnProperty('hasInstalled')) {
+      cookieParams['hasInstalled'] = false;
+      cookieUpdated = true;
+    }
+    if (!cookieParams.hasOwnProperty('hasPaid')) {
+      cookieParams['hasPaid'] = false;
+      cookieUpdated = true;
+    }
+    if (cookieUpdated) {
+      Cookies.set('Rewind', JSON.stringify(cookieParams), { path: '' });
+    }
+    if (cookieParams.hasOwnProperty('visitorId')) {
+      window.dataLayer.push({
+        'visitorID': cookieParams['visitorId']
+      });
+    }
+    if ((currentPage !== '/install') && cookieParams.hasOwnProperty('hasInstalled')) {
+      window.dataLayer.push({
+        'hasInstalled': cookieParams['hasInstalled']
+      });
+    }
+    if ((currentPage !== '/thank-you') && cookieParams.hasOwnProperty('hasPaid')){
+      window.dataLayer.push({
+        'hasPaid': cookieParams['hasPaid']
+      });
+    }
+  }
+  let cookieData = JSON.parse(Cookies.get('Rewind'));
+  if (currentPage === '/install') {
+    if (cookieData.hasOwnProperty('hasInstalled') && !cookieData.hasInstalled) {
+      cookieData.hasInstalled = true;
+      Cookies.set('Rewind', JSON.stringify(cookieData), { path: '' });
+    } else {
+      window.dataLayer.push({
+        'hasInstalled': cookieData.hasInstalled
+      });
+    }
+  }
+  if (currentPage === '/thank-you') {
+    if (cookieData.hasOwnProperty('hasPaid') && !cookieData.hasPaid) {
+      cookieData.hasPaid = true;
+      Cookies.set('Rewind', JSON.stringify(cookieData), { path: '' });
+    } else {
+      window.dataLayer.push({
+        'hasPaid': cookieData.hasPaid
+      });
+    }
+  }
+</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MNTK7D6');</script>
+<!-- End Google Tag Manager -->
+<link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6480900/6319632/css/fonts.css" />
+<style>
+  body {
+  	font-family: "Greycliff", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  @media (max-width: 1140px) and (min-width: 991px) {
+    .footer-v3 {
+      padding-left: calc(2rem + 10px);
+      padding-right: calc(2rem + 10px);
+    }
+  }
+  body .rich-text-block strong {
+  	font-weight: 600 !important;
+  }
+  .display-xxl.download-rewind-modal {
+  	font-family: "Quincy", serif;
+  }
+  form input[type="email"] { -webkit-appearance: none; }
+  a.rewindlogolink .nh-icon { transition: transform 0.3s cubic-bezier(0.79,0.14,0.15,0.86); }
+  a.rewindlogolink .nh-logotype {
+    transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.79,0.14,0.15,0.86);
+    transform: translateX(20px) scale(0.8);
+  }
+  a.rewindlogolink:hover .nh-icon { transform: scale(1.05) translateX(-65px); }
+  a.rewindlogolink:hover .nh-logotype {
+    opacity: 1;
+    transform: translateY(0px) scale(1);
+    transition: opacity 0.5s ease-out, transform 0.3s cubic-bezier(0.79,0.14,0.15,0.86);
+  }
+</style>
+<script src="https://cdn.usefathom.com/script.js" data-site="LMJFZUOP" defer></script><style>
+@media (max-width: 1160px) {
+  .nh-hero-devices {
+  	width: calc(90% - 2rem);
+  }
+}
+
+@media (min-width: 900px) and (max-width: 1000px) {
+  .nh-hero-devices .nh-hero-phone .iphone-frame-img {
+  	width: 215px;
+  }
+}
+
+@media (min-width: 775px) and (max-width: 900px) {
+  .nh-hero-devices .nh-hero-phone .iphone-frame-img {
+  	width: 175px;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 775px) {
+  .nh-hero-devices .nh-hero-phone .iphone-frame-img {
+  	width: 135px;
+  }
+  .video-rewind-iphone {
+  	border-radius: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nh-hero-devices .nh-hero-phone .iphone-frame-img {
+  	width: 125px;
+  }
+  .video-rewind-iphone {
+  	border-radius: 6px;
+  }
+}
+
+
+@media (max-width:510px) {
+  .nh-hero-laptop { width: 100%; }
+  .nh-hero-devices .nh-hero-phone .iphone-frame-img {
+  	width: 100px;
+  }
+}
+
+@media (max-width:420px) {
+  .nh-hero-laptop { width: 100%; }
+  .nh-hero-devices .nh-hero-phone .iphone-frame-img {
+  	width: 92px;
+  }
+}
+
+@media (max-width: 1120px) {
+	.nh-section-inner-grid {
+    display: block;
+    margin: 0 auto;
+    max-width: 85%;
+  }
+  .nh-section-inner-grid .nh-section-grid-item:first-of-type {
+  	margin-bottom: 5rem;
+  }
+}
+
+@media (max-width: 690px) {
+	.nh-section-inner-grid {
+  	max-width: 100%;
+  }
+}
+
+
+@media (max-width: 1120px) {
+  .nh-hero-bg-btmcontainer {
+    bottom: 10px;
+    left: 10px;
+		right: 10px;
+  }
+  .nh-wrap {
+		padding: 0 2rem; 
+  }
+  .nh-section-inset {
+  	margin: 10px;
+  }
+  .nh-wrap.sectionverticalpadding {
+  	padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+  .nh-section-inset .nh-section-inner-grid {
+  	grid-column-gap: 3rem;
+  }
+  .nh-section-inset .nh-inner-feature-icon-item {
+    grid-template-columns: 74px 1fr;
+    align-items: center;
+  }
+  .nh-section-inset .nh-inner-feature-icon-block {
+  	transform-origin: center left;
+  	transform: scale(0.8);
+  }
+}
+
+@media (max-width: 479px) {
+  .nh-section-inner-grid .nh-section-grid-item:first-of-type {
+  	margin-bottom: 3rem;
+  }
+   .nh-wrap.sectionverticalpadding {
+     padding-top:3rem;
+     padding-bottom:3rem;
+   }
+   .nh-wrap {
+		padding: 0 1.25rem; 
+  }
+}
+
+.nh-hero-headline {
+	font-family: "Quincy", serif !important;
+}
+.nh-hero-sub {
+	font-family: "Greycliff", sans-serif !important;
+}
+.nh-wrap.testimonialcarousel {
+	padding:0;
+}
+#announcement.expanded {
+	padding: 14px 18px 15px 24px;
+  font-size: 19px;
+  background: #fff;
+}
+#announcement.expanded img.Rewind-Windows-Icon {
+	width: 28px;
+  height: 28px;
+}
+#announcement.expanded img.Announcement-Chevron {
+	margin-left: 32px;
+}
+</style>
+<script src="https://files.rewind.ai/glide.js" defer></script>
+<script>
+	function changeVideoSources(videoId, newSources) {
+    let video = document.getElementById(videoId);
+    if (video) {
+      let sources = video.getElementsByTagName('source');
+      if (sources) {
+        for (let i = 0; i < sources.length; i++) {
+          let source = sources[i];
+          let type = source.getAttribute('type');
+          if (newSources[type]) {
+            source.setAttribute('src', "https://files.rewind.ai/" + newSources[type]);
+          }
+        }
+        let posterURL = "https://files.rewind.ai/" + newSources["video/mp4"].split(".")[0] + "-poster.webp";
+        video.setAttribute('poster', posterURL);
+        video.load();
+        video.play();
+      } else {
+        console.error('Source elements not found in the video element.');
+      }
+      
+    } else {
+      console.error('Video element not found.');
+    }
+  }
+  	function changeTab(tab) {
+  	if (tab == "browse") {
+      changeVideoSources('hero-laptop', {
+        'video/mp4': 'hero-mac-browse.mp4',
+        'video/webm': 'hero-mac-browse.webm'
+      });
+       changeVideoSources('hero-iphone', {
+        'video/mp4': 'hero-iphone-browse.mp4',
+        'video/webm': 'hero-iphone-browse.webm'
+      });
+    } else if (tab == "search") {
+    	changeVideoSources('hero-laptop', {
+        'video/mp4': 'hero-mac-search.mp4',
+        'video/webm': 'hero-mac-search.webm'
+      });
+       changeVideoSources('hero-iphone', {
+        'video/mp4': 'hero-iphone-search.mp4',
+        'video/webm': 'hero-iphone-search.webm'
+      });
+    } else if (tab == "ask") {
+    	changeVideoSources('hero-laptop', {
+        'video/mp4': 'hero-mac-ask.mp4',
+        'video/webm': 'hero-mac-ask.webm'
+      });
+       changeVideoSources('hero-iphone', {
+        'video/mp4': 'hero-iphone-ask.mp4',
+        'video/webm': 'hero-iphone-ask.webm'
+      });
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", (event) => {
+  
+  document.getElementById("browse-tab").addEventListener("click", function() { changeTab("browse") });
+    document.getElementById("search-tab").addEventListener("click", function() { changeTab("search") } );
+    document.getElementById("ask-tab").addEventListener("click", function() { changeTab("ask") } );
+   
+	
+
+    var pageWidth = document.body.clientWidth;
+    var perView = 1;
+    var peekBefore = 0;
+    var peekAfter = 100;
+    var gap = 40;
+    function setCarousel() {
+      if (pageWidth > 1200) {
+        perView = 2;
+        peekBefore = 0;
+        peekAfter = 100;
+      } else if ((pageWidth < 1200) && (pageWidth > 1050)) { 
+        perView = 2;
+        peekBefore = 50;
+        peekAfter = 50;
+      } else if ((pageWidth < 1050) && (pageWidth > 850)) { 
+        perView = 1.5;
+        peekBefore = 50;
+        peekAfter = 50;
+      } else if ((pageWidth < 850) && (pageWidth > 650)) { 
+        perView = 1;
+        peekBefore = 150;
+        peekAfter = 150;
+       } else if ((pageWidth < 650) && (pageWidth > 520)) { 
+        perView = 1;
+        peekBefore = 50;
+        peekAfter = 50;
+      } else if ((pageWidth < 430) && (pageWidth > 520)) {
+        perView = 1;
+        peekAfter = 30;
+        peekBefore = 30;
+        gap = 20;
+      }
+      
+    }
+    setCarousel();
+    
+    var carousel = new Glide('.carousel', {
+      type: 'carousel',
+      autoplay: false,
+      focusAt: '1',
+      gap: gap,
+      perView: perView,
+      peek: {
+        before: peekBefore,
+        after: peekAfter
+      },
+      startAt: '2'
+    });
+		carousel.mount();    
+  });
+</script></head><body class="nh-body"><div id="get-rewind-modal" role="dialog" aria-modal="true" aria-labelledby="Popup Modal" class="get-rewind-modal-wrapper modal-wrapper"><div class="get-rewind-modal"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/643f0c8ae53baa8f2f93c833_Rewind%20Icon%20-%20Download%402x.png" loading="eager" width="136" height="Auto" alt="" class="download-rewind-modal-graphic"/><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/643f0c8ae53baa8f2f93c833_Rewind%20Icon%20-%20Download%402x.png" loading="eager" width="92" height="Auto" alt="" class="download-rewind-modal-graphic download-icon-mobile"/><a role="button" data-w-id="c83a1012-8269-2847-3b1c-94bedddb1537" href="#" class="close-modal-button modal-close_btn w-button"></a><h1 id="compatibility-modal-heading" class="display-xxl download-rewind-modal compatibility">Get Rewind</h1><h1 id="modal-heading" class="display-xxl download-rewind-modal">Download Rewind</h1><div class="enter-your-email"><div class="submit-email-form download-rewind-modal w-form"><form id="primary-email-form-modal" name="wf-form-Rewind-Signup" data-name="Rewind Signup" redirect="/install" data-redirect="/install" method="get" class="submit-email" data-wf-page-id="64b842845c90db90db6ab9e5" data-wf-element-id="c83a1012-8269-2847-3b1c-94bedddb153c"><input class="download-rewind-text-field w-input" autocomplete="off" autofocus="true" maxlength="256" name="email" data-name="email" placeholder="Enter your email" type="email" id="primary-email-form-modal-input" data-1p-ignore="" required=""/><input id="get-rewind-form-btn-modal" type="submit" data-wait="" class="download-rewind-submit-button w-button" value="Get Rewind"/></form><div class="success-message w-form-done"><div class="text-block-38">Thanks. We will be in touch soon</div></div><div class="download-rewind-modal-error-message w-form-fail"><div class="text-block-39">Something went wrong. Please try again.</div></div></div><p id="modal-description" class="description download-rewind">Download will begin after you submit your email address.</p></div></div><div aria-hidden="true" tabindex="-1" data-w-id="c83a1012-8269-2847-3b1c-94bedddb1547" class="get-rewind-modal-bg modal-close_area"></div></div><section id="NH-header" class="nh-header"><div class="w-embed"><style>@media (min-width: 991px) and (max-width: 1140px) {
+.nh-header-content {
+	width: calc(100% - 5rem);
+}
+}</style></div><div class="w-layout-blockcontainer nh-header-content w-container"><div class="nh-menuitems"><a href="/about" class="nh-menuitem">About</a><a href="/pricing" class="nh-menuitem">Pricing</a><div data-hover="true" data-delay="50" data-w-id="3ec66e6b-8a87-4da0-faeb-20fe98613fc9" class="nav-dropdown w-dropdown"><div class="nav-dropdown-toggle w-dropdown-toggle"><div class="icon-5 w-icon-dropdown-toggle"></div><div class="nh-menuitem">Use Cases</div></div><nav class="nav-dropdown-list w-dropdown-list"><a href="http://www.rewind.ai/use-case/executives" class="header-link w-dropdown-link">Executives</a><a href="http://www.rewind.ai/use-case/engineering" class="header-link w-dropdown-link">Engineering</a><a href="http://www.rewind.ai/use-case/sales" class="header-link w-dropdown-link">Sales</a><a href="http://www.rewind.ai/use-case/adhd" class="header-link w-dropdown-link">ADHD</a></nav></div></div><a href="/" aria-current="page" class="rewindlogolink w-inline-block w--current"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64b9a8b87d7ee6f947910e82_rewind-icon.svg" loading="eager" alt="Rewind Logo" height="25" class="nh-icon"/><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64c088267e8881a7472517a4_rewind-logotype.svg" loading="eager" width="77" height="Auto" alt="Rewind" id="rewind-logotype" class="nh-logotype"/></a><div class="nh-icon-wrap"></div><a id="menubar-cta" data-w-id="a3e8f1b9-39dc-c103-cbb4-a74a4bc708c9" href="#" class="nh-header-getrewindbtn w-inline-block"><div class="getrewindheadertext"><div class="getrewindtext">Get Rewind</div></div></a></div></section><div data-animation="default" class="mobile-navbar-light w-nav" data-easing2="ease-in-out" data-easing="ease-in-out" data-collapse="medium" role="banner" data-duration="300" id="mobile-nav-header" data-doc-height="1"><div class="mobile-nav-container light w-container"><a href="/" aria-current="page" class="brand light w-nav-brand w--current"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/635ddc6ef95dccfb2c2a50ee_Rewind%20Logo.svg" loading="eager" alt="" class="rewindlogomobilenav"/></a><div class="mobile-nav-right"><div data-w-id="7126d5c2-7719-1a3f-9dd5-2684e96041be" class="menu-button light w-nav-button"><div class="drawer-icon w-icon-nav-menu"></div></div><a id="menubar-cta" data-w-id="d7796f8d-8fca-c299-4581-bb11f92fa3c6" href="#" class="nh-header-getrewindbtn header-getrewindbtn-mobile w-inline-block"><div class="getrewindheadertext"><div class="getrewindtext">Get Rewind</div></div></a></div><nav role="navigation" class="nav-menu light w-nav-menu"><a href="/" aria-current="page" class="mobile-nav-link light w-nav-link w--current">Home</a><div data-hover="false" data-delay="100" data-w-id="966abeed-2606-41e5-1211-bc2d2f28fe1e" class="dropdown w-dropdown"><div class="mobile-nav-dropdown-toggle w-dropdown-toggle"><div class="mobile-dropdown-arrow w-icon-dropdown-toggle"></div><div class="mobile-nav-link">Use Cases</div></div><nav class="mobile-nav-dropdown-list w-dropdown-list"><a href="http://www.rewind.ai/use-case/executives" class="mobile-nav-dropdown-link w-dropdown-link">Executives</a><a href="http://www.rewind.ai/use-case/engineering" class="mobile-nav-dropdown-link w-dropdown-link">Engineering</a><a href="http://www.rewind.ai/use-case/sales" class="mobile-nav-dropdown-link w-dropdown-link">Sales</a><a href="http://www.rewind.ai/use-case/adhd" class="mobile-nav-dropdown-link w-dropdown-link">ADHD</a></nav></div><a href="/ask-rewind-old" class="mobile-nav-link light hideaskrewindlink w-nav-link">Ask Rewind</a><a href="/about" class="mobile-nav-link light w-nav-link">About</a><a href="/privacy-first" class="mobile-nav-link light w-nav-link">Privacy</a><a href="https://twitter.com/RewindAI/timelines/1603483782039887878" class="mobile-nav-link light w-nav-link">Testimonials</a><a href="/pricing" class="mobile-nav-link light w-nav-link">Pricing</a></nav><div data-w-id="66232827-5469-93fd-717e-eb81e9b48e02" class="mobile-nav-bg-light"></div></div></div><div class="nh-hero-og"><div class="nh-hero-header-wrap-og"><div class="w-layout-blockcontainer nh-hero-header-og w-container"><a id="announcement" href="https://www.limitless.ai" class="announcementmodule-og w-inline-block"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/661da4dab4f234a689029678_limitless-logo%20(2).svg" loading="lazy" height="26" alt="" width="26" class="rewind-windows-icon"/><div class="div-block-38"><div class="announcementtext">Introducing Limitless</div><div class="announcementsubtext">A web app, Mac app, Windows app, and wearable.</div></div><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/6508d8a09625bc305feec481_announcement-chevron.png" loading="lazy" width="9" height="16" alt="" class="announcement-chevron"/></a><h1 class="nh-hero-headline-og force-quincy">Your AI assistant that has all the context</h1><h2 class="nh-hero-sub-og">Rewind is a personalized AI powered by everything you’ve seen, said, or heard. Your colleagues will wonder how you do it all.</h2><div id="primary-cta-email" class="primarycta-email nh-emailfield"><div class="submit-email-form w-form"><form id="primary-email-form-home" name="wf-form-Rewind-Signup" data-name="Rewind Signup" redirect="/install" data-redirect="/install" method="get" class="submit-email" data-wf-page-id="64b842845c90db90db6ab9e5" data-wf-element-id="464f0562-3743-1e3b-c5f2-c7dc2db92d9b"><input class="download-rewind-text-field-inline w-input" autofocus="true" maxlength="256" name="email" data-name="email" placeholder="Enter your email" type="email" id="primary-email-form-home-input" data-1p-ignore="" required=""/><input id="get-rewind-form-btn-home" type="submit" data-wait="…" class="download-rewind-submit-button w-button" value="Get Rewind"/></form><div class="success-message w-form-done"><div class="text-block-38">Thanks</div></div><div class="download-rewind-modal-error-message w-form-fail"><div class="text-block-39">Something went wrong. Please try again.</div></div></div><div class="email-download-for"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdccab4fb0e612b2caa41d_ic-apple.svg" loading="lazy" width="16" alt="" class="ic-apple"/><div class="download-for-desc">Download for Mac and iOS today.</div></div><p id="download-description-home" class="description download-rewind-inline">Download will begin after you submit your email address.</p></div></div></div><div class="nh-hero-devices-og"><div class="nh-hero-device-frames-og"><div class="nh-hero-laptop"><div class="video-rewind-browse-mac-og w-embed"><video id="hero-laptop" playsinline poster="https://files.rewind.ai/hero-mac-browse-poster.webp" muted autoplay style="display: block;width:100%;height: auto;">
+  <source id="hero-laptop-webm" src="https://files.rewind.ai/hero-mac-browse.webm" type="video/webm">
+  <source id="hero-laptop-mp4" src="https://files.rewind.ai/hero-mac-browse.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></div><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdfef079e0f267cc6172c6_hero-mba-frame.webp" loading="eager" sizes="95vw" srcset="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdfef079e0f267cc6172c6_hero-mba-frame-p-500.webp 500w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdfef079e0f267cc6172c6_hero-mba-frame-p-800.webp 800w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdfef079e0f267cc6172c6_hero-mba-frame-p-1080.webp 1080w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdfef079e0f267cc6172c6_hero-mba-frame-p-1600.webp 1600w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdfef079e0f267cc6172c6_hero-mba-frame-p-2000.webp 2000w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdfef079e0f267cc6172c6_hero-mba-frame-p-2600.webp 2600w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdfef079e0f267cc6172c6_hero-mba-frame-p-3200.webp 3200w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdfef079e0f267cc6172c6_hero-mba-frame.webp 3220w" alt="" class="laptop-frame-img-og"/></div><div class="nh-hero-phone"><div class="video-rewind-iphone-og w-embed"><video id="hero-iphone" playsinline muted autoplay poster="https://files.rewind.ai/hero-iphone-browse-poster.webp" style="display: block;width:100%;height: auto;">
+  <source id="hero-iphone-webm" src="https://files.rewind.ai/hero-iphone-browse.webm" type="video/webm">
+  <source id="hero-iphone-mp4" src="https://files.rewind.ai/hero-iphone-browse.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video></div><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdff2f7b1cd77bf80cb89b_hero-iphone-frame.webp" loading="eager" sizes="250px" srcset="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdff2f7b1cd77bf80cb89b_hero-iphone-frame-p-500.webp 500w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdff2f7b1cd77bf80cb89b_hero-iphone-frame-p-800.webp 800w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdff2f7b1cd77bf80cb89b_hero-iphone-frame-p-1080.webp 1080w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdff2f7b1cd77bf80cb89b_hero-iphone-frame.webp 1339w" alt="" class="iphone-frame-img-og"/></div></div><div class="nh-hero-tabs-wrap-og"><div class="w-embed"><style>
+  .NH-hero-tabs-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+    position: relative;
+  }
+
+  .NH-hero-tabs {
+    display: flex;
+    position: relative;
+    background: #F6F4EF;
+    box-shadow: 0 0 2px 0 #d0cdc3;
+    padding: 6px;
+    border-radius: 100px;
+  }
+
+  .NH-hero-tabs input[type="radio"] {
+    display: none;
+  }
+
+  .NH-hero-tabs label {
+    z-index: 2;
+    margin: 0;
+  }
+  
+  .NH-hero-tabs label svg {
+  	width: 19px;
+    height: 19px;
+    margin-right: 8px;
+    opacity: 0.6;
+  }
+
+  .NH-hero-tabs .tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 150px;
+    font-size: 1.25rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    color: #88827B;
+    letter-spacing: 0px;
+    font-weight: 600;
+    font-family: 'Greycliff', sans-serif;
+  }
+
+   .NH-hero-tabs label.tab:hover {
+   		color: rgba(19, 17, 16, 0.75);
+   }
+   
+  .NH-hero-tabs label.tab:hover svg {
+  	opacity: 0.8;
+  }
+  
+  #ask-tab svg {
+  	transform: scale(1.03);
+  }
+  
+   #browse-tab svg {
+  	margin-bottom: -1px;
+  }
+
+  input[type="radio"]:checked+label {
+    color: rgba(19, 17, 16, 0.75);
+    font-weight: 700;
+    margin: 0;
+    line-height: 0;
+  }
+  
+  input[type="radio"]:checked+label svg {
+  	opacity: 1;
+  }
+
+
+  input[id="media-1"]:checked~.glider {
+    transform: translateX(0);
+  }
+
+  input[id="media-2"]:checked~.glider {
+    transform: translateX(100%);
+  }
+
+  input[id="media-3"]:checked~.glider {
+    transform: translateX(200%);
+  }
+
+  .glider {
+    position: absolute;
+    display: flex;
+    height: 48px;
+    width: 150px;
+    background-color: #fff;
+    z-index: 0;
+    border-radius: 99px;
+    transition: 0.45s cubic-bezier(0.79,0.14,0.15,0.86);
+  }
+
+  @media (max-width: 600px) {
+    .NH-hero-tabs .tab, .NH-hero-tabs .glider { width: 120px; }
+    .NH-hero-tabs .tab { font-size: 1.05rem; }
+    .nh-hero-devices { padding-bottom: 2rem; }
+  }
+  @media (max-width: 500px) {
+  	.nh-hero-tabs-wrap { margin-top: 0; }
+    .NH-hero-tabs .tab, .NH-hero-tabs .glider { width: 105px; height: 40px; }
+  }
+ 
+  
+</style>
+<div class="NH-hero-tabs-wrapper">
+  <div class="NH-hero-tabs">
+    <input type="radio" id="media-1" name="tabs" checked />
+    <label id="browse-tab" class="tab" for="media-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 18" fill="none"><path fill="#000" d="M9.5 14c0-.5523.44772-1 1-1 .5523 0 1 .4477 1 1v2h-2v-2ZM17.125 8.44008c0 .229-.0909.44864-.2527.61066l-2.3044 2.30436c-.0791.0849-.1745.153-.2805.2003-.106.0472-.2204.0726-.3365.0746-.116.0021-.2313-.0193-.3389-.0627-.1076-.0435-.2053-.1082-.2874-.1902-.082-.0821-.1467-.1798-.1902-.2874-.0434-.1076-.0648-.2229-.0627-.3389.002-.1161.0274-.2305.0746-.3365.0473-.106.1154-.2014.2003-.2805l.8296-.82957H6.82517l.82958.82957c.0849.0791.153.1745.20023.2805.04723.106.07262.2204.07467.3365.00205.116-.0193.2313-.06276.3389-.04346.1076-.10815.2053-.19021.2874-.08206.082-.1798.1467-.2874.1902-.1076.0434-.22285.0648-.33888.0627-.11603-.002-.23046-.0274-.33646-.0746-.106-.0473-.2014-.1154-.28052-.2003L4.12904 9.05074c-.16182-.16202-.25272-.38166-.25272-.61066 0-.229.0909-.44863.25272-.61066l2.30438-2.30438c.07912-.0849.17452-.153.28052-.20023.106-.04723.22043-.07263.33646-.07468.11603-.00204.23128.0193.33888.06276s.20534.10815.2874.19021.14675.1798.19021.28741c.04346.1076.06481.22285.06276.33888-.00205.11603-.02744.23045-.07467.33646-.04723.106-.11533.2014-.20023.28051l-.82958.82958h7.35103l-.8296-.82958c-.1527-.16381-.2358-.38048-.2318-.60435.0039-.22387.0946-.43747.2529-.5958.1584-.15832.372-.24901.5958-.25296.2239-.00395.4406.07915.6044.23179l2.3044 2.30438c.1618.16203.2527.38166.2527.61066Z"/><rect width="19" height="16" x="1" y="1" stroke="#000" stroke-width="2" rx="4"/></svg> Browse</label>
+    <input type="radio" id="media-2" name="tabs" />
+    <label id="search-tab" class="tab" for="media-2">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 23 22"><path fill="#4C4A49" fill-rule="evenodd" d="M15.4003 8.54362c0 3.30278-2.6776 5.98048-5.98106 5.98048-3.30342 0-5.98106-2.6777-5.98106-5.98048 0-3.30273 2.67764-5.98044 5.98106-5.98044 3.30346 0 5.98106 2.67771 5.98106 5.98044Zm1.0242 4.89278c.9699-1.3859 1.539-3.0729 1.539-4.89278C17.9635 3.82511 14.1381 0 9.41924 0 4.70039 0 .875 3.82511.875 8.54362c0 4.71848 3.82539 8.54358 8.54424 8.54358 1.81926 0 3.50566-.5685 4.89136-1.5375.0101.0107.0205.0214.031.0319l5.981 5.9805c.5839.5839 1.5306.5839 2.1145 0 .5839-.584.5838-1.5307-.0001-2.1146l-5.981-5.9805c-.0104-.0104-.0209-.0206-.0315-.0306Z" clip-rule="evenodd"/></svg>
+      Search
+    </label>
+    <input type="radio" id="media-3" name="tabs" />
+    <label id="ask-tab" class="tab" for="media-3"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 0 21 22" fill="none"><path stroke="#4C4A49" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M1 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076c.2764-.2747.6475-.4331 1.037-.443 1.9014-.0526 2.798-.2176 4.68-.494 1.584-.233 2.707-1.626 2.707-3.228V4.741c0-1.602-1.123-2.995-2.707-3.228C14.461 1.17072 13.107.99926 10.75 1c-2.392 0-4.744.175-7.043.513C2.123 1.746 1 3.14 1 4.741v8.019Z"/><path fill="#4C4A49" d="m9.17383 10.6821-.01465-.4248c-.0293-.38572-.00488-.72019.07324-1.00339.08301-.28809.22705-.54444.43213-.76905.20996-.22461.48095-.43457.81295-.62988.3174-.19043.564-.36377.7398-.52002.1806-.15625.3076-.31982.3808-.49072.0733-.1709.1099-.3711.1099-.60059V6.229c0-.22949-.0586-.43212-.1758-.60791-.1123-.18066-.2734-.32226-.4834-.4248-.2099-.10742-.4541-.16113-.7324-.16113-.2783 0-.52245.05615-.73242.16845-.20996.11231-.37597.271-.49804.47608-.12207.20019-.19043.43701-.20508.71045l-.01465.00732-1.97754.00733v-.01465c.01465-.59571.16113-1.12305.43945-1.58203.28321-.46387.68604-.8252 1.2085-1.08399.52734-.25879 1.16455-.38818 1.91158-.38818.6983 0 1.3062.11963 1.8238.35888.5224.23926.9277.57129 1.2158.9961.293.4248.4394.91553.4394 1.47217v.01464c0 .36622-.0585.69825-.1757.9961-.1172.29785-.293.56885-.5274.81299-.2295.23925-.5176.46142-.8642.6665-.3223.18555-.5738.35889-.7544.52002-.1807.15625-.3076.32227-.3809.49805-.0732.17578-.1099.38331-.1099.62251v.3882H9.17383Zm1.04737 3.5303c-.41016 0-.73487-.1099-.97413-.3296-.23926-.2197-.35889-.5176-.35889-.8935 0-.3858.11963-.6861.35889-.9009.23926-.2197.56397-.3296.97413-.3296.4101 0 .7324.1099.9668.3296.2392.2148.3589.5151.3589.9009 0 .3759-.1197.6738-.3589.8935-.2344.2197-.5567.3296-.9668.3296Z"/></svg> Ask</label>
+    <span class="glider"></span> 
+  </div>
+</div></div></div></div><div class="nh-bg-wrap-og"><div class="nh-hero-bg-btmcontainer-og"></div><div class="nh-hero-bg-grad-bottom-overlay-og"></div><div class="nh-hero-bg-grad-overlay-og"></div><div class="nh-hero-bg-image-og"></div></div></div><section class="nh-wrap-og testimonialcarousel-og"><div class="nh-social-proof-wrap-og w-embed"><style>
+  body {
+    overflow-x: hidden;
+  }
+  .glide {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .glide * {
+    box-sizing: inherit;
+  }
+
+  .glide__slides--dragging {
+    user-select: none;
+  }
+
+  .glide__slide {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    white-space: initial;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .glide__slide a {
+    user-select: none;
+    -webkit-user-drag: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  .glide--swipeable {
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+  }
+
+  .glide--dragging {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
+
+  .nh-sp-testimonials {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    touch-action: pan-Y;
+    overflow: hidden;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+    will-change: transform;
+    padding: 2.5rem 0;
+  }
+  .carousel-title {
+    display: grid;
+    grid-template-columns: 1fr 100px;
+  }
+  .carousel-title h3.nh-sm-headline {
+    margin: 0;
+    align-self: center;
+    font-family: "Quincy", serif !important;
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #898476;
+    letter-spacing: -0.5px;
+  }
+  .carousel-controls {
+    display: grid;
+    grid-template-columns: 46px 46px;
+    gap: 16px;
+    line-height: 0;
+  }
+  @media (hover: none) {
+  	.carousel {
+  	 		overflow: hidden;
+     }
+  }
+   @media (min-width: 935.1px) and (max-width: 1100px) {
+  	.nh-wrap.testimonialcarousel {
+    	padding: 0 2rem;
+    }
+  }
+   @media (max-width: 935px) {
+    .carousel {
+    	transform: none;
+    }
+  	.carousel-title h3.nh-sm-headline {
+    	font-size: 4.75vw;
+      text-align: center;
+    }
+    .carousel-title {
+      display: block;
+      transform: none;
+      text-align: center;
+      max-width: 85%;
+      margin: 0 auto;
+    }
+    .carousel-controls {
+    	justify-content: center;
+      margin-top: 2rem;
+    }
+  }
+  @media (min-width: 550px) and (max-width: 735px) {
+    .carousel-title h3.nh-sm-headline {
+      font-size: 6.25vw;
+    }
+  }
+  @media (max-width: 550px) {
+    .carousel-title h3.nh-sm-headline {
+      font-size: 1.75rem;
+    }
+  }
+  .carousel-controls button {
+    border: none;
+    background: rgba(255, 255, 255, 0.95);
+    width: 46px;
+    height: 46px;
+    border-radius: 23px;
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    cursor: pointer;
+    padding: 0;
+  }
+  .carousel-controls button:hover {
+    transform: scale(1.075);
+    box-shadow: 0 2px 8px rgba(208, 200, 187, 0.4);
+  }
+  .carousel-controls button:hover svg path {
+    fill: #7A7363;
+  }
+  .carousel-controls button svg {
+    width: 28px;
+    height: 28px;
+  }
+  .carousel-controls button svg path {
+    fill: #A59C89;
+  }
+  .carousel-controls button.next svg {
+    transform: translateX(1.5px);
+  }
+  .carousel-controls button.prev svg {
+    transform: translateX(-1.5px);
+  }
+  .testimonial {
+    user-select: none;
+    -moz-user-select: none;
+		flex-shrink: 0;
+    line-height: 1;
+    margin: 0;
+    min-height: 145px;
+    border-radius: 20px;
+    background: white;
+    border: 1px solid rgba(194, 184, 169, 0.5);
+    box-shadow: 0 4px 11px rgba(208, 200, 187, 0.33);
+    position: relative;
+    padding: 1.5rem 3.25rem 3rem 3.5rem;
+    line-height: 1.25;
+    white-space: normal;
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
+  }
+  .testimonial blockquote {
+    margin: 0;
+    font-size: 1.4rem;
+    position: relative;
+    border-left: none;
+    padding: 0;
+    font-family: "Quincy", serif;
+    line-height: 1.15;
+    color: #595653;
+    letter-spacing: -0.25px;
+    font-weight: 500;
+  }
+  .testimonial blockquote:after {
+    position: absolute;
+    content: "“";
+    display: block;
+    top: -0.6rem;
+    left: -2.1rem;
+    line-height: 1;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #b1a2945e;
+  }
+  .testimonial p.author {
+    margin: 0;
+    position: absolute;
+    bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.1;
+  }
+  .testimonial p.author .name {
+    font-family: 'Greycliff', sans-serif;
+    font-weight: 600;
+    margin-right: 0.3rem;
+    color: #595653;
+  }
+  .testimonial p.author .company {
+    font-family: 'Greycliff', sans-serif;
+    font-weight: 600;
+    color: rgba(92, 84, 76, 0.54);
+    font-size: 1rem;
+  }
+  .testimonial .avatar {
+    position: absolute;
+    bottom: -0.75rem;
+    left: -0.75rem;
+    border-radius: 100px;
+    width: 60px;
+    height: 60px;
+    background: white;
+    border: 4px solid white;
+    box-shadow: 0 4px 11px rgba(208, 200, 187, 0.33);
+  }
+  .testimonial:hover {
+    box-shadow: 0 4px 11px rgba(208, 200, 187, 0.5);
+  }
+  @media (max-width: 450px) {
+  	.testimonial {
+      padding: 1.5rem 2.25rem 4.5rem 3.25rem;
+    }
+    .testimonial .avatar { width: 50px; height: 50px; }
+    .testimonial p.author .company { display: block; margin-top: 0.2rem;}
+    .nh-sp-testimonials {margin-left:50px;}
+  }
+</style>
+<div class="carousel">
+            <div class="carousel-title">
+                <h3 class="nh-sm-headline">Professionals use Rewind to get more done, faster.</h3>
+                <div class="carousel-controls" data-glide-el="controls">
+                    <button class="prev" data-glide-dir="<"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3166 19.0976 14.6834 19.0976 14.2929 18.7071L8.29289 12.7071C7.90237 12.3166 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289C14.6834 4.90237 15.3166 4.90237 15.7071 5.29289Z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                    <button class="next" data-glide-dir=">"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M8.29289 5.29289C8.68342 4.90237 9.31658 4.90237 9.70711 5.29289L15.7071 11.2929C16.0976 11.6834 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071C9.31658 19.0976 8.68342 19.0976 8.29289 18.7071C7.90237 18.3166 7.90237 17.6834 8.29289 17.2929L13.5858 12L8.29289 6.70711C7.90237 6.31658 7.90237 5.68342 8.29289 5.29289Z"
+                                fill="currentColor" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="glide__track" data-glide-el="track">
+                <ul class="nh-sp-testimonials">
+                    <li class="testimonial">
+                        <blockquote>Rewind’s privacy-first approach is a compelling way to offer truly personalized AI.</blockquote>
+                        <p class="author"><span class="name">Elad Gil</span> <span class="company">Investor</span></p>
+                        <img class="avatar" src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc4e93fa9c2b4c2d947f0a_elad-av.jpg"/>
+                    </li>
+
+                    <li class="testimonial">
+                        <blockquote>Rewind is a great example of how AI can augment human intelligence.</blockquote>
+                        <p class="author"><span class="name">Marc Andreessen</span> <span class="company">Cofounder, a16z</span></p>
+                        <img class="avatar" src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc4e933f9cb6f9722a7d71_pmarca-av.jpg"/>
+                    </li>
+                  <li class="testimonial">
+                         <blockquote>Rewind is a refreshing revelation in the landscape of AI.</blockquote>
+                        <p class="author"><span class="name">Alexis Ohanian</span> <span class="company">Founder, Reddit</span></p>
+                        <img class="avatar" src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc4e93b9c30f67192c2bf8_alexis-av.jpg"/>
+                    </li>
+                                            <li class="testimonial">
+                        <blockquote>I’m very optimistic about Rewind’s approach to personalized AI.</blockquote>
+                        <p class="author"><span class="name">Sam Altman</span> <span class="company">CEO, OpenAI</span></p>
+                        <img class="avatar" src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bde966be4c261139ada397_sama-av.jpg"/>
+                    </li>
+                     <li class="testimonial">
+                         <blockquote>Rewind takes all the pressure of staying organized and taking notes off, letting me focus on getting work done.</blockquote>
+                        <p class="author"><span class="name">David Lieb</span> <span class="company">Creator, Google Photos</span></p>
+                        <img class="avatar" src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bedeac310a7840bd2f9cb7_davidlieb-av.jpg"/>
+                    </li>
+                    <li class="testimonial">
+                         <blockquote>Rewind maximizes productivity by giving our memory a turbo boost.</blockquote>
+                        <p class="author"><span class="name">David Ulevitch</span> <span class="company">General Partner, a16z</span></p>
+                        <img class="avatar" src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc4e933f9cb6f9722a7d6c_davidu-av.jpg"/>
+                    </li>
+                </ul>
+            </div>
+        </div></div><div class="nh-published-og"><div class="asseenwrap-og"><div class="asseen">As seen in</div></div><div class="publications-og"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc56672013e5d1f00a7421_verge.svg" loading="lazy" height="29" alt="" class="vergeicon"/><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc5c3e4bea106fb5e391be_theinfo-logo.png" loading="lazy" alt="" height="32" class="theinfo-logo"/><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc5922c68615e22c2b1a1b_tclogo.svg" loading="lazy" alt="" height="29" class="logo-tc"/><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc5b21eaabffda69a47801_ph-logo.svg" loading="lazy" alt="" height="31" class="ph-logo"/></div></div></section><section class="nh-section-inset howitworks"><div class="w-layout-blockcontainer nh-wrap-og sectionverticalpadding w-container"><div class="nh-title-wrap"><div class="nh-sectiontitle">How it works</div><div class="pendant-story">Rewind is a personalized AI powered by everything you’ve seen, said, or heard.</div></div><div class="nh-hiw-steps"><div class="nh-hiw-step"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc67270b3b039b770e3afe_hiw-step-1.svg" loading="lazy" height="60" width="60" alt=""/><div class="nh-hiw-text"><div class="nh-step-title">Install Rewind</div><div class="nh-step-desc">Rewind runs imperceptibly in the background capturing your screen and audio.</div></div></div><div class="nh-hiw-step"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64f7adf6cb568c9ac876426f_hiw-step-2-updated.svg" loading="lazy" width="60" height="60" alt=""/><div class="nh-hiw-text"><div class="nh-step-title">Set it and forget it</div><div class="nh-step-desc">Rewind compresses, transcribes, encrypts, and stores your data locally so only you have access.</div></div></div><div class="nh-hiw-step"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64f7addf94e99c85c9a50aff_hiw-step-3-updated.svg" loading="lazy" width="60" height="60" alt=""/><div class="nh-hiw-text"><div class="nh-step-title">Ask your AI anything</div><div class="nh-step-desc">Ask Rewind to summarize meetings, draft an email, and much more.</div></div></div></div></div></section><section class="nh-section-inset overcomesection"><div class="w-layout-blockcontainer nh-wrap-og sectionverticalpadding w-container"><div class="nh-title-wrap"><div id="past-how-it-works" class="nh-sectiontitle overcometitle">Overcome your mind’s limitations</div></div><div class="nh-overcome-items"><div class="nh-overcome-item"><div class="nh-overcome-desc"><div id="w-node-c3ccc788-17ac-2075-8313-82ea0b5e6f75-db6ab9e5" class="nh-overcome-label">MEETINGS</div><div class="nh-overcome-title">Automate note-taking and get human-level meeting summaries</div><div class="nh-overcome-details">Record meetings no matter who’s the host and without inviting bots. Save hours each week with auto-recording and human-level meeting summaries, ready to share with your colleagues.</div><div class="nh-overcome-features"><div id="w-node-_39c50995-8e37-04fe-1982-5c04aaec9e99-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_9e1a9fce-e254-7ac8-1de4-581584bf4e1c-db6ab9e5"/><div id="w-node-_23c6c1a4-64e2-db30-efa1-1a28f0b53a6a-db6ab9e5" class="nh-overcome-featurelabel">No bots</div></div><div id="w-node-d2778366-4273-b660-a36b-4ba79ebfbde5-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-d2778366-4273-b660-a36b-4ba79ebfbde6-db6ab9e5"/><div id="w-node-d2778366-4273-b660-a36b-4ba79ebfbde7-db6ab9e5" class="nh-overcome-featurelabel">Shareable summaries</div></div><div id="w-node-a34098ed-1c00-812c-7c2e-72e97a2576e1-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-a34098ed-1c00-812c-7c2e-72e97a2576e2-db6ab9e5"/><div id="w-node-a34098ed-1c00-812c-7c2e-72e97a2576e3-db6ab9e5" class="nh-overcome-featurelabel">Record no matter the host</div></div><div id="w-node-_04eeb621-3a47-f8e3-bd4b-42f458f68d45-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_04eeb621-3a47-f8e3-bd4b-42f458f68d46-db6ab9e5"/><div id="w-node-_04eeb621-3a47-f8e3-bd4b-42f458f68d47-db6ab9e5" class="nh-overcome-featurelabel">Across Zoom, Meet, Teams</div></div></div></div><div class="nh-overcome-media"><div class="nh-overcome-media-fill"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64beeaf99843812b08135607_rewind-draft-email.webp" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 93vw, (max-width: 991px) 78vw, 46vw" srcset="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64beeaf99843812b08135607_rewind-draft-email-p-500.webp 500w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64beeaf99843812b08135607_rewind-draft-email-p-800.webp 800w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64beeaf99843812b08135607_rewind-draft-email.webp 1000w" alt="" class="meetingsummarydraftimg"/></div></div></div><div class="nh-overcome-item"><div class="nh-overcome-desc"><div id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c91328-db6ab9e5" class="nh-overcome-label">BACKUP</div><div class="nh-overcome-title">Avoid ever repeating lost work when a system inevitably crashes</div><div class="nh-overcome-details">Enjoy the safety net of having everything backed up without any of the data concerns. When you forget to hit save or your browser crashes, there’s no lost or wasted time. Scroll back in time to any moment.</div><div class="nh-overcome-features"><div id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c9132f-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c91330-db6ab9e5"/><div id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c91331-db6ab9e5" class="nh-overcome-featurelabel">Find important details fast</div></div><div id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c91333-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c91334-db6ab9e5"/><div id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c91335-db6ab9e5" class="nh-overcome-featurelabel">Easily retrieve lost info</div></div><div id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c91337-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c91338-db6ab9e5"/><div id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c91339-db6ab9e5" class="nh-overcome-featurelabel">All your work backed up</div></div><div id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c9133b-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c9133c-db6ab9e5"/><div id="w-node-_39ceab3b-d641-2299-16e6-a37ed6c9133d-db6ab9e5" class="nh-overcome-featurelabel">Recall where you saw anything</div></div></div></div><div class="nh-overcome-media"><div class="nh-overcome-media-fill"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64c1b711c69842f5fa219a4e_browser-crash.webp" loading="lazy" sizes="100vw" srcset="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64c1b711c69842f5fa219a4e_browser-crash-p-500.webp 500w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64c1b711c69842f5fa219a4e_browser-crash.webp 1000w" alt="" class="browsercrash"/></div></div></div><div class="nh-overcome-item"><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a598d-db6ab9e5" class="nh-overcome-desc"><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a598e-db6ab9e5" class="nh-overcome-label">AI ASSISTANT</div><div class="nh-overcome-title">Leverage AI to find details, draft emails, and summarize it all</div><div class="nh-overcome-details">Get a personal assistant who is everywhere and knows everything to handle tasks, capture notes, and summarize information for you behind the scenes. The power of GPT-4, personalized to you.</div><div class="nh-overcome-features"><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a5995-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a5996-db6ab9e5"/><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a5997-db6ab9e5" class="nh-overcome-featurelabel">Automate email drafts</div></div><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a5999-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a599a-db6ab9e5"/><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a599b-db6ab9e5" class="nh-overcome-featurelabel">Ask for details on your day</div></div><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a599d-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a599e-db6ab9e5"/><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a599f-db6ab9e5" class="nh-overcome-featurelabel">A personalized chatGPT</div></div><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a59a1-db6ab9e5" class="nh-overcome-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bc707b7cfdea0d0a6f262f_ic-check.svg" loading="lazy" width="26" height="26" alt="" id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a59a2-db6ab9e5"/><div id="w-node-_7931b66a-18bc-a3cd-ed2d-0565e76a59a3-db6ab9e5" class="nh-overcome-featurelabel">Summarize research</div></div></div></div><div class="nh-overcome-media askrewindfeaturemedia"><div class="nh-overcome-media-fill ask-rewind-media-feature"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bef169086f679cba938f0f_rewind-ask-rewind2.webp" loading="lazy" sizes="100vw" srcset="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bef169086f679cba938f0f_rewind-ask-rewind2-p-500.webp 500w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bef169086f679cba938f0f_rewind-ask-rewind2-p-800.webp 800w, https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bef169086f679cba938f0f_rewind-ask-rewind2.webp 974w" alt="" class="imageaskrewind"/></div></div></div></div></div></section><section class="nh-section-inset testimonialsection"><div class="w-layout-blockcontainer nh-wrap-og sectionverticalpadding w-container"><div class="nh-title-wrap wider-title-wrap"><div class="nh-sectiontitle testimonialtitle">For people who want to <em>work smarter</em>, better, faster</div></div><div class="nh-bottom-testimonials-wrap"><div id="w-node-_5ba1ead9-6220-f643-f969-356542c0e98d-db6ab9e5" class="nh-bottom-testimonial"><div class="nh-bottom-testimonial-qblock"><div class="quincypullquote">“</div><div class="bottom-testimonial-title">I use it to better connect with my 10 direct reports.</div><div class="bottom-testimonial-desc">I want connection and to genuinely feel I’m showing up for people. Some things that are important to others don’t strike me as such, so this gives me a superpower to be able to show up for others.</div></div><div class="bottom-testimonial-author"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bd8c4ba7cb1c7fd4e8af70_testimonial-lexis-av.jpg" loading="lazy" width="60" height="60" alt="" id="w-node-_36ab8e4a-fc22-fc58-d825-3094ca5343be-db6ab9e5" class="bottom-testimonial-avatar"/><div id="w-node-a6aa590a-62d3-fbd7-9e2a-af5ce31c012a-db6ab9e5" class="bottom-testimonial-name-wrap"><div id="w-node-dde39aad-d2c0-ef3a-7496-ef6b601ec0a6-db6ab9e5" class="bottom-testimonial-name">Lexis</div><div class="bottom-testimonial-company">Engineering Manager at Chief</div></div></div></div><div id="w-node-_7967b907-68a6-8957-a9fa-64dac5d63517-db6ab9e5" class="nh-bottom-testimonial"><div class="nh-bottom-testimonial-qblock"><div class="bottom-testimonial-title">Feels like a superpower: I can remember every detail and not disrupt calls with note-taking</div><div class="bottom-testimonial-desc">It’s easier to do my job between product and sales, so I feel like I’m doing what I’m supposed to be doing and driving toward product-market-fit. Everything’s easier when there’s more clarity.</div><div class="quincypullquote">“</div></div><div class="bottom-testimonial-author"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bd8c4bab0e625a27af5121_testimonial-nick-av.jpg" loading="lazy" width="60" height="60" alt="" id="w-node-_1b4ac9d8-670f-4a86-468b-867f8bd9b511-db6ab9e5" class="bottom-testimonial-avatar"/><div id="w-node-_1b4ac9d8-670f-4a86-468b-867f8bd9b512-db6ab9e5" class="bottom-testimonial-name-wrap"><div id="w-node-_1b4ac9d8-670f-4a86-468b-867f8bd9b513-db6ab9e5" class="bottom-testimonial-name">Nick</div><div class="bottom-testimonial-company">Co-Founder of Tile</div></div></div></div></div><div class="w-embed w-script"><div class="shoutout-embed" id="testimonial-embed" style="display:none;transform:translateY(100px);margin-top: 4rem;transition: 0.5s ease-out" data-widgetTitle="Rewind.ai" data-widgetId="c7d481a3-1af5-4ebb-b072-17f36da86a31"></div>
+<script class="shoutout-script" src="https://shoutout.io/static/website/js/embed.js" defer></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const testimonialBtn = document.getElementById("testimonials-btn");
+  if (testimonialBtn) {
+    testimonialBtn.addEventListener("click", function(e) {
+    	e.preventDefault();
+      const embed = document.getElementById("testimonial-embed");
+      if (embed) {
+         embed.style = "transition: 0.5s ease-out;display:block;transform:translateY(0px);margin-top: 4rem;";
+      }
+      testimonialBtn.style.display = "none";
+      const newBtn = document.getElementById("see-more-testimonials");
+      if (newBtn) {
+         newBtn.style.display = "inline-block";
+      }
+    });
+  }
+});
+</script></div><div class="center-wrap testimonials-cta"><a id="see-more-testimonials" href="https://twitter.com/RewindAI/timelines/1603483782039887878" class="nh-learnmorebtntext testimonial-view-more-text see-more-link w-button">See more testimonials</a><a id="testimonials-btn" href="#" class="nh-learnmorebtntext testimonial-view-more-text w-button">View more</a></div></div></section><section class="nh-section-inset privacysection"><div class="w-layout-blockcontainer nh-wrap-og sectionverticalpadding w-container"><div class="nh-section-inner-grid"><div id="w-node-_1b22c488-7d69-553b-e7bd-4359dd6ca000-db6ab9e5" class="nh-section-grid-item"><div class="nh-section-grid-item-title">Private by design</div><div class="nh-section-grid-item-desc">Capturing everything you see, say, and hear means trust and privacy is more important than anything else.</div><a href="/privacy-first" class="nh-section-item-button w-inline-block"><div class="nh-learnmorebtntext">Learn more</div></a></div><div id="w-node-c33cdf7c-471d-fd55-889b-d2d9e498b2af-db6ab9e5" class="nh-section-grid-item"><div class="nh-inner-feature-icon-list"><div class="nh-inner-feature-icon-item"><div id="w-node-_0ed7c4ff-bef8-42e9-2ed2-4fb12362b78c-db6ab9e5" class="nh-inner-feature-icon-block"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdb9981b90be3b5fcc673e_ic-laptop-phone.svg" loading="lazy" width="48" alt="" class="ic-laptop-phone"/></div><div id="w-node-e329728d-5cc3-161b-56e3-a49e1d9d46f0-db6ab9e5" class="nh-inner-feature-details"><div class="nh-inner-feature-item-title">Stored locally</div><div class="nh-inner-feature-item-desc">For your privacy, all of the recordings are stored locally on your Mac. No one else can access them - not even Rewind!</div></div></div><div class="nh-inner-feature-icon-item"><div id="w-node-a4309e21-65da-e3da-ec7d-f8db0be004fe-db6ab9e5" class="nh-inner-feature-icon-block"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdb37ad95372adf50c147d_ic-cloud-slash.svg" loading="lazy" width="48" alt="" class="ic-no-lcoud"/></div><div id="w-node-a4309e21-65da-e3da-ec7d-f8db0be004ff-db6ab9e5" class="nh-inner-feature-details"><div class="nh-inner-feature-item-title">No cloud integration required</div><div class="nh-inner-feature-item-desc">It all just works automatically. No need to connect to a bunch of different services like Gmail, Dropbox, or Slack.</div></div></div><div class="nh-inner-feature-icon-item"><div id="w-node-_5d474926-7521-2699-6bbc-1457dc8bc2d8-db6ab9e5" class="nh-inner-feature-icon-block"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdb161b703f9575b6b9f2d_ic-incognito.svg" loading="lazy" width="42" id="w-node-dc4737ed-5f6a-8e6a-8b18-2dfb05251186-db6ab9e5" alt="" class="ic-incognito"/></div><div id="w-node-_5d474926-7521-2699-6bbc-1457dc8bc2d9-db6ab9e5" class="nh-inner-feature-details"><div class="nh-inner-feature-item-title">Private browsing not captured</div><div class="nh-inner-feature-item-desc">Easily pause or delete recordings at any time. Decide which apps not to record, and auto-exclude incognito browsing windows.</div></div></div></div></div></div></div></section><section class="nh-section-inset benefitssection"><div class="w-layout-blockcontainer nh-wrap-og sectionverticalpadding w-container"><div class="nh-section-inner-grid"><div id="w-node-_09c4110e-2975-3b26-ca10-ba09c30f8eff-db6ab9e5" class="nh-section-grid-item"><div class="nh-section-grid-item-title benefittitle">Make work and life more enjoyable</div><div class="nh-section-grid-item-desc benefitdesc">Life’s easier when you look and feel on top of it all</div></div><div id="w-node-df542443-be75-0808-bfbb-7b19d9b0331c-db6ab9e5" class="nh-section-grid-item"><div class="nh-inner-feature-icon-list"><div class="nh-inner-feature-icon-item"><div id="w-node-df542443-be75-0808-bfbb-7b19d9b0331f-db6ab9e5" class="nh-inner-feature-icon-block benefits-feature-icon-block"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdc452a7cb1c7fd41a6830_ic-brain.svg" loading="lazy" width="56" alt=""/></div><div id="w-node-df542443-be75-0808-bfbb-7b19d9b03320-db6ab9e5" class="nh-inner-feature-details"><div class="nh-inner-feature-item-title benefits-feature-item-title">Get peace of mind</div><div class="nh-inner-feature-item-desc benefits-feature-item-desc">Relax knowing you’ll never lose anything important.</div></div></div><div class="nh-inner-feature-icon-item"><div id="w-node-df542443-be75-0808-bfbb-7b19d9b03326-db6ab9e5" class="nh-inner-feature-icon-block benefits-feature-icon-block"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdba8bfbdbe6e05fc12995_ic-no-speaker.svg" loading="lazy" width="48" alt="" class="ic-no-speaker"/></div><div id="w-node-df542443-be75-0808-bfbb-7b19d9b03327-db6ab9e5" class="nh-inner-feature-details"><div class="nh-inner-feature-item-title benefits-feature-item-title">Be more present</div><div class="nh-inner-feature-item-desc benefits-feature-item-desc">Especially in meetings, knowing all important details are captured.</div></div></div><div class="nh-inner-feature-icon-item"><div id="w-node-df542443-be75-0808-bfbb-7b19d9b0332d-db6ab9e5" class="nh-inner-feature-icon-block benefits-feature-icon-block"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdc13eb6b02693f01c190b_ic-limitless.svg" loading="lazy" width="46" alt=""/></div><div id="w-node-df542443-be75-0808-bfbb-7b19d9b0332e-db6ab9e5" class="nh-inner-feature-details"><div class="nh-inner-feature-item-title benefits-feature-item-title">Feel limitless</div><div class="nh-inner-feature-item-desc benefits-feature-item-desc">Remember way more than what’s humanly possible.</div></div></div></div></div></div></div><div class="zenbgimage"><div class="w-embed"><style>
+.zenbgimage {
+-webkit-mask-image: linear-gradient(155deg,transparent 65%,black 87%, transparent 99%);
+-moz-mask-image: linear-gradient(155deg,transparent 65%,black 87%, transparent 99%);
+mask-image: linear-gradient(155deg,transparent 65%,black 87%, transparent 99%);
+-webkit-mask-size: 100% 100%;
+-moz-mask-size: 100% 100%;
+mask-size: 100% 100%;
+}
+@media (max-width: 450px) {
+	.zenbgimage {
+  	-webkit-mask-image: linear-gradient(170deg,transparent 65%,black 87%, transparent 97%);
+		-moz-mask-image: linear-gradient(170deg,transparent 65%,black 87%, transparent 97%);
+		mask-image: linear-gradient(170deg,transparent 65%,black 87%, transparent 97%);
+  }
+}
+</style></div></div></section><section class="nh-section-inset learnmoresection"><div class="w-layout-blockcontainer nh-wrap-og sectionverticalpadding downloadwrap w-container"><div class="nh-sectiontitle downloadtitle">Download your new superpower today</div><div id="primary-cta-email" class="primarycta-email nh-emailfield nh-footeremailfield"><div class="submit-email-form download-rewind-modal w-form"><form id="primary-email-form-home-footer" name="wf-form-Rewind-Signup" data-name="Rewind Signup" redirect="/install" data-redirect="/install" method="get" class="submit-email" data-wf-page-id="64b842845c90db90db6ab9e5" data-wf-element-id="28eede6f-7409-b149-5751-ae6029b3c933"><input class="download-rewind-text-field-inline w-input" autofocus="true" maxlength="256" name="email" data-name="email" placeholder="Enter your email" type="email" id="primary-email-form-home-input" data-1p-ignore="" required=""/><input id="get-rewind-form-btn-home" type="submit" data-wait="…" class="download-rewind-submit-button w-button" value="Get Rewind"/></form><div class="success-message w-form-done"><div class="text-block-38">Thanks</div></div><div class="download-rewind-modal-error-message w-form-fail"><div class="text-block-39">Something went wrong. Please try again.</div></div></div><div class="email-download-for"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdccab4fb0e612b2caa41d_ic-apple.svg" loading="lazy" width="16" alt="" class="ic-apple"/><div class="download-for-desc">Download for Mac and iOS today.</div></div><p id="download-description-home" class="description download-rewind-inline">Download will begin after you submit your email address.</p></div></div></section><section class="nh-section-inset faqsection"><div class="w-layout-blockcontainer nh-wrap-og sectionverticalpadding w-container"><div class="nh-section-inner-grid faq-grid"><div id="w-node-_1a1f0132-8794-4e75-ecff-3b3063c3a695-db6ab9e5" class="nh-section-grid-item"><div class="nh-section-grid-item-title benefittitle">FAQ</div><div class="nh-section-grid-item-desc faq-desc">Visit our <a href="https://help.rewind.ai/" class="helpcenterfaqlink">help center</a> to get in touch. <span class="blocktext">We’re super responsive.</span></div></div><div id="w-node-_26b48012-094d-e251-1503-6074bab623f9-db6ab9e5" class="nh-section-grid-item"><div id="w-node-_38656cbe-fa8d-cee3-fe92-7cd76df9ea5a-db6ab9e5" class="faq-embed w-embed"><div class="faq-item">
+  <p class="question">How does Rewind compression work?</p>
+  <div class="answer-wrap">
+    <p class="answer">With a 3,750x compression rate, even Apple's smallest hard drive can hold years of recordings. Users typically utilize 14 GB per month.<br/>
+    <a href="https://help.rewind.ai/en/articles/6706118-how-does-rewind-compression-work">Learn more</a></p>
+  </div>
+</div>
+<div class="faq-item">
+  <p class="question">How much CPU does Rewind consume?</p>
+  <div class="answer-wrap">
+    <p class="answer">Rewind is designed for Apple Silicon (M1 and M2) chips which has numerous CPU cores. Typically, while recording, Rewind uses only 20 - 40% of a single core, which translates to 1-5% of all CPU capacity.<br/> 
+    <a href="https://help.rewind.ai/en/articles/6715355-how-much-cpu-does-rewind-consume">Learn more</a></p>
+  </div>
+</div>
+<div class="faq-item">
+  <p class="question">Recording &amp; transcribing audio with Rewind</p>
+  <div class="answer-wrap">
+    <p class="answer">You can capture, record, and transcribe all meetings, whether in-person or virtual, and even generate automatic summaries. We do Automated Speech Recognition (ASR) all locally on your Mac.<br/> 
+    <a href="https://help.rewind.ai/en/articles/6526620-recording-transcribing-audio-with-rewind">Learn more</a></p>
+  </div>
+</div>
+<div class="faq-item">
+  <p class="question">What hardware is required to run Rewind?</p>
+  <div class="answer-wrap">
+    <p class="answer">Rewind is optimized for Apple Silicon (M1 or M2) and iPhone. It is also available on any Intel-based Mac. We are coming to Windows next!<br/> 
+    <a href="https://help.rewind.ai/en/articles/6705951-what-hardware-is-required-to-run-rewind">Learn more</a></p>
+  </div>
+</div>
+
+<div class="faq-item">
+  <p class="question">Where does my data go?</p>
+  <div class="answer-wrap">
+    <p class="answer">For your privacy, your screen and audio recordings are stored locally and NEVER leave your Mac. If you choose to use our meeting summarization or Ask Rewind features, only relevant text-based data is sent to our LLM partners.<br/>
+    <a href="https://help.rewind.ai/en/articles/6526621-who-has-access-to-my-data">Learn more</a></p>
+  </div>
+</div>
+
+<style>
+.faq-embed .faq-item {
+  position: relative;
+	background: white;
+  border-radius: 12px;
+  font-family: Greycliff, sans-serif;
+  box-shadow: 0 1px 1.5px 0 rgba(0,0,0,0.15);
+  transition: 0.15s ease-out;
+}
+.faq-embed .faq-item:hover, .faq-embed .faq-item.active {
+	transform: scale(1.02);
+  box-shadow: 0 3px 8px 0 #c6c2b58a;
+}
+.faq-embed .faq-item p.question::after {
+	content: " ";
+  background: url('https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64c0548c24cef38c31fcb2c8_ic-down-chevron.svg') no-repeat;
+  width: 16px;
+  height: 16px;
+  font-size: 3rem;
+  position: absolute;
+  transition: 0.2s;
+  top: 23px;
+  right: 20px;
+  opacity: 0.5;
+  transition: 0.35s ease-out;
+}
+.faq-embed .faq-item:hover p.question::after {
+	opacity: 1;
+}
+.faq-embed .faq-item.active p.question::after {
+  transform: translateY(-6px) rotate(180deg);
+  opacity: 1;
+}
+
+.faq-embed .faq-item .answer-wrap {
+  max-height: 0;
+  overflow: hidden;
+  transition: 0.45s cubic-bezier(0.79,0.14,0.15,0.86);
+}
+
+.faq-embed .faq-item p {
+	margin: 0;
+  line-height: 1.3;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #78746d;
+  letter-spacing: -0.5px;
+  padding: 14px 48px 16px 24px;
+}
+.faq-embed .faq-item p a { 
+	display: inline-block;
+  padding: 6px 20px 9px;
+  border-radius: 20px;
+  border: 1.5px solid #78746d3b;
+  margin: 20px 0 15px 0;
+  color: #78746d;
+  font-weight: 700;
+  transition: 0.15s ease-out;
+}
+.faq-embed .faq-item p a:hover { 
+	color: #373e46;
+  border: 1.5px solid #78746d7d;
+}
+.faq-embed .faq-item p.question {
+	cursor: pointer;
+}
+.faq-embed .faq-item p.answer {
+	padding-top: 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: -5px;
+  padding-bottom: 5px;
+}
+@media (max-width: 500px) {
+	.faq-embed .faq-item p { font-size: 1.1rem; } 
+  .faq-embed .faq-item p.answer { font-size: 1rem; }
+  .faq-embed .faq-item p { padding-left: 16px; }
+}
+</style></div></div></div></div></section><section class="footer-v3"><div class="footer-wrapper w-container"><div class="footer-content"><div id="w-node-bcf52e4f-795a-ff27-88bf-8cc6125a955e-125a955b" class="footer-leading-items"><a href="https://rewind.ai" class="w-inline-block"><div class="footerlogotypewrap"><img src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/64bdc6b6f1a71b415d71679f_rewind-footer-logo.png" alt="Rewind logo" width="123" height="40" class="footer-rewind-logo"/></div></a><div class="companydetails">A truly personalized AI</div><a data-w-id="f25e120d-ac9c-7b9f-1351-8672f253b383" href="#" class="footer-button">Get Rewind</a></div><div class="footer-trailing-items"><div class="footer-column"><div class="footerv2-sectiontitle">COMPANY</div><div class="footerlinkblock"><div class="footerlinkitem"><a href="/about" class="footerv2-link">About</a></div><div class="footerlinkitem"><a href="/blog" class="footerv2-link">Blog</a></div><div class="footerlinkitem"><a href="/careers" class="footerv2-link">Careers</a></div><div class="footerlinkitem"><a href="https://twitter.com/RewindAI" class="footerv2-link">Twitter</a></div><div class="footerlinkitem"><a href="https://rewind.ai/community" class="footerv2-link">Slack Community</a></div><div class="footerlinkitem"><a href="mailto:press@rewind.ai" class="footerv2-link">Press</a></div></div></div><div id="w-node-bcf52e4f-795a-ff27-88bf-8cc6125a9576-125a955b" class="footer-column"><div class="footerv2-sectiontitle">PRODUCT</div><div class="footerlinkblock"><div class="footerlinkitem"><a href="/install" class="footerv2-link">Mac</a></div><div class="footerlinkitem"><a href="https://apps.apple.com/us/app/rewind-truly-personalized-ai/id6449795815" class="footerv2-link">iPhone</a></div><div class="footerlinkitem"><a href="/windows" class="footerv2-link">Windows</a></div><div class="footerlinkitem"><a href="/pendant-disabled" class="footerv2-link">Pendant</a></div><div class="footerlinkitem"><a href="/changelog" class="footerv2-link">Changelog</a></div><div class="footerlinkitem"><a href="/pricing" class="footerv2-link">Pricing</a></div><div class="footerlinkitem"><a href="http://help.rewind.ai/" class="footerv2-link">Support</a></div><div class="footerlinkitem"><a href="https://twitter.com/RewindAI/timelines/1603483782039887878" class="footerv2-link">Testimonials</a></div></div></div><div id="w-node-bcf52e4f-795a-ff27-88bf-8cc6125a9585-125a955b" class="footer-column"><div class="footerv2-sectiontitle">USE  CASES</div><div class="footerlinkblock"><a href="https://www.rewind.ai/use-case/executives" class="footerv2-link w-inline-block"><div class="footerv2-link">Executives</div></a><a href="https://www.rewind.ai/use-case/engineering" class="footerv2-link w-inline-block"><div class="footerv2-link">Engineering</div></a><a href="https://www.rewind.ai/use-case/sales" class="footerv2-link w-inline-block"><div class="footerv2-link">Sales</div></a><a href="https://www.rewind.ai/use-case/adhd" class="footerv2-link w-inline-block"><div class="footerv2-link">ADHD</div></a></div></div></div></div><div class="companyname">©2023 Rewind AI, Inc.</div></div><div class="invisiblescrollpoint w-embed w-script"><div id="scrollpoint" style="position: absolute;width: 1px;height: 1px;top: 100px;left: 0;opacity: 0"></div>
+<style>
+#NH-header, #mobile-nav-header {
+	transition: all 0.1s ease-out; 
+}
+#NH-header.NH-Header-Scrolled, #mobile-nav-header.NH-Header-Scrolled {
+	-webkit-backdrop-filter: blur(32px);
+	backdrop-filter: blur(32px);
+  background: rgba(246, 244, 239, 0.8);
+  box-shadow: 0 1px 1px 0px #b9b5a94d;
+}
+</style>
+<script>let observer = new IntersectionObserver(entries => {
+  const desktopHeader = document.getElementById('NH-header');
+  const mobileHeader = document.getElementById('mobile-nav-header');
+  if (entries[0].boundingClientRect.y < 0) {
+  	if (desktopHeader) {
+      desktopHeader.classList.add("NH-Header-Scrolled");
+    }
+  	if (mobileHeader) {
+      mobileHeader.classList.add("NH-Header-Scrolled");
+    }
+  } else {
+    if (desktopHeader) {
+       desktopHeader.classList.remove("NH-Header-Scrolled");
+    }
+    if (mobileHeader) {
+       mobileHeader.classList.remove("NH-Header-Scrolled");
+    }
+  }
+});
+observer.observe(document.querySelector("#scrollpoint"));</script></div></section><section class="nh-section-inset"></section><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=635dda7647d1612d7d877c36" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/635dda7647d1612d7d877c36/js/rewindai.5f28feae.b8d6a4379cb09439.js" type="text/javascript"></script><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MNTK7D6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<script src="https://files.rewind.ai/ua-parser.min.js"></script>
+<script>
+function generateSource(formType) {
+  if (window.location.pathname == '/') {
+    if (formType == 'modal') {
+      return "modal-homepage"
+    } else if (formType == 'inline') {
+      return "inline-homepage"
+    } else if (formType == 'inline-footer') { 
+      return "inline-homepage-footer"
+    }
+  } else {
+    const pathNameArray = window.location.pathname.split("/");
+    if (formType == 'modal') {
+      return `modal-nav`
+    } else if (pathNameArray[1] == "use-case") {
+      if (formType == 'inline') {
+        return `inline-usecase`
+      } else if (formType == 'inline-footer') { 
+        return `inline-usecase-footer`
+      }
+    }
+  }
+}
+  
+window.addEventListener('DOMContentLoaded', (event) => {
+  function addUseCaseSource(form) {
+    // if this is a use case page, add the slug as a new source for the
+    const pathNameArray = window.location.pathname.split("/");
+    const usecaseSlug = pathNameArray[pathNameArray.length - 1];
+    if ((pathNameArray[1] == "use-case") && (form)) {
+      const usecaseSourceInput = document.createElement('input');
+      usecaseSourceInput.type = 'hidden';
+      usecaseSourceInput.name = 'use-case';
+      usecaseSourceInput.value = usecaseSlug;
+      form.appendChild(usecaseSourceInput);
+    }
+  }
+  function addHiddenField(form, name, isNotCompatible) {
+    if (form) {
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'sendDownloadEmail';
+      if (isNotCompatible) {
+          hiddenInput.value = true;
+      } else {
+          hiddenInput.value = false;
+      }
+      form.appendChild(hiddenInput);
+
+      // add form source by default - but later will have to modify it for menubar-triggered modal
+      const hiddenInput2 = document.createElement('input');
+      hiddenInput2.type = 'hidden';
+      hiddenInput2.name = 'source';
+      hiddenInput2.value = name;
+      form.appendChild(hiddenInput2);
+    }
+  }
+  
+  function addCustomHiddenField(form, fieldName, fieldValue) {
+    if (form) {
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = fieldName;
+      hiddenInput.value = fieldValue;
+      form.appendChild(hiddenInput);
+    }
+  }
+  
+  function addHiddenFieldExperimentData(form, experimentData) {
+    if (form) {
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'experiments';
+      hiddenInput.value = JSON.stringify(experimentData);
+      form.appendChild(hiddenInput);
+    }
+  }
+
+  const primaryEmailFormModal = document.getElementById('primary-email-form-modal');
+  if (primaryEmailFormModal) {
+    primaryEmailFormModal.addEventListener('submit', () => {
+      fathom.trackGoal('YP52QH7U', 0); // Get Rewind - Anywhere
+      window['optimizely'] = window['optimizely'] || [];
+      window['optimizely'].push({type: "event", eventName: "get_rewind_anywhere"});
+      if (document.querySelector('#get-rewind-modal').classList.contains('from-nav-open')) {
+          fathom.trackGoal('BQ2KB7DL', 0); // Get Rewind - From Nav - Modal Form Submit
+          window['optimizely'].push({type: "event", eventName: "get_rewind_from_nav"});
+      } else {
+          fathom.trackGoal('VO1HGQMS', 0); // Get Rewind - Modal Form Submit
+          window['optimizely'].push({type: "event", eventName: "get_rewind_from_form"});
+      }
+    });
+  }
+
+  const testimonialsHeader = document.getElementById('testimonials-header');
+  if (testimonialsHeader) {
+    testimonialsHeader.addEventListener('click', () => {
+      fathom.trackGoal('FWWGAJ0M', 0);
+      window['optimizely'] = window['optimizely'] || [];
+      window['optimizely'].push({type: "event", eventName: "testimonials_header_click"});
+    });
+  }
+
+  const testimonialsFooter = document.getElementById('testimonials-footer');
+  if (testimonialsFooter) {
+    testimonialsFooter.addEventListener('click', () => {
+      fathom.trackGoal('FWWGAJ0M', 0);
+      window['optimizely'] = window['optimizely'] || [];
+      window['optimizely'].push({type: "event", eventName: "testimonials_footer_click"});
+    });
+  }
+
+  const options = {root: null,rootMargin: '0px',threshold: 0.5}
+  const modalFormInput = document.querySelector('#primary-email-form-modal-input');
+  const homeFormInput = document.querySelector('#primary-email-form-home-input'); 
+  const modalForm = document.getElementById('primary-email-form-modal');
+  const homeForm = document.getElementById('primary-email-form-home');
+  const homeFooterForm = document.getElementById('primary-email-form-home-footer');
+
+  if (modalFormInput) {
+    const observerModal = new IntersectionObserver(handleIntersectionModal, options);
+    observerModal.observe(modalFormInput);
+  }
+  if (homeFormInput) {
+    const observerHome = new IntersectionObserver(handleIntersectionHome, options);
+    observerHome.observe(homeFormInput);
+  }
+  function handleIntersectionModal(entries, observer) {
+    entries.forEach(entry => {
+      if ((entry.isIntersecting) && (modalFormInput)) { modalFormInput.focus(); }
+    });
+  }
+  function handleIntersectionHome(entries, observer) {
+    entries.forEach(entry => {
+      if ((entry.isIntersecting) && (homeFormInput)) { homeFormInput.focus(); }
+    });
+  }
+
+  let ua = UAParser();
+	let device = ua.device;
+	const isMac = ua.os.is("macOS");
+  const isNotCompatible = !isMac || device.is("mobile");
+    
+  const isWindows = ua.os.is("windows");
+	const announcementEl = document.getElementById('announcement');
+	if ((isWindows) && (announcementEl)) {
+	  announcementEl.classList.add("expanded");
+	}
+  const macDownload = document.getElementById('mac-download-starting');
+  const macInstallInstructions = document.getElementById('install-instructions');
+  const iosDownload = document.getElementById('ios-download');
+  if (isMac) {
+    if (iosDownload) {
+        iosDownload.style.display = "none";
+    }
+  } else {
+    if (macDownload) {
+        macDownload.style.display = "none";
+    }
+    if (macInstallInstructions) {
+      macInstallInstructions.style.display = "none";
+    }
+  } 
+  addHiddenField(modalForm, generateSource('modal'), isNotCompatible);
+  addHiddenField(homeForm, generateSource('inline'), isNotCompatible);
+  addHiddenField(homeFooterForm, generateSource('inline-footer'), isNotCompatible);
+  // Get array of strings of active experiment ids
+  // Check if optimizely exists
+  if (typeof optimizely !== 'undefined') {
+    const experimentData = {};
+    experimentData.experiments = [];
+      
+    // Get the active experiment IDs
+    const activeExperimentIds = optimizely.get('state').getActiveExperimentIds();
+    if (Array.isArray(activeExperimentIds)) {
+      activeExperimentIds.forEach(function(experimentID) {
+        // get active variation
+        const activeVariationId = optimizely.get('state').getVariationMap()[experimentID].id;
+        if (activeVariationId) {
+          // we have exp and variation id, add to form hidden fields 
+          // forms predefined above, only use these forms for all fields on homepage
+          experimentData.experiments.push({
+              experimentID: experimentID,
+              variationID: activeVariationId
+          });
+        }
+      });
+    }
+    // add experiment data to fields
+    if (experimentData.experiments && experimentData.experiments.length > 0) {
+      addHiddenFieldExperimentData(modalForm, experimentData);
+      addHiddenFieldExperimentData(homeForm, experimentData);
+      addHiddenFieldExperimentData(homeFooterForm, experimentData);
+    }
+  } else {
+    console.log('Optimizely object or required methods not found.');
+  }
+  
+  // the use case pages use the same form IDs
+  // these functions add hidden field for use case source
+  addUseCaseSource(homeForm);
+  addUseCaseSource(homeFooterForm);
+  addUseCaseSource(modalForm);
+      
+  if (isNotCompatible) {
+    const redirectToMobile = 'https://rewind.ai/compatibility';
+    if (modalForm) {
+      modalForm.setAttribute('data-redirect', redirectToMobile);
+    }
+    if (homeForm) {
+      homeForm.setAttribute('data-redirect', redirectToMobile);
+    }
+    if (homeFooterForm) {
+      homeFooterForm.setAttribute('data-redirect', redirectToMobile);
+    }
+    const modalDesc = document.getElementById('modal-description');
+    if (modalDesc) {
+      modalDesc.innerHTML = "A download link will be sent to your email.";
+    }
+    const homeDescs = document.querySelectorAll('#download-description-home');
+    homeDescs.forEach((descEl) => {
+      descEl.innerHTML = "A download link will be sent to your email.";
+    });
+  } 
+    
+  const menubarCTAs = document.querySelectorAll('#menubar-cta');
+  menubarCTAs.forEach((el) => {
+    el.addEventListener('click', () => {
+      fathom.trackGoal('QNV2IPAY', 0); 
+      const modalButton = document.querySelector('#get-rewind-modal');
+      if (modalButton) {
+        modalButton.classList.add('from-nav-open');
+      }
+    });
+  });
+  
+  const formIDs = ['primary-email-form-modal', 'primary-email-form-home', 'primary-email-form-home-footer'];
+
+  for (let i = 0; i < formIDs.length; i++) {
+    let form = document.getElementById(formIDs[i]);
+    if (form) {
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = "currentPage";
+      hiddenInput.value = window.location.href;
+      form.appendChild(hiddenInput);
+
+      if (typeof Cookies.get('Rewind') !== "undefined") {
+        let cookieParams = JSON.parse(Cookies.get('Rewind'));
+        for (var key in cookieParams) {
+          if (cookieParams.hasOwnProperty(key)) {
+            if (typeof cookieParams[key] !== "undefined") {
+              const hiddenInput = document.createElement('input');
+              hiddenInput.type = 'hidden';
+              hiddenInput.name = key;
+              hiddenInput.value = cookieParams[key];
+              form.appendChild(hiddenInput);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  let faqItems = document.querySelectorAll(".faq-item");
+  if (faqItems) {
+    faqItems.forEach(faqItem => {
+      faqItem.addEventListener("click", event => {
+        const question = faqItem.querySelector('.question');
+        const active = document.querySelector('.faq-item.active .question');
+        faqItems.forEach(faqItem => {
+          faqItem.classList.remove("active");
+          faqItem.querySelector('.question').nextElementSibling.style.maxHeight = 0;
+        })
+        faqItem.classList.toggle("active");
+        const answer = question.nextElementSibling;
+        if (faqItem.classList.contains("active")) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        } else {
+          answer.style.maxHeight = 0;
+        }
+      })
+    })
+  }
+});
+</script>
+
+<div id="product-hunt" style="position: fixed; right: 15px; bottom: 15px; z-index: 999">
+<a href="https://www.producthunt.com/posts/rewind-5?utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-rewind&#0045;5" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=365196&theme=light&period=weekly" alt="Rewind - The&#0032;search&#0032;engine&#0032;for&#0032;your&#0032;life | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+</div>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+// todo: add this for footer form
+  document.getElementById('primary-email-form-home-footer').addEventListener('submit', () => {
+  	fathom.trackGoal('YP52QH7U', 0); // Get Rewind - Anywhere
+    fathom.trackGoal('BSTXJBNP', 0); // Get Rewind - Footer Home Inline Form Submit
+  });
+  document.getElementById('primary-email-form-home').addEventListener('submit', () => {
+  	fathom.trackGoal('YP52QH7U', 0); // Get Rewind - Anywhere
+    fathom.trackGoal('VO1HGQMS', 0); // Get Rewind - Home Inline Form Submit
+  });
+  
+  function handleIntersectionHIW(entries, observer) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        	if (window["optimizely"]) {
+            window["optimizely"].push({
+                type: "event",
+                eventName: "scroll_past_how_it_works"
+            });
+          }
+          hiwObserver.unobserve(entry.target);
+        }
+    });
+  }
+  let hiwObserver = new IntersectionObserver(handleIntersectionHIW);
+  let pastHowItWorksElement = document.getElementById("past-how-it-works");
+  if (pastHowItWorksElement) {
+      hiwObserver.observe(pastHowItWorksElement);
+  }
+}); 
+</script></body></html>
