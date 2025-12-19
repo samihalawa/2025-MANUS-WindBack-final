@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -43,32 +44,32 @@
 }
 
 :root {
-  --primary: #6366F1;
+  --primary: #5e43f3;
   --primary-foreground: #FFFFFF;
-  --background: #F9FAFB;
-  --foreground: #111827;
+  --background: #FFFFFF;
+  --foreground: #1d1d1f;
   --card: #FFFFFF;
-  --card-foreground: #111827;
+  --card-foreground: #1d1d1f;
   --popover: #FFFFFF;
-  --popover-foreground: #111827;
+  --popover-foreground: #1d1d1f;
   --secondary: #F3F4F6;
   --secondary-foreground: #1F2937;
   --muted: #F3F4F6;
-  --muted-foreground: #6B7280;
+  --muted-foreground: #6e6e73;
   --accent: #F3F4F6;
   --accent-foreground: #111827;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   --border: #E5E7EB;
   --input: #E5E7EB;
-  --ring: #6366F1;
+  --ring: #5e43f3;
   --radius: 0.75rem;
 }
 
 .dark {
-  --primary: #6366F1;
+  --primary: #5e43f3;
   --primary-foreground: #FFFFFF;
-  --background: #030712;
+  --background: #1d1d1f;
   --foreground: #F9FAFB;
   --card: #111827;
   --card-foreground: #F9FAFB;
@@ -84,7 +85,7 @@
   --destructive-foreground: #F9FAFB;
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.1);
-  --ring: #6366F1;
+  --ring: #5e43f3;
 }
 
 @layer base {
@@ -92,12 +93,23 @@
     @apply border-border outline-ring/50;
   }
 
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: 'Quincy', serif;
+  }
+
   .timeline-marker {
     @apply w-0.5 h-4 bg-white/20 rounded-full transition-all;
   }
 
   .timeline-marker-active {
-    @apply h-8 bg-primary w-1 shadow-[0_0_10px_rgba(101,163,250,0.8)];
+    @apply h-8 bg-primary w-1 shadow-[0_0_10px_rgba(94,67,243,0.8)];
   }
 
   .glass-panel {
