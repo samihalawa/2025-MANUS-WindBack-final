@@ -12,7 +12,6 @@ import {
   Cpu,
   ArrowRight,
   CheckCircle2,
-  Users,
   History,
   Lock,
   Settings,
@@ -21,7 +20,8 @@ import {
   Calendar,
   MessageSquare,
   Activity,
-  Globe
+  Globe,
+  Sparkles
 } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -35,24 +35,24 @@ const fadeIn = {
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-[#F8F9FA] text-[#1A1A1A] font-sans selection:bg-blue-100">
+    <div className="min-h-screen bg-[#FDFDFD] text-[#1A1A1A] font-sans selection:bg-blue-100">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl border-b border-gray-100/50">
         <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
               <History className="text-white w-5 h-5" />
             </div>
             <span className="text-xl font-bold tracking-tight">Rewind <span className="text-blue-600">Limitless</span></span>
           </div>
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-600">
+          <div className="hidden md:flex items-center gap-10 text-sm font-semibold text-gray-500">
             <a href="#features" className="hover:text-blue-600 transition-colors">Features</a>
             <a href="#technical" className="hover:text-blue-600 transition-colors">Technical</a>
             <a href="#compatibility" className="hover:text-blue-600 transition-colors">Ecosystem</a>
             <a href="#pricing" className="hover:text-blue-600 transition-colors">Pricing</a>
           </div>
           <Link href="/app">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6">
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-7 font-bold shadow-md shadow-blue-100 transition-all hover:scale-105">
               Open App
             </Button>
           </Link>
@@ -60,28 +60,33 @@ export default function Landing() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 overflow-hidden">
+      <section className="pt-40 pb-24 overflow-hidden relative">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 opacity-40 pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-200/30 blur-[120px] rounded-full" />
+          <div className="absolute bottom-[10%] right-[-5%] w-[35%] h-[35%] bg-purple-200/20 blur-[100px] rounded-full" />
+        </div>
+        
         <div className="container">
-          <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="max-w-4xl mx-auto text-center mb-20">
             <motion.div {...fadeIn}>
-              <Badge variant="outline" className="mb-4 border-blue-200 text-blue-700 bg-blue-50 px-4 py-1 rounded-full">
-                The Next Generation of Personal AI
+              <Badge variant="outline" className="mb-6 border-blue-100 text-blue-600 bg-blue-50/50 px-5 py-1.5 rounded-full font-bold tracking-wide">
+                <Sparkles className="w-3.5 h-3.5 mr-2 fill-blue-600" /> THE NEXT GENERATION OF PERSONAL AI
               </Badge>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1]">
-                Go beyond your mind's <br />
+              <h1 className="text-6xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.05] text-gray-900">
+                Go beyond your <br />
                 <span className="text-blue-600">limitations.</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
-                The team that won't let you down. We've built the ultimate successor to Rewind and Limitless, 
-                preserving every moment you've seen, said, or heard with 100% hardware compatibility.
+              <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
+                The team that won't let you down. A world-class successor to Rewind and Limitless, 
+                designed for those who never want to forget a single moment.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
                 <Link href="/app">
-                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-8 h-14 text-lg shadow-lg shadow-blue-200">
+                  <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-10 h-16 text-lg font-bold shadow-xl shadow-blue-200 transition-all hover:scale-105">
                     Start Your Lifelog <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                <Button size="lg" variant="outline" className="rounded-full px-8 h-14 text-lg border-gray-200">
+                <Button size="lg" variant="outline" className="rounded-full px-10 h-16 text-lg font-bold border-gray-200 bg-white/50 backdrop-blur-sm hover:bg-gray-50 transition-all">
                   Watch the Vision
                 </Button>
               </div>
@@ -90,304 +95,254 @@ export default function Landing() {
 
           {/* Main Product Showcase */}
           <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
             className="relative max-w-6xl mx-auto"
           >
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white p-2">
+            <div className="relative rounded-[2.5rem] overflow-hidden shadow-[0_32px_64px_-12px_rgba(0,0,0,0.12)] border border-white/40 bg-white/20 backdrop-blur-sm p-3">
               <img 
-                src="/images/references/ui-hero-showcase.jpg" 
-                alt="Limitless for Mac Dashboard" 
-                className="w-full rounded-xl"
+                src="/images/hero-vision.png" 
+                alt="Visionary AI Concept" 
+                className="w-full rounded-[2rem] shadow-inner"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-white/20 to-transparent pointer-events-none" />
             </div>
+            
+            {/* Floating Elements */}
+            <motion.div 
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-12 -right-12 w-48 h-48 bg-white rounded-3xl shadow-2xl border border-gray-100 p-4 hidden lg:block"
+            >
+              <div className="w-full h-full rounded-2xl bg-blue-50 flex items-center justify-center">
+                <Activity className="w-12 h-12 text-blue-600" />
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Real Product Tour Section */}
-      <section id="features" className="py-24 bg-white">
+      {/* Features Section */}
+      <section id="features" className="py-32 bg-white relative">
         <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">Real Product. Real Insights.</h2>
-            <p className="text-gray-600 text-lg">Experience the actual UI that powers your second brain.</p>
+          <div className="text-center max-w-3xl mx-auto mb-24">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Augmented Intelligence.</h2>
+            <p className="text-gray-500 text-xl font-medium">Experience a seamless extension of your own memory.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
-            <motion.div {...fadeIn} className="space-y-6">
-              <Badge className="bg-blue-50 text-blue-600 border-blue-100">The Lifelog</Badge>
-              <h3 className="text-3xl font-bold tracking-tight">Your day, summarized.</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                A clean, vertical feed of your day. From "Mission briefings" to casual coffee chats, 
-                everything is transcribed and summarized in real-time.
+          <div className="grid md:grid-cols-2 gap-24 items-center mb-40">
+            <motion.div {...fadeIn} className="space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 font-bold text-sm border border-blue-100">
+                <Smartphone className="w-4 h-4" /> THE LIFELOG
+              </div>
+              <h3 className="text-4xl font-bold tracking-tight leading-tight">Your day, <br />perfectly captured.</h3>
+              <p className="text-xl text-gray-500 leading-relaxed font-medium">
+                A sophisticated vertical feed of your life. Every conversation, every briefing, 
+                and every insight is transcribed and organized with surgical precision.
               </p>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>Automatic meeting detection & recording</span>
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>Speaker-labeled transcripts</span>
-                </li>
-                <li className="flex items-center gap-3 text-gray-700">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>Action items extracted instantly</span>
-                </li>
-              </ul>
-            </motion.div>
-            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <img src="/images/references/ui-daily-narrative.png" alt="Daily Narrative UI" className="w-full" />
-            </motion.div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
-            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="order-2 md:order-1 rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <img src="/images/references/ui-ask-ai-chat.png" alt="Ask AI Interface" className="w-full" />
-            </motion.div>
-            <motion.div {...fadeIn} className="order-1 md:order-2 space-y-6">
-              <Badge className="bg-purple-50 text-purple-600 border-purple-100">Ask AI (GPT-5)</Badge>
-              <h3 className="text-3xl font-bold tracking-tight">Query your life.</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Ask anything you've seen, said, or heard. Our AI synthesizes your captured moments 
-                to provide structured, actionable insights with direct source citations.
-              </p>
-              <div className="p-4 rounded-xl bg-purple-50 border border-purple-100 italic text-purple-900 text-sm">
-                "What did I promise to send to the team during the sync over coffee?"
+              <div className="space-y-4 pt-4">
+                {[
+                  "Automatic meeting detection & labeling",
+                  "High-fidelity speaker transcription",
+                  "Instant action item extraction"
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-4 text-gray-700 font-semibold">
+                    <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                      <CheckCircle2 className="w-4 h-4 text-blue-600" />
+                    </div>
+                    <span>{item}</span>
+                  </div>
+                ))}
               </div>
             </motion.div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div {...fadeIn} className="space-y-6">
-              <Badge className="bg-green-50 text-green-600 border-green-100">Timeline Scrubber</Badge>
-              <h3 className="text-3xl font-bold tracking-tight">Go back in time.</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Scrub through your day with a high-fidelity timeline. Click any moment to see 
-                the exact screenshot and context of what was happening.
-              </p>
-              <div className="flex gap-4">
-                <div className="flex-1 p-4 rounded-xl bg-gray-50 border border-gray-100">
-                  <img src="/images/references/ui-timeline-scrub.png" alt="Timeline Scrubber" className="w-full rounded border border-gray-200" />
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="relative">
+              <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 bg-white p-2">
+                <img src="/images/ui-lifelog-mockup.png" alt="Lifelog UI Mockup" className="w-full rounded-[1.5rem]" />
+              </div>
+              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-white rounded-3xl shadow-xl border border-gray-50 p-6 hidden lg:flex flex-col justify-between">
+                <div className="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center">
+                  <Mic className="text-purple-600 w-6 h-6" />
                 </div>
+                <span className="text-sm font-bold text-gray-400">Recording...</span>
               </div>
             </motion.div>
-            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
-              <img src="/images/references/ui-search-results.png" alt="Search Results UI" className="w-full" />
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-24 items-center">
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="order-2 md:order-1 relative">
+              <div className="rounded-[2rem] overflow-hidden shadow-2xl border border-gray-100 bg-white p-2">
+                <img src="/images/ui-ai-chat-mockup.png" alt="AI Chat Interface" className="w-full rounded-[1.5rem]" />
+              </div>
+            </motion.div>
+            <motion.div {...fadeIn} className="order-1 md:order-2 space-y-8">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-50 text-purple-600 font-bold text-sm border border-purple-100">
+                <MessageSquare className="w-4 h-4" /> ASK AI (GPT-5)
+              </div>
+              <h3 className="text-4xl font-bold tracking-tight leading-tight">Query your <br />past, instantly.</h3>
+              <p className="text-xl text-gray-500 leading-relaxed font-medium">
+                Ask anything you've seen, said, or heard. Our AI synthesizes your entire history 
+                to provide structured answers with verifiable source citations.
+              </p>
+              <div className="p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-white border border-purple-100 shadow-sm">
+                <p className="italic text-purple-900 font-semibold text-lg leading-relaxed">
+                  "What were the three main concerns raised during the product sync yesterday?"
+                </p>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Technical Deep Dive Section */}
-      <section id="technical" className="py-24 bg-[#F8F9FA] border-y border-gray-100">
+      {/* Hardware Section */}
+      <section id="technical" className="py-32 bg-[#F9FAFB] border-y border-gray-100">
         <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">Technical Deep Dive</h2>
-            <p className="text-gray-600 text-lg">Authentic UI and hardware integration details for power users.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {/* Setup & Permissions */}
-            <motion.div {...fadeIn} className="space-y-4">
-              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm aspect-video bg-white">
-                <img src="/images/technical/macos-permissions.png" alt="macOS Permissions" className="w-full h-full object-cover" />
+          <div className="grid md:grid-cols-2 gap-24 items-center">
+            <motion.div {...fadeIn}>
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-100 text-gray-600 font-bold text-sm border border-gray-200 mb-8">
+                <Cpu className="w-4 h-4" /> THE PENDANT
               </div>
-              <h3 className="text-xl font-bold flex items-center gap-2">
-                <Settings className="w-5 h-5 text-blue-600" /> System Integration
-              </h3>
-              <p className="text-sm text-gray-600">
-                Deep macOS integration with native permission prompts for microphone and system audio, ensuring secure and reliable capture.
+              <h2 className="text-5xl font-bold mb-8 tracking-tight">Hardware that <br />feels like magic.</h2>
+              <p className="text-xl text-gray-500 mb-10 leading-relaxed font-medium">
+                A minimalist wearable designed to be forgotten. High-fidelity audio capture 
+                with real-time LED feedback, syncing seamlessly with your digital life.
               </p>
-            </motion.div>
-
-            {/* Pendant Hardware */}
-            <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="space-y-4">
-              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm aspect-video bg-white">
-                <img src="/images/references/ui-hardware-pendant.png" alt="Pendant Hardware" className="w-full h-full object-cover" />
-              </div>
-              <h3 className="text-xl font-bold flex items-center gap-2">
-                <Cpu className="w-5 h-5 text-blue-600" /> Hardware Status
-              </h3>
-              <p className="text-sm text-gray-600">
-                Real-time hardware feedback via Pendant LED indicators. Know exactly when you're recording, syncing, or fully charged.
-              </p>
-            </motion.div>
-
-            {/* Installation Flow */}
-            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="space-y-4">
-              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm aspect-video bg-white">
-                <img src="/images/technical/mac-installer.png" alt="Mac Installer" className="w-full h-full object-cover" />
-              </div>
-              <h3 className="text-xl font-bold flex items-center gap-2">
-                <Download className="w-5 h-5 text-blue-600" /> Native Installers
-              </h3>
-              <p className="text-sm text-gray-600">
-                Familiar drag-and-drop installation for Mac and streamlined installers for Windows, getting you up and running in seconds.
-              </p>
-            </motion.div>
-          </div>
-
-          <div className="mt-16 grid md:grid-cols-2 gap-12 items-center">
-            <motion.div {...fadeIn} className="space-y-6">
-              <h3 className="text-3xl font-bold tracking-tight">Advanced Meeting Control</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Copy meeting IDs instantly and access terminal-level logs for troubleshooting. Our platform is built for professionals who need absolute reliability.
-              </p>
-              <div className="flex gap-4">
-                <div className="flex-1 p-4 rounded-xl bg-white border border-gray-100">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Terminal className="w-4 h-4 text-gray-400" />
-                    <span className="text-xs font-bold text-gray-400 uppercase">Terminal Logs</span>
-                  </div>
-                  <img src="/images/technical/terminal-logs.png" alt="Terminal Logs" className="w-full rounded border border-gray-200" />
+              <div className="grid grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <h4 className="font-bold text-gray-900">24h Battery</h4>
+                  <p className="text-sm text-gray-500">All-day capture without compromise.</p>
                 </div>
-                <div className="flex-1 p-4 rounded-xl bg-white border border-gray-100">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Calendar className="w-4 h-4 text-gray-400" />
-                    <span className="text-xs font-bold text-gray-400 uppercase">Calendar Sync</span>
-                  </div>
-                  <img src="/images/technical/calendar-integration.png" alt="Calendar Integration" className="w-full rounded border border-gray-200" />
+                <div className="space-y-2">
+                  <h4 className="font-bold text-gray-900">Studio Mic</h4>
+                  <p className="text-sm text-gray-500">Crystal clear audio in any environment.</p>
                 </div>
               </div>
             </motion.div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-white">
-              <img src="/images/references/ui-meeting-summary.png" alt="Meeting Summary UI" className="w-full" />
-            </div>
+            <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="relative">
+              <div className="rounded-[3rem] overflow-hidden shadow-3xl border border-white bg-white p-4">
+                <img src="/images/pendant-hardware-mockup.png" alt="Pendant Hardware" className="w-full rounded-[2.5rem]" />
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* 100% Compatibility Banner */}
-      <section id="compatibility" className="py-20 bg-blue-600 text-white overflow-hidden relative">
-        <div className="container relative z-10">
-          <div className="max-w-3xl">
-            <Badge className="bg-white/20 text-white border-none mb-6 px-4 py-1">Zero Friction Migration</Badge>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-              100% Compatible with your <br />
-              existing Pendant & Recordings.
-            </h2>
-            <p className="text-xl text-blue-100 mb-10 leading-relaxed">
-              Don't let your hardware become a paperweight. Our platform syncs perfectly with your 
-              Limitless Pendant and imports every second of your legacy Rewind recordings.
-            </p>
-            <div className="flex flex-wrap gap-6">
-              <div className="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-xl backdrop-blur-sm">
-                <Cpu className="w-6 h-6" />
-                <span className="font-bold">Pendant Ready</span>
+      {/* Compatibility Banner */}
+      <section id="compatibility" className="py-24 bg-blue-600 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
+        </div>
+        <div className="container relative z-10 text-center max-w-4xl mx-auto">
+          <Badge className="bg-white/20 text-white border-none mb-8 px-6 py-2 text-sm font-bold">ZERO FRICTION MIGRATION</Badge>
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">
+            100% Compatible with your <br />
+            existing ecosystem.
+          </h2>
+          <p className="text-xl md:text-2xl text-blue-100 mb-12 leading-relaxed font-medium">
+            Don't let your data or hardware go to waste. We support every legacy Rewind recording 
+            and sync perfectly with your Limitless Pendant from day one.
+          </p>
+          <div className="flex flex-wrap justify-center gap-8">
+            {[
+              { icon: History, label: "Rewind Import" },
+              { icon: Cpu, label: "Pendant Sync" },
+              { icon: ShieldCheck, label: "Encrypted Data" }
+            ].map((item, i) => (
+              <div key={i} className="flex items-center gap-4 bg-white/10 px-8 py-4 rounded-2xl backdrop-blur-md border border-white/10">
+                <item.icon className="w-7 h-7" />
+                <span className="text-lg font-bold">{item.label}</span>
               </div>
-              <div className="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-xl backdrop-blur-sm">
-                <History className="w-6 h-6" />
-                <span className="font-bold">Rewind Import</span>
-              </div>
-              <div className="flex items-center gap-3 bg-white/10 px-6 py-3 rounded-xl backdrop-blur-sm">
-                <ShieldCheck className="w-6 h-6" />
-                <span className="font-bold">Encrypted Sync</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-24 bg-white">
+      <section id="pricing" className="py-32 bg-white">
         <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold mb-4 tracking-tight">Simple, Transparent Pricing</h2>
-            <p className="text-gray-600 text-lg">Choose the plan that fits your memory needs.</p>
+          <div className="text-center max-w-3xl mx-auto mb-24">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Simple, Honest Pricing.</h2>
+            <p className="text-gray-500 text-xl font-medium">Choose the plan that powers your memory.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="p-8 border-gray-100 shadow-lg">
-              <div className="mb-8">
-                <h3 className="text-xl font-bold mb-2">Free</h3>
+          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+            <Card className="p-12 border-gray-100 shadow-xl rounded-[2.5rem] transition-all hover:shadow-2xl hover:-translate-y-1">
+              <div className="mb-10">
+                <h3 className="text-2xl font-bold mb-3">Free</h3>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold">$0</span>
-                  <span className="text-gray-500">/mo</span>
+                  <span className="text-5xl font-bold">$0</span>
+                  <span className="text-gray-400 font-semibold">/mo</span>
                 </div>
-                <p className="text-gray-500 mt-4">Perfect for getting started.</p>
+                <p className="text-gray-500 mt-6 font-medium">The essential memory foundation.</p>
               </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3 text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>10 hours of AI processing / mo</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>Unlimited local recording</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>Basic meeting summaries</span>
-                </li>
+              <ul className="space-y-5 mb-12">
+                {[
+                  "10 hours of AI processing / mo",
+                  "Unlimited local recording",
+                  "Basic meeting summaries",
+                  "Standard search"
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-center gap-4 text-gray-600 font-semibold">
+                    <CheckCircle2 className="w-5 h-5 text-blue-600" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
               </ul>
               <Link href="/app">
-                <Button className="w-full rounded-full h-12 border-gray-200" variant="outline">Get Started</Button>
+                <Button className="w-full rounded-full h-16 text-lg font-bold border-gray-200 hover:bg-gray-50" variant="outline">Get Started</Button>
               </Link>
             </Card>
 
-            <Card className="p-8 border-blue-100 shadow-xl bg-blue-50 relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Most Popular</div>
-              <div className="mb-8">
-                <h3 className="text-xl font-bold mb-2">Pro</h3>
+            <Card className="p-12 border-blue-100 shadow-2xl rounded-[2.5rem] bg-blue-50/30 relative overflow-hidden transition-all hover:shadow-blue-100 hover:-translate-y-1">
+              <div className="absolute top-0 right-0 bg-blue-600 text-white text-[11px] font-black px-5 py-2 rounded-bl-2xl uppercase tracking-widest">Most Popular</div>
+              <div className="mb-10">
+                <h3 className="text-2xl font-bold mb-3">Pro</h3>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold">$19</span>
-                  <span className="text-gray-500">/mo</span>
+                  <span className="text-5xl font-bold">$19</span>
+                  <span className="text-gray-400 font-semibold">/mo</span>
                 </div>
-                <p className="text-gray-500 mt-4">For power users who need it all.</p>
+                <p className="text-gray-500 mt-6 font-medium">For those who need total recall.</p>
               </div>
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-center gap-3 text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>Unlimited AI processing</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>Advanced GPT-5 Ask AI</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>Pendant hardware sync</span>
-                </li>
-                <li className="flex items-center gap-3 text-sm">
-                  <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                  <span>Priority support</span>
-                </li>
+              <ul className="space-y-5 mb-12">
+                {[
+                  "Unlimited AI processing",
+                  "Advanced GPT-5 Ask AI",
+                  "Pendant hardware sync",
+                  "Priority support & early access",
+                  "Cross-device cloud sync"
+                ].map((feature, i) => (
+                  <li key={i} className="flex items-center gap-4 text-gray-700 font-semibold">
+                    <CheckCircle2 className="w-5 h-5 text-blue-600" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
               </ul>
               <Link href="/app">
-                <Button className="w-full rounded-full h-12 bg-blue-600 hover:bg-blue-700 text-white">Go Pro</Button>
+                <Button className="w-full rounded-full h-16 text-lg font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-200">Go Pro</Button>
               </Link>
             </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 bg-[#F8F9FA]">
-        <div className="container text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">Ready to augment <br />your memory?</h2>
-            <p className="text-xl text-gray-600 mb-12">
-              Join the thousands of power users who have found their forever home for personal AI.
-            </p>
-            <Link href="/app">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-12 h-16 text-xl shadow-xl shadow-blue-200">
-                Get Started for Free
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-gray-100 bg-white">
-        <div className="container flex flex-col md:row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <History className="text-blue-600 w-6 h-6" />
-            <span className="text-lg font-bold tracking-tight">Rewind Limitless</span>
+      <footer className="py-20 border-t border-gray-100 bg-[#FDFDFD]">
+        <div className="container">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-10">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
+                <History className="text-white w-6 h-6" />
+              </div>
+              <span className="text-2xl font-bold tracking-tight">Rewind <span className="text-blue-600">Limitless</span></span>
+            </div>
+            <div className="flex gap-10 text-sm font-bold text-gray-400">
+              <a href="#" className="hover:text-blue-600 transition-colors">Privacy</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">Terms</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">Security</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">Contact</a>
+            </div>
+            <p className="text-gray-400 text-sm font-medium">© 2025 The New Team. All rights reserved.</p>
           </div>
-          <p className="text-gray-500 text-sm">© 2025 The New Team. All rights reserved.</p>
         </div>
       </footer>
     </div>
