@@ -104,6 +104,77 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Compatibility Section */}
+      <section className="py-24 bg-gray-50 overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-center gap-16">
+            <div className="lg:w-1/2">
+              <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Ecosystem</span>
+              <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">100% Compatible with <br />Rewind & Limitless.</h2>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Seamlessly import your entire history. Our platform is fully compatible with original Rewind recordings, Limitless transcripts, and the Pendant wearable. 
+                Don't lose a single moment of your digital life.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                  <p className="text-sm font-bold mb-1">Rewind</p>
+                  <p className="text-xs text-gray-500">Full recording import</p>
+                </div>
+                <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                  <p className="text-sm font-bold mb-1">Limitless</p>
+                  <p className="text-xs text-gray-500">Transcript & AI sync</p>
+                </div>
+                <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                  <p className="text-sm font-bold mb-1">Pendant</p>
+                  <p className="text-xs text-gray-500">Hardware integration</p>
+                </div>
+                <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
+                  <p className="text-sm font-bold mb-1">Legacy Data</p>
+                  <p className="text-xs text-gray-500">Zero-loss migration</p>
+                </div>
+              </div>
+            </div>
+            <div className="lg:w-1/2">
+              <div className="relative flex items-center justify-center">
+                <div className="grid grid-cols-2 gap-4">
+                  <motion.img 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    src="/images/compat-1.png" 
+                    className="w-full rounded-3xl shadow-2xl border border-gray-200"
+                    alt="Compatibility 1"
+                  />
+                  <motion.img 
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                    src="/images/compat-2.png" 
+                    className="w-full rounded-3xl shadow-2xl border border-gray-200 mt-8"
+                    alt="Compatibility 2"
+                  />
+                  <motion.img 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    src="/images/compat-3.png" 
+                    className="w-full rounded-3xl shadow-2xl border border-gray-200 -mt-8"
+                    alt="Compatibility 3"
+                  />
+                  <motion.img 
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    src="/images/compat-4.png" 
+                    className="w-full rounded-3xl shadow-2xl border border-gray-200"
+                    alt="Compatibility 4"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Grid */}
       <section id="features" className="py-24 bg-white">
         <div className="container mx-auto px-6">
