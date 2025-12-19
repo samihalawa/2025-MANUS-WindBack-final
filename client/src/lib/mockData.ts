@@ -6,6 +6,7 @@ export interface Moment {
   url?: string;
   screenshotUrl: string;
   ocrText: string;
+  transcript?: string;
   type: 'web' | 'app' | 'meeting';
 }
 
@@ -36,6 +37,7 @@ export const mockMoments: Moment[] = [
     title: 'Weekly Sync Meeting',
     screenshotUrl: 'https://images.unsplash.com/photo-1588196749597-9ff075ee6b5b?auto=format&fit=crop&w=800&q=80',
     ocrText: 'Discussing the Q4 roadmap and resource allocation.',
+    transcript: 'Sami: We need to focus on the timeline scrubber. Brett: Agreed, and let\'s make sure the audio search is seamless.',
     type: 'meeting'
   },
   {
