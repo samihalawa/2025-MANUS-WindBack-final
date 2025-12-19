@@ -1,12 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { Search, Mic, Monitor, Shield, Zap, ArrowRight, CheckCircle2, Globe, Lock } from "lucide-react";
+import { Search, Mic, Monitor, Shield, Zap, ArrowRight, CheckCircle2, Globe, Lock, Sparkles } from "lucide-react";
 
 export default function Landing() {
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
     transition: { duration: 0.6 }
   };
 
@@ -104,72 +105,108 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Compatibility Section */}
-      <section className="py-24 bg-gray-50 overflow-hidden">
+      {/* New Team Section */}
+      <section className="py-24 bg-white overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-16">
-            <div className="lg:w-1/2">
-              <span className="text-primary font-bold uppercase tracking-widest text-sm mb-4 block">Ecosystem</span>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">100% Compatible with <br />Rewind & Limitless.</h2>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Seamlessly import your entire history. Our platform is fully compatible with original Rewind recordings, Limitless transcripts, and the Pendant wearable. 
-                Don't lose a single moment of your digital life.
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div {...fadeIn}>
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-600 text-xs font-bold tracking-wider uppercase mb-6">
+                The New Team
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                The team that <br />
+                <span className="text-blue-600">won't let you down.</span>
+              </h2>
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                After the acquisition of Rewind, we saw a community left behind. We are the new team dedicated to the original vision of personal superintelligence. We're not just building a successor; we're building a forever home for your memories.
               </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                  <p className="text-sm font-bold mb-1">Rewind</p>
-                  <p className="text-xs text-gray-500">Full recording import</p>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                    <Shield className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900">Independent & Sustainable</h4>
+                    <p className="text-sm text-slate-500">No big-tech acquisitions. We are funded by users, for users.</p>
+                  </div>
                 </div>
-                <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                  <p className="text-sm font-bold mb-1">Limitless</p>
-                  <p className="text-xs text-gray-500">Transcript & AI sync</p>
-                </div>
-                <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                  <p className="text-sm font-bold mb-1">Pendant</p>
-                  <p className="text-xs text-gray-500">Hardware integration</p>
-                </div>
-                <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-sm">
-                  <p className="text-sm font-bold mb-1">Legacy Data</p>
-                  <p className="text-xs text-gray-500">Zero-loss migration</p>
+                <div className="flex items-start space-x-4">
+                  <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                    <Sparkles className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900">Continuous Innovation</h4>
+                    <p className="text-sm text-slate-500">Weekly updates and a public roadmap driven by community feedback.</p>
+                  </div>
                 </div>
               </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <img src="/images/new-team-vision.png" alt="The New Team Vision" className="rounded-3xl shadow-2xl border border-slate-100" />
+              <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 max-w-xs">
+                <p className="text-sm italic text-slate-600">"We're here to stay. Your data, your privacy, and your trust are our only priorities."</p>
+                <p className="text-xs font-bold text-slate-900 mt-2">— The Founding Team</p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Compatibility Banner Section */}
+      <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <img src="/images/migration-banner.png" alt="Migration Background" className="w-full h-full object-cover" />
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">100% Compatible. <br />Zero Compromise.</h2>
+            <p className="text-xl text-slate-400">Whether you're coming from Rewind or Limitless, your data is safe with us. We support all existing hardware and recording formats.</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center mb-6">
+                <Monitor className="w-6 h-6 text-blue-400" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Rewind Recordings</h3>
+              <p className="text-slate-400 text-sm">Import your entire .rewind archive with a single click. All OCR data and timestamps preserved.</p>
             </div>
-            <div className="lg:w-1/2">
-              <div className="relative flex items-center justify-center">
-                <div className="grid grid-cols-2 gap-4">
-                  <motion.img 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    src="/images/compat-1.png" 
-                    className="w-full rounded-3xl shadow-2xl border border-gray-200"
-                    alt="Compatibility 1"
-                  />
-                  <motion.img 
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    src="/images/compat-2.png" 
-                    className="w-full rounded-3xl shadow-2xl border border-gray-200 mt-8"
-                    alt="Compatibility 2"
-                  />
-                  <motion.img 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    src="/images/compat-3.png" 
-                    className="w-full rounded-3xl shadow-2xl border border-gray-200 -mt-8"
-                    alt="Compatibility 3"
-                  />
-                  <motion.img 
-                    initial={{ opacity: 0, y: 40 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    src="/images/compat-4.png" 
-                    className="w-full rounded-3xl shadow-2xl border border-gray-200"
-                    alt="Compatibility 4"
-                  />
+            <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center mb-6">
+                <Mic className="w-6 h-6 text-purple-400" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Limitless Transcripts</h3>
+              <p className="text-slate-400 text-sm">Full sync with your Limitless cloud or local backups. Your meeting history is ready to search.</p>
+            </div>
+            <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl hover:bg-white/10 transition-colors">
+              <div className="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center mb-6">
+                <Shield className="w-6 h-6 text-green-400" />
+              </div>
+              <h3 className="text-xl font-bold mb-3">Pendant Hardware</h3>
+              <p className="text-slate-400 text-sm">Direct Bluetooth integration with your existing Pendant. No new hardware required.</p>
+            </div>
+          </div>
+
+          <div className="mt-20 p-1 rounded-[2.5rem] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+            <div className="bg-slate-950 rounded-[2.4rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="flex items-center gap-6">
+                <img src="/images/pendant-compatibility.png" alt="Pendant Compatibility" className="w-24 h-24 rounded-2xl object-cover border border-white/10" />
+                <div>
+                  <h4 className="text-2xl font-bold">Ready to migrate?</h4>
+                  <p className="text-slate-400">Join 50,000+ users who have already made the switch.</p>
                 </div>
               </div>
+              <Link href="/app">
+                <Button size="lg" className="bg-white text-slate-950 hover:bg-slate-200 px-8 py-6 text-lg font-bold rounded-2xl">
+                  Start Zero-Loss Migration
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -239,11 +276,10 @@ export default function Landing() {
                 ))}
               </div>
             </div>
-            <div className="lg:w-1/2 relative">
-              <div className="aspect-square bg-primary/20 rounded-full blur-[120px] absolute inset-0" />
-              <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 p-8 rounded-3xl shadow-2xl">
-                <pre className="text-xs text-primary font-mono">
-                  {`{
+            <div className="lg:w-1/2">
+              <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl">
+                <pre className="text-xs md:text-sm text-primary font-mono leading-relaxed">
+{`{
   "privacy_policy": "v2.0",
   "encryption": "AES-256-GCM",
   "data_ownership": "USER",
@@ -257,70 +293,61 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Persona Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="container mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold mb-6">Built for every way you work.</h2>
-            <p className="text-lg text-gray-600">Whether you're a Mac power user or a hardware pioneer, we've got you covered.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "The Mac Power User", desc: "Instant retrieval of every tab, Slack, and code snippet with Cmd+Shift+Space.", icon: "💻" },
-              { title: "The Pendant Pioneer", desc: "Seamless sync with your Limitless hardware for in-person conversation capture.", icon: "🎙️" },
-              { title: "The Executive Assistant", desc: "Automated meeting action items and summaries delivered to your inbox.", icon: "📅" },
-              { title: "The Privacy Purist", desc: "Local-first processing with zero cloud training. Your data stays yours.", icon: "🔒" },
-              { title: "The Sales Pro", desc: "Search client objections across months of calls to refine your winning pitch.", icon: "📈" },
-              { title: "The Legacy Migrator", desc: "100% compatible with your existing Rewind and Limitless archives.", icon: "📦" }
-            ].map((persona, i) => (
-              <div key={i} className="p-8 bg-white rounded-3xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-4xl mb-4">{persona.icon}</div>
-                <h3 className="text-lg font-bold mb-2">{persona.title}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed">{persona.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Pricing Section */}
       <section id="pricing" className="py-24 bg-white">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-16">Simple, transparent pricing.</h2>
-          <div className="max-w-lg mx-auto bg-gray-50 rounded-3xl p-12 border border-gray-100 shadow-xl">
-            <h3 className="text-2xl font-bold mb-2">Unlimited Plan</h3>
-            <div className="flex items-baseline justify-center mb-6">
-              <span className="text-5xl font-extrabold">$0</span>
-              <span className="text-gray-500 ml-2">/ month</span>
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="text-4xl font-bold mb-6">Simple, transparent pricing.</h2>
+          </div>
+          <div className="max-w-lg mx-auto">
+            <div className="p-12 rounded-[3rem] bg-gray-50 border border-gray-100 text-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-primary text-white px-6 py-2 rounded-bl-3xl text-xs font-bold uppercase tracking-widest">
+                Limited Time
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Unlimited Plan</h3>
+              <div className="flex items-center justify-center mb-8">
+                <span className="text-5xl font-extrabold">$0</span>
+                <span className="text-gray-400 ml-2">/ month</span>
+              </div>
+              <p className="text-gray-600 mb-10">Everything you need to be limitless, now free for everyone.</p>
+              <ul className="text-left space-y-4 mb-10">
+                {[
+                  "Unlimited Screen Recording",
+                  "Unlimited Audio Transcripts",
+                  "Ask Rewind AI Assistant",
+                  "Meeting Summaries",
+                  "Cross-device Sync"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-center space-x-3">
+                    <CheckCircle2 className="w-5 h-5 text-green-500" />
+                    <span className="text-gray-700">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/app">
+                <Button size="lg" className="w-full h-14 rounded-full text-lg font-bold">Get Started Now</Button>
+              </Link>
             </div>
-            <p className="text-gray-600 mb-8">Everything you need to be limitless, now free for everyone.</p>
-            <ul className="text-left space-y-4 mb-10">
-              {['Unlimited Screen Recording', 'Unlimited Audio Transcripts', 'Ask Rewind AI Assistant', 'Meeting Summaries', 'Cross-device Sync'].map((item, i) => (
-                <li key={i} className="flex items-center space-x-3">
-                  <CheckCircle2 className="w-5 h-5 text-primary" />
-                  <span className="font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <Link href="/app">
-              <Button className="w-full h-14 rounded-full text-lg font-bold">Get Started Now</Button>
-            </Link>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 border-t border-gray-100 bg-white">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
-          <div className="flex items-center space-x-2 mb-4 md:mb-0">
-            <Zap className="w-5 h-5 text-primary" />
-            <span className="font-bold">Limitless</span>
-          </div>
-          <p className="text-sm text-gray-500">© 2025 Limitless AI. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0 text-sm font-medium text-gray-400">
-            <a href="#" className="hover:text-primary">Twitter</a>
-            <a href="#" className="hover:text-primary">LinkedIn</a>
-            <a href="#" className="hover:text-primary">Privacy</a>
+      <footer className="py-20 bg-gray-50 border-t border-gray-100">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex items-center space-x-2">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <Zap className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold tracking-tight">Limitless</span>
+            </div>
+            <div className="flex space-x-8 text-sm font-medium text-gray-500">
+              <a href="#" className="hover:text-primary transition-colors">Twitter</a>
+              <a href="#" className="hover:text-primary transition-colors">LinkedIn</a>
+              <a href="#" className="hover:text-primary transition-colors">Privacy</a>
+            </div>
+            <p className="text-sm text-gray-400">© 2025 Limitless AI. All rights reserved.</p>
           </div>
         </div>
       </footer>
