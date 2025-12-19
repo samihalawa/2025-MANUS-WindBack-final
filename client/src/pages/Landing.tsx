@@ -114,8 +114,8 @@ export default function Landing() {
           <div className="grid md:grid-cols-3 gap-8">
             {/* Setup & Permissions */}
             <motion.div {...fadeIn} className="space-y-4">
-              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm">
-                <img src="/images/technical/macos-permissions.png" alt="macOS Permissions" className="w-full" />
+              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm aspect-video bg-gray-50">
+                <img src="/images/technical/macos-permissions.png" alt="macOS Permissions" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold flex items-center gap-2">
                 <Settings className="w-5 h-5 text-blue-600" /> System Integration
@@ -127,8 +127,8 @@ export default function Landing() {
 
             {/* Pendant Hardware */}
             <motion.div {...fadeIn} transition={{ delay: 0.1 }} className="space-y-4">
-              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm">
-                <img src="/images/technical/led-chart.png" alt="Pendant LED Chart" className="w-full" />
+              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm aspect-video bg-gray-50">
+                <img src="/images/technical/led-chart.png" alt="Pendant LED Chart" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold flex items-center gap-2">
                 <Cpu className="w-5 h-5 text-blue-600" /> Hardware Status
@@ -140,8 +140,8 @@ export default function Landing() {
 
             {/* Installation Flow */}
             <motion.div {...fadeIn} transition={{ delay: 0.2 }} className="space-y-4">
-              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm">
-                <img src="/images/technical/mac-installer.png" alt="Mac Installer" className="w-full" />
+              <div className="rounded-xl overflow-hidden border border-gray-100 shadow-sm aspect-video bg-gray-50">
+                <img src="/images/technical/mac-installer.png" alt="Mac Installer" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-xl font-bold flex items-center gap-2">
                 <Download className="w-5 h-5 text-blue-600" /> Native Installers
@@ -175,7 +175,7 @@ export default function Landing() {
                 </div>
               </div>
             </motion.div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border border-gray-200 bg-gray-50">
               <img src="/images/technical/meeting-summary.png" alt="Meeting Summary UI" className="w-full" />
             </div>
           </div>
