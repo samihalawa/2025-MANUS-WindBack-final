@@ -212,45 +212,67 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Real Product Tour Section */}
       <section id="features" className="py-24 bg-white">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl font-bold mb-6">Everything you need to be limitless.</h2>
-            <p className="text-lg text-gray-600">We've built the world's most powerful personal AI, designed to work seamlessly across all your devices.</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">The Real Product. <br />No Placeholders.</h2>
+            <p className="text-lg text-gray-600">Experience the actual interface used by thousands of high-performers to capture and recall every moment.</p>
           </div>
           
-          <motion.div 
-            variants={stagger}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-12"
-          >
-            {[
-              {
-                icon: <Search className="w-8 h-8 text-primary" />,
-                title: "Search Everything",
-                desc: "Find anything you've seen on your screen, heard in a meeting, or said in a conversation."
-              },
-              {
-                icon: <Mic className="w-8 h-8 text-primary" />,
-                title: "Meeting Superpowers",
-                desc: "Automatic transcripts, summaries, and action items for every meeting you attend."
-              },
-              {
-                icon: <Shield className="w-8 h-8 text-primary" />,
-                title: "Privacy First",
-                desc: "Your data is encrypted and stored locally. We never sell your data or use it to train models."
-              }
-            ].map((feature, i) => (
-              <motion.div key={i} variants={fadeIn} className="p-8 rounded-3xl bg-gray-50 hover:bg-gray-100 transition-colors group">
-                <div className="mb-6 group-hover:scale-110 transition-transform duration-300">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+          <div className="space-y-32">
+            {/* Feature 1: Lifelog */}
+            <div className="flex flex-col lg:flex-row items-center gap-16">
+              <div className="lg:w-1/2">
+                <h3 className="text-3xl font-bold mb-6">The Lifelog: Your Digital Memory</h3>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  A continuous, searchable feed of your life. From "Mission briefings over coffee" to deep technical discussions, every word is transcribed, summarized, and time-stamped with pixel-perfect accuracy.
+                </p>
+                <ul className="space-y-4">
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                    <span className="font-medium">Speaker-labeled transcripts</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                    <span className="font-medium">Instant meeting summaries</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="lg:w-1/2">
+                <img src="/images/ui-lifelog.png" alt="Lifelog UI" className="rounded-[2.5rem] shadow-2xl border-8 border-slate-900 max-w-sm mx-auto" />
+              </div>
+            </div>
+
+            {/* Feature 2: Ask AI */}
+            <div className="flex flex-col lg:flex-row-reverse items-center gap-16">
+              <div className="lg:w-1/2">
+                <h3 className="text-3xl font-bold mb-6">Ask AI: Insights from Your Life</h3>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  Go beyond simple search. Ask your personalized AI for insights about your work and your life. "How can I be more present for my kids?" or "What were the key objections in the Alpha project?" — get answers based on reality.
+                </p>
+                <div className="p-6 bg-primary/5 rounded-2xl border border-primary/10">
+                  <p className="text-sm italic text-primary">"To be more present for your children, take a moment to reflect on your recent interactions with them..."</p>
+                </div>
+              </div>
+              <div className="lg:w-1/2">
+                <img src="/images/ui-ask-ai.png" alt="Ask AI UI" className="rounded-[2.5rem] shadow-2xl border-8 border-slate-900 max-w-sm mx-auto" />
+              </div>
+            </div>
+
+            {/* Feature 3: Daily Insights */}
+            <div className="flex flex-col lg:flex-row items-center gap-16">
+              <div className="lg:w-1/2">
+                <h3 className="text-3xl font-bold mb-6">Daily Narrative & Highlights</h3>
+                <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                  Receive a fascinating blend of personal logistics and deep dives into your daily activities. Our AI captures the "moments that matter" and presents them in a beautiful, readable narrative every morning.
+                </p>
+              </div>
+              <div className="lg:w-1/2">
+                <img src="/images/ui-insights.png" alt="Daily Insights UI" className="rounded-[2.5rem] shadow-2xl border-8 border-slate-900 max-w-sm mx-auto" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -277,16 +299,12 @@ export default function Landing() {
               </div>
             </div>
             <div className="lg:w-1/2">
-              <div className="p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl">
-                <pre className="text-xs md:text-sm text-primary font-mono leading-relaxed">
-{`{
-  "privacy_policy": "v2.0",
-  "encryption": "AES-256-GCM",
-  "data_ownership": "USER",
-  "cloud_storage": "OPTIONAL",
-  "ai_training": "DISABLED"
-}`}
-                </pre>
+              <div className="relative">
+                <img src="/images/ui-security.png" alt="Security UI" className="rounded-[2.5rem] shadow-2xl border-8 border-slate-800 max-w-sm mx-auto" />
+                <div className="absolute -bottom-6 -left-6 p-6 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 hidden md:block">
+                  <p className="text-xs font-bold text-primary uppercase tracking-widest mb-2">Compliance</p>
+                  <p className="text-sm font-bold">HIPAA Compliant</p>
+                </div>
               </div>
             </div>
           </div>
