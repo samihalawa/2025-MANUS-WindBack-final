@@ -43,70 +43,82 @@
 }
 
 :root {
-  /* Obsidian Minimalist Palette */
-  --background: oklch(0.12 0.01 285);
-  --foreground: oklch(0.98 0.01 285);
-  
-  --card: oklch(0.18 0.01 285);
-  --card-foreground: oklch(0.98 0.01 285);
-  
-  --popover: oklch(0.18 0.01 285);
-  --popover-foreground: oklch(0.98 0.01 285);
-  
-  --primary: oklch(0.65 0.15 250); /* Electric Blue */
-  --primary-foreground: oklch(0.98 0.01 285);
-  
-  --secondary: oklch(0.25 0.01 285);
-  --secondary-foreground: oklch(0.85 0.01 285);
-  
-  --muted: oklch(0.22 0.01 285);
-  --muted-foreground: oklch(0.70 0.01 285);
-  
-  --accent: oklch(0.25 0.01 285);
-  --accent-foreground: oklch(0.98 0.01 285);
-  
-  --destructive: oklch(0.55 0.20 25);
-  --destructive-foreground: oklch(0.98 0.01 285);
-  
-  --border: oklch(0.25 0.01 285);
-  --input: oklch(0.25 0.01 285);
-  --ring: oklch(0.65 0.15 250);
-  
+  --primary: #6366F1;
+  --primary-foreground: #FFFFFF;
+  --background: #F9FAFB;
+  --foreground: #111827;
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  --popover: #FFFFFF;
+  --popover-foreground: #111827;
+  --secondary: #F3F4F6;
+  --secondary-foreground: #1F2937;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent: #F3F4F6;
+  --accent-foreground: #111827;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #6366F1;
   --radius: 0.75rem;
+}
+
+.dark {
+  --primary: #6366F1;
+  --primary-foreground: #FFFFFF;
+  --background: #030712;
+  --foreground: #F9FAFB;
+  --card: #111827;
+  --card-foreground: #F9FAFB;
+  --popover: #111827;
+  --popover-foreground: #F9FAFB;
+  --secondary: #1F2937;
+  --secondary-foreground: #F9FAFB;
+  --muted: #1F2937;
+  --muted-foreground: #9CA3AF;
+  --accent: #1F2937;
+  --accent-foreground: #F9FAFB;
+  --destructive: #7F1D1D;
+  --destructive-foreground: #F9FAFB;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: #6366F1;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    background-image: radial-gradient(circle at 50% 50%, oklch(0.15 0.01 285) 0%, oklch(0.12 0.01 285) 100%);
-  }
-  
-  /* Custom Scrollbar for that desktop app feel */
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-muted rounded-full hover:bg-muted-foreground/50 transition-colors;
-  }
-}
 
-@layer components {
-  .glass-panel {
-    @apply bg-card/80 backdrop-blur-xl border border-white/10 shadow-2xl;
-  }
-  
   .timeline-marker {
-    @apply w-0.5 h-4 bg-muted-foreground/30 rounded-full;
+    @apply w-0.5 h-4 bg-white/20 rounded-full transition-all;
   }
-  
+
   .timeline-marker-active {
-    @apply bg-primary h-6;
+    @apply h-8 bg-primary w-1 shadow-[0_0_10px_rgba(101,163,250,0.8)];
+  }
+
+  .glass-panel {
+    @apply bg-card/40 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
   }
 }
