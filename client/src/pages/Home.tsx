@@ -298,11 +298,11 @@ export default function Home() {
             </motion.div>
           )}
         </AnimatePresence>
-        </main>
+      </main>
 
-        {/* Bottom Timeline Scrubber */}
-        <footer className="h-32 bg-black/40 backdrop-blur-xl border-t border-white/5 px-8 flex flex-col justify-center">
-          <div className="flex items-center justify-between mb-4">
+      {/* Bottom Timeline Scrubber */}
+      <footer className="h-32 bg-black/40 backdrop-blur-xl border-t border-white/5 px-8 flex flex-col justify-center">
+        <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="icon" className="w-8 h-8">
               <Play className="w-4 h-4" />
@@ -350,7 +350,7 @@ export default function Home() {
           {/* Scrubber Handle */}
           <div className="absolute top-0 bottom-0 w-0.5 bg-primary shadow-[0_0_15px_rgba(59,130,246,0.5)] z-10 transition-all duration-300" style={{ left: '10%' }} />
         </div>
-        </footer>
+      </footer>
       </div>
     </>
   );

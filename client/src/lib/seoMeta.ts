@@ -115,6 +115,14 @@ export const seoPages: Record<string, PageMeta> = {
     ogTitle: "Page Not Found",
     ogDescription: "This page doesn't exist. Return to WindBack.",
     canonicalUrl: "https://windback.ai/404"
+  },
+  checkoutSuccess: {
+    title: "Payment Successful - WindBack Premium",
+    description: "Your WindBack Pro subscription is now active. Access unlimited features and premium support.",
+    keywords: ["payment success", "subscription", "premium", "windback pro"],
+    ogTitle: "Welcome to WindBack Pro",
+    ogDescription: "Your premium subscription is active. Start using WindBack with unlimited features.",
+    canonicalUrl: "https://windback.ai/checkout/success"
   }
 };
 
@@ -254,3 +262,5 @@ export function generateProductSchema() {
     }
   };
 }
+
+// Note: checkoutSuccess metadata added via shell

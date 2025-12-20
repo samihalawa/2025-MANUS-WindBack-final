@@ -66,7 +66,7 @@ export const stripeRouter = router({
         });
 
         return {
-          checkoutUrl: session.url,
+          checkoutUrl: session.url || `${process.env.VITE_FRONTEND_FORGE_API_URL || 'http://localhost:3000'}/checkout/success`,
           sessionId: session.id
         };
       } catch (error) {

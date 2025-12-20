@@ -28,6 +28,8 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { usePageMeta } from "@/hooks/usePageMeta";
 import { seoPages } from "@/lib/seoMeta";
+import { NewsletterSignup } from "@/components/NewsletterSignup";
+import { Testimonials } from "@/components/Testimonials";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -273,6 +275,16 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <Testimonials />
+
+      {/* Newsletter Section */}
+      <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
+        <div className="max-w-2xl mx-auto">
+          <NewsletterSignup />
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="py-20 border-t border-gray-100 bg-[#FDFDFD]">
         <div className="container">
@@ -281,7 +293,7 @@ export default function Landing() {
               <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
                 <History className="text-white w-6 h-6" />
               </div>
-              <span className="text-2xl font-bold tracking-tight">Rewind <span className="text-blue-600">Limitless</span></span>
+              <span className="text-2xl font-bold tracking-tight">WindBack</span>
             </div>
             <div className="flex gap-10 text-sm font-bold text-gray-400">
               <a href="#" className="hover:text-blue-600 transition-colors">Privacy</a>
@@ -289,7 +301,7 @@ export default function Landing() {
               <a href="#" className="hover:text-blue-600 transition-colors">Security</a>
               <a href="#" className="hover:text-blue-600 transition-colors">Contact</a>
             </div>
-            <p className="text-gray-400 text-sm font-medium">© 2025 The New Team. All rights reserved.</p>
+            <p className="text-gray-400 text-sm font-medium">© 2025 WindBack. All rights reserved.</p>
           </div>
         </div>
       </footer>

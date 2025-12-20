@@ -40,9 +40,9 @@ export default function NotFound() {
           <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8 text-left">
             <h3 className="font-semibold text-blue-900 mb-3">Helpful Links:</h3>
             <ul className="space-y-2 text-sm text-blue-800">
-              <li>Home - Explore Rewind Limitless</li>
-              <li>Features - Learn what Rewind can do</li>
-              <li>App - Try the Rewind demo</li>
+              <li><Link href="/" className="hover:underline">Home - Explore WindBack</Link></li>
+              <li><Link href="/modern" className="hover:underline">Features - Learn what WindBack can do</Link></li>
+              <li><Link href="/app" className="hover:underline">App - Try the WindBack demo</Link></li>
             </ul>
           </div>
 

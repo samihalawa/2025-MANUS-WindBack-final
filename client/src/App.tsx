@@ -7,14 +7,16 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import LandingOriginal from "./pages/LandingOriginal";
 import Landing from "./pages/Landing";
+import CheckoutSuccess from "./pages/CheckoutSuccess";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      <Route path={"/"} component={LandingOriginal} />
+      <Route path={"/ "} component={LandingOriginal} />
       <Route path={"/modern"} component={Landing} />
       <Route path={"/app"} component={Home} />
+      <Route path={"/checkout/success"} component={CheckoutSuccess} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
