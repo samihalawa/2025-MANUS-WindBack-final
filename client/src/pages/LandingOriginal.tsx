@@ -6,11 +6,11 @@ export default function LandingOriginal() {
   return (
     <div className="min-h-screen warm-gradient-bg selection:bg-[#8b5cf6] selection:text-white overflow-x-hidden">
       {/* Top Announcement */}
-      <div className="pt-12 flex justify-center">
+      <div className="pt-16 flex justify-center">
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white/80 backdrop-blur-md border border-[#e8e8ed] rounded-2xl px-6 py-3 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+          className="bg-white/90 backdrop-blur-xl border border-[#e8e8ed] rounded-2xl px-6 py-3 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
         >
           <div className="w-8 h-8 bg-[#8b5cf6] rounded-lg flex items-center justify-center">
             <span className="text-white text-xl">✦</span>
@@ -24,12 +24,12 @@ export default function LandingOriginal() {
       </div>
 
       {/* Hero Content */}
-      <section className="pt-20 pb-32">
-        <div className="container text-center px-4">
+      <section className="pt-24 pb-40">
+        <div className="container flex flex-col items-center text-center">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="quincy-heading text-5xl md:text-7xl lg:text-8xl mb-8 max-w-4xl mx-auto"
+            className="quincy-heading text-5xl md:text-7xl lg:text-8xl mb-10 max-w-4xl"
           >
             Your AI assistant <br />
             that has all the <br />
@@ -40,7 +40,7 @@ export default function LandingOriginal() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="greycliff-body text-lg md:text-xl text-[#6e6e73] max-w-2xl mx-auto mb-12 leading-relaxed"
+            className="greycliff-body text-lg md:text-xl text-[#6e6e73] max-w-2xl mb-14 leading-relaxed"
           >
             Rewind is a personalized AI powered by everything <br className="hidden md:block" />
             you've seen, said, or heard. Your colleagues will <br className="hidden md:block" />

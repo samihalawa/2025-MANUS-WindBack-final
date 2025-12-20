@@ -66,6 +66,13 @@
   }
 }
 
+@layer components {
+  .container {
+    @apply mx-auto px-4;
+    max-width: 1200px;
+  }
+}
+
 /* Forensic Design Tokens from Screenshot */
 .warm-gradient-bg {
   background: radial-gradient(circle at 50% 0%, #fdf2f8 0%, #fef9f6 40%, #ffffff 100%);
