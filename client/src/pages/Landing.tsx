@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { PricingCards } from "@/components/PricingCards";
 import { 
   Search, 
   Mic, 
@@ -265,63 +266,7 @@ export default function Landing() {
             <p className="text-gray-500 text-xl font-medium">Choose the plan that powers your memory.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            <Card className="p-12 border-gray-100 shadow-xl rounded-[2.5rem] transition-all hover:shadow-2xl hover:-translate-y-1">
-              <div className="mb-10">
-                <h3 className="text-2xl font-bold mb-3">Free</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-bold">$0</span>
-                  <span className="text-gray-400 font-semibold">/mo</span>
-                </div>
-                <p className="text-gray-500 mt-6 font-medium">The essential memory foundation.</p>
-              </div>
-              <ul className="space-y-5 mb-12">
-                {[
-                  "10 hours of AI processing / mo",
-                  "Unlimited local recording",
-                  "Basic meeting summaries",
-                  "Standard search"
-                ].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-4 text-gray-600 font-semibold">
-                    <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/app">
-                <Button className="w-full rounded-full h-16 text-lg font-bold border-gray-200 hover:bg-gray-50" variant="outline">Get Started</Button>
-              </Link>
-            </Card>
-
-            <Card className="p-12 border-blue-100 shadow-2xl rounded-[2.5rem] bg-blue-50/30 relative overflow-hidden transition-all hover:shadow-blue-100 hover:-translate-y-1">
-              <div className="absolute top-0 right-0 bg-blue-600 text-white text-[11px] font-black px-5 py-2 rounded-bl-2xl uppercase tracking-widest">Most Popular</div>
-              <div className="mb-10">
-                <h3 className="text-2xl font-bold mb-3">Pro</h3>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-5xl font-bold">$19</span>
-                  <span className="text-gray-400 font-semibold">/mo</span>
-                </div>
-                <p className="text-gray-500 mt-6 font-medium">For those who need total recall.</p>
-              </div>
-              <ul className="space-y-5 mb-12">
-                {[
-                  "Unlimited AI processing",
-                  "Advanced GPT-5 Ask AI",
-                  "Pendant hardware sync",
-                  "Priority support & early access",
-                  "Cross-device cloud sync"
-                ].map((feature, i) => (
-                  <li key={i} className="flex items-center gap-4 text-gray-700 font-semibold">
-                    <CheckCircle2 className="w-5 h-5 text-blue-600" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/app">
-                <Button className="w-full rounded-full h-16 text-lg font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-200">Go Pro</Button>
-              </Link>
-            </Card>
-          </div>
+          <PricingCards />
         </div>
       </section>
 

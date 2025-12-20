@@ -1,90 +1,89 @@
-import { useState, useEffect, useRef, useCallback } from "react";
-import { Search, Clock, Filter, Bookmark, ExternalLink, Play, Pause, ChevronLeft, ChevronRight, MessageSquare, Mic, Monitor, Settings, X, Send, Shield } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { mockMoments, appIcons, Moment } from "@/lib/mockData";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { toast } from "sonner";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { 
+  Search, 
+  Monitor, 
+  Mic, 
+  MessageSquare, 
+  ChevronRight, 
+  Download, 
+  ShieldCheck, 
+  Bookmark, 
+  ExternalLink,
+  Play,
+  Pause,
+  Clock,
+  Settings,
+  X,
+  Send
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { mockMoments, appIcons, type Moment } from "@/lib/mockData";
+import { Link } from "wouter";
 
 export default function Home() {
+  // The userAuth hooks provides authentication state
+  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
+  let { user, loading, error, isAuthenticated, logout } = useAuth();
+
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMoment, setSelectedMoment] = useState<Moment>(mockMoments[0]);
   const [isSearching, setIsSearching] = useState(false);
   const [searchType, setSearchType] = useState<'screens' | 'audio' | 'both'>('both');
-  const [isAskPanelOpen, setIsAskPanelOpen] = useState(false);
+  const [isAskOpen, setIsAskOpen] = useState(false);
   const [askQuery, setAskQuery] = useState("");
-  const [filteredMoments, setFilteredMoments] = useState(mockMoments);
   const timelineRef = useRef<HTMLDivElement>(null);
 
+  const toggleAsk = () => setIsAskOpen(!isAskOpen);
+
   // Handle Search Logic
+  const filteredMoments = useMemo(() => {
+    if (!searchQuery) return mockMoments;
+    return mockMoments.filter(m => 
+      m.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      m.ocrText.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      m.app.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery]);
+
   useEffect(() => {
-    if (searchQuery) {
+    if (searchQuery.length > 0) {
       setIsSearching(true);
-      const filtered = mockMoments.filter(m => {
-        const matchesText = m.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                           m.ocrText.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           m.app.toLowerCase().includes(searchQuery.toLowerCase());
-        const matchesAudio = m.transcript?.toLowerCase().includes(searchQuery.toLowerCase());
-        
-        if (searchType === 'screens') return matchesText;
-        if (searchType === 'audio') return matchesAudio;
-        return matchesText || matchesAudio;
-      });
-      setFilteredMoments(filtered);
     } else {
       setIsSearching(false);
-      setFilteredMoments(mockMoments);
     }
-  }, [searchQuery, searchType]);
+  }, [searchQuery]);
 
-  // Handle Shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.metaKey && e.shiftKey) {
-        if (e.key === ' ') { // Cmd+Shift+Space
-          e.preventDefault();
-          setIsSearching(true);
-          toast.info("Opening last search...");
-        } else if (e.key === '/') { // Cmd+Shift+/
-          e.preventDefault();
-          setIsAskPanelOpen(true);
-        }
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  // Handle Timeline Scroll (Gesture-based)
-  const handleWheel = useCallback((e: React.WheelEvent) => {
-    if (timelineRef.current) {
-      timelineRef.current.scrollLeft += e.deltaY;
-    }
-  }, []);
-
-  const formatTime = (isoString: string) => {
-    return new Date(isoString).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const formatTime = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
   return (
-    <div className="h-screen w-screen overflow-hidden bg-background text-foreground flex flex-col font-sans" onWheel={handleWheel}>
-      {/* Top Search Header */}
-      <header className="z-50 p-6 flex flex-col items-center justify-center space-y-4">
-        <div className="relative w-full max-w-2xl group flex items-center space-x-2">
-          <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
-            <Input
-              type="text"
-              placeholder="Search anything you've seen, said, or heard..."
-              className="w-full h-14 pl-12 pr-4 bg-card/50 border-white/10 rounded-2xl text-lg focus:ring-2 focus:ring-primary/50 transition-all backdrop-blur-md"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
+    <div className="h-screen flex flex-col bg-[#0a0a0b] text-white overflow-hidden font-sans">
+      {/* Top Navigation / Search Bar */}
+      <header className="z-40 px-6 py-4 flex flex-col space-y-4 bg-gradient-to-b from-black/60 to-transparent">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <Link href="/">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                <span className="text-white font-bold text-xl">✦</span>
+              </div>
+            </Link>
+            <div className="relative group">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 group-focus-within:text-primary transition-colors" />
+              <input 
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search anything you've seen, said, or heard..."
+                className="w-[400px] lg:w-[600px] bg-white/5 border border-white/10 rounded-2xl py-3 pl-12 pr-4 focus:bg-white/10 focus:border-primary/50 outline-none transition-all text-sm font-medium"
+              />
+            </div>
           </div>
-          
-          {/* Content Picker */}
-          <div className="flex bg-card/50 border border-white/10 rounded-2xl p-1 backdrop-blur-md">
+
+          <div className="flex items-center space-x-3">
             <Button
               variant={searchType === 'screens' ? 'default' : 'ghost'}
               size="icon"
@@ -201,64 +200,88 @@ export default function Home() {
                     <ExternalLink className="w-4 h-4" />
                   </Button>
                 )}
+                <Button 
+                  size="icon" 
+                  variant={isAskOpen ? "default" : "secondary"} 
+                  className={`w-8 h-8 rounded-lg backdrop-blur-md border-white/10 ${isAskOpen ? 'bg-primary' : 'bg-black/40'}`}
+                  onClick={toggleAsk}
+                >
+                  <MessageSquare className="w-4 h-4" />
+                </Button>
               </div>
 
               {/* OCR / Transcript Snippet Overlay */}
               <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-lg bg-black/60 backdrop-blur-xl p-4 rounded-xl border border-white/10 text-center opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0">
                 <p className="text-xs text-white/80 italic">
-                  {selectedMoment.transcript ? `"${selectedMoment.transcript}"` : `"${selectedMoment.ocrText}"`}
+                  "{selectedMoment.ocrText.substring(0, 120)}..."
                 </p>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
 
-        {/* Ask Rewind Panel */}
+        {/* Ask Rewind Side Panel */}
         <AnimatePresence>
-          {isAskPanelOpen && (
+          {isAskOpen && (
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="absolute top-0 right-0 bottom-0 w-96 bg-card/95 backdrop-blur-2xl border-l border-white/10 shadow-2xl z-[60] flex flex-col"
+              className="absolute right-0 top-0 bottom-0 w-96 bg-[#161618] border-l border-white/10 z-50 flex flex-col shadow-2xl"
             >
-              <div className="p-6 border-b border-white/5 flex items-center justify-between">
+              <div className="p-6 border-b border-white/10 flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <MessageSquare className="w-5 h-5 text-primary" />
-                  <h2 className="text-sm font-bold uppercase tracking-widest">Ask Rewind</h2>
+                  <div className="w-6 h-6 bg-primary rounded flex items-center justify-center">
+                    <span className="text-white text-xs">✦</span>
+                  </div>
+                  <h2 className="font-bold text-sm">Ask Rewind</h2>
                 </div>
-                <Button variant="ghost" size="icon" onClick={() => setIsAskPanelOpen(false)}>
+                <Button variant="ghost" size="icon" onClick={toggleAsk} className="w-8 h-8">
                   <X className="w-4 h-4" />
                 </Button>
               </div>
-              
-              <div className="flex-1 p-6 overflow-y-auto space-y-6 custom-scrollbar">
-                <div className="bg-muted/30 p-4 rounded-xl border border-white/5">
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    Ask me anything about what you've seen, said, or heard. For example:
-                  </p>
-                  <ul className="mt-3 space-y-2">
-                    {['"What did Sami say in the sync?"', '"Find the index.css code I wrote"', '"When did I visit apple.com?"'].map((q) => (
-                      <li key={q} className="text-[10px] text-primary hover:underline cursor-pointer" onClick={() => setAskQuery(q)}>
+
+              <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+                <div className="space-y-2">
+                  <p className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Suggested</p>
+                  <div className="space-y-2">
+                    {[
+                      "What did I discuss in the Project Alpha meeting?",
+                      "Find the link Sami sent me on Slack",
+                      "Summarize my morning activity",
+                      "When did I last visit the Rewind website?"
+                    ].map((q, i) => (
+                      <button 
+                        key={i}
+                        onClick={() => setAskQuery(q)}
+                        className="w-full text-left p-3 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 hover:border-white/10 transition-all text-xs text-white/80"
+                      >
                         {q}
-                      </li>
+                      </button>
                     ))}
-                  </ul>
+                  </div>
+                </div>
+
+                <div className="bg-primary/10 border border-primary/20 rounded-xl p-4">
+                  <p className="text-xs text-primary-foreground/80 leading-relaxed">
+                    I can help you find anything you've seen, said, or heard. Just ask me a question about your past activity.
+                  </p>
                 </div>
               </div>
 
-              <div className="p-6 border-t border-white/5">
+              <div className="p-6 border-t border-white/10">
                 <div className="relative">
-                  <Input
-                    placeholder="Ask a question..."
-                    className="bg-background/50 border-white/10 rounded-xl pr-12"
+                  <input 
+                    type="text"
                     value={askQuery}
                     onChange={(e) => setAskQuery(e.target.value)}
+                    placeholder="Ask anything..."
+                    className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-4 pr-12 outline-none focus:border-primary/50 transition-all text-sm"
                   />
-                  <Button size="icon" variant="default" className="absolute right-1 top-1 w-8 h-8 rounded-lg">
+                  <button className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-primary rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity">
                     <Send className="w-4 h-4" />
-                  </Button>
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -267,84 +290,54 @@ export default function Home() {
       </main>
 
       {/* Bottom Timeline Scrubber */}
-      <footer className="h-32 bg-card/30 backdrop-blur-2xl border-t border-white/5 flex flex-col">
-        <div className="flex-1 relative overflow-hidden">
-          <div 
-            ref={timelineRef} 
-            className="flex items-end h-full px-[50vw] space-x-8 pb-6 overflow-x-auto no-scrollbar scroll-smooth"
-          >
-            {mockMoments.map((moment) => (
-              <div
-                key={moment.id}
-                onClick={() => setSelectedMoment(moment)}
-                className="flex flex-col items-center space-y-2 cursor-pointer group shrink-0"
-              >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all ${selectedMoment.id === moment.id ? 'bg-primary shadow-[0_0_20px_rgba(101,163,250,0.4)] scale-110' : 'bg-muted/50 hover:bg-muted'}`}>
-                  <img src={appIcons[moment.app]} className="w-5 h-5" alt={moment.app} />
-                </div>
-                <div className={`timeline-marker ${selectedMoment.id === moment.id ? 'timeline-marker-active' : ''} ${moment.type === 'meeting' ? 'bg-purple-500' : ''}`} />
-                <span className={`text-[10px] font-medium transition-colors ${selectedMoment.id === moment.id ? 'text-primary' : 'text-muted-foreground'}`}>
-                  {formatTime(moment.timestamp)}
-                </span>
-              </div>
-            ))}
-            {/* Fillers for visual continuity */}
-            {[...Array(20)].map((_, i) => (
-              <div key={`filler-${i}`} className="flex flex-col items-center space-y-2 opacity-20 shrink-0">
-                <div className="w-10 h-10" />
-                <div className="timeline-marker" />
-                <div className="h-4" />
-              </div>
-            ))}
+      <footer className="h-32 bg-black/40 backdrop-blur-xl border-t border-white/5 px-8 flex flex-col justify-center">
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="icon" className="w-8 h-8">
+              <Play className="w-4 h-4" />
+            </Button>
+            <div className="flex items-center space-x-2 text-[10px] font-bold text-white/40">
+              <Clock className="w-3 h-3" />
+              <span>LIVE</span>
+            </div>
           </div>
           
-          {/* Center Indicator */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/50 -translate-x-1/2 pointer-events-none">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-primary" />
+          <div className="flex items-center space-x-6">
+            <div className="flex items-center space-x-2">
+              <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+              <span className="text-[10px] font-bold text-white/60">PENDANT SYNCED</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <ShieldCheck className="w-3 h-3 text-primary" />
+              <span className="text-[10px] font-bold text-white/60">PRIVACY VAULT ACTIVE</span>
+            </div>
+            <Button variant="ghost" size="icon" className="w-8 h-8">
+              <Settings className="w-4 h-4" />
+            </Button>
           </div>
         </div>
-        
-        {/* Playback Controls */}
-        <div className="h-10 flex items-center justify-between px-6 bg-black/20">
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className="w-6 h-6 text-muted-foreground hover:text-foreground">
-              <ChevronLeft className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="icon" className="w-8 h-8 text-foreground">
-              <Play className="w-5 h-5 fill-current" />
-            </Button>
-            <Button variant="ghost" size="icon" className="w-6 h-6 text-muted-foreground hover:text-foreground">
-              <ChevronRight className="w-4 h-4" />
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className={`w-8 h-8 ${isAskPanelOpen ? 'text-primary' : 'text-muted-foreground'}`}
-              onClick={() => setIsAskPanelOpen(!isAskPanelOpen)}
-            >
-              <MessageSquare className="w-5 h-5" />
-            </Button>
+
+        <div 
+          ref={timelineRef}
+          className="relative h-12 bg-white/5 rounded-xl border border-white/5 overflow-hidden cursor-pointer group"
+        >
+          {/* Timeline Markers */}
+          <div className="absolute inset-0 flex items-center px-4 space-x-8">
+            {mockMoments.map((m, i) => (
+              <div 
+                key={m.id}
+                onClick={() => setSelectedMoment(m)}
+                className={`relative flex flex-col items-center group/marker transition-all ${selectedMoment.id === m.id ? 'scale-110' : 'opacity-40 hover:opacity-100'}`}
+              >
+                <img src={appIcons[m.app]} className="w-4 h-4 mb-1" alt={m.app} />
+                <div className={`w-0.5 h-3 rounded-full ${m.transcript ? 'bg-primary' : 'bg-white/20'}`} />
+                <span className="absolute -bottom-5 text-[8px] font-bold whitespace-nowrap">{formatTime(m.timestamp)}</span>
+              </div>
+            ))}
           </div>
-          <div className="flex items-center space-x-4 text-[10px] font-bold text-muted-foreground uppercase tracking-widest">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-1 text-primary/80">
-                <Shield className="w-3 h-3" />
-                <span>Privacy Vault Active</span>
-              </div>
-              <div className="flex items-center space-x-1 text-purple-400">
-                <Mic className="w-3 h-3" />
-                <span>Pendant Synced</span>
-              </div>
-              <div className="flex items-center space-x-2 group cursor-pointer">
-                <Settings className="w-3 h-3 group-hover:rotate-90 transition-transform" />
-                <span>Settings</span>
-              </div>
-            </div>
-            <div className="h-4 w-px bg-white/10" />
-            <span>Recording Active</span>
-            <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            <span className="ml-4">1.2 TB Free</span>
-          </div>
+
+          {/* Scrubber Handle */}
+          <div className="absolute top-0 bottom-0 w-0.5 bg-primary shadow-[0_0_15px_rgba(59,130,246,0.5)] z-10 transition-all duration-300" style={{ left: '10%' }} />
         </div>
       </footer>
     </div>

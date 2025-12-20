@@ -1,8 +1,21 @@
 import { motion } from "framer-motion";
 import { Search, Monitor, MessageSquare, ChevronRight, Download, ShieldCheck } from "lucide-react";
 import { Link } from "wouter";
+import { toast } from "sonner";
 
 export default function LandingOriginal() {
+  const handleComingSoon = () => {
+    toast.info("Feature coming soon", {
+      description: "We're working hard to bring this to you!",
+    });
+  };
+
+  const handleGetRewind = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast.success("Welcome to the future!", {
+      description: "You've been added to the priority access list.",
+    });
+  };
   return (
     <div className="min-h-screen warm-gradient-bg selection:bg-[#8b5cf6] selection:text-white overflow-x-hidden">
       {/* Navigation */}
@@ -22,7 +35,12 @@ export default function LandingOriginal() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <button className="text-sm font-bold text-[#1d1d1f] hover:opacity-70 transition-opacity">Sign In</button>
+            <button 
+              onClick={handleComingSoon}
+              className="text-sm font-bold text-[#1d1d1f] hover:opacity-70 transition-opacity"
+            >
+              Sign In
+            </button>
             <Link href="/app">
               <button className="bg-[#1d1d1f] text-white text-sm font-bold px-5 py-2 rounded-full hover:bg-[#2c2c2e] transition-colors">
                 Open App
@@ -33,10 +51,11 @@ export default function LandingOriginal() {
       </nav>
 
       {/* Top Announcement */}
-      <div className="pt-32 flex justify-center">
+          <div className="pt-32 flex justify-center">
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
+          onClick={handleComingSoon}
           className="bg-white/90 backdrop-blur-xl border border-[#e8e8ed] rounded-2xl px-6 py-3 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
         >
           <div className="w-8 h-8 bg-[#8b5cf6] rounded-lg flex items-center justify-center">
@@ -81,23 +100,25 @@ export default function LandingOriginal() {
             transition={{ delay: 0.2 }}
             className="max-w-md mx-auto mb-8"
           >
-            <div className="pill-input-container flex items-center">
+            <form onSubmit={handleGetRewind} className="pill-input-container flex items-center">
               <input 
                 type="email" 
+                required
                 placeholder="Enter your email" 
                 className="flex-1 bg-transparent px-6 py-3 outline-none greycliff-body font-medium text-lg"
               />
-              <button className="btn-rewind whitespace-nowrap">
+              <button type="submit" className="btn-rewind whitespace-nowrap">
                 Get Rewind
               </button>
-            </div>
+            </form>
           </motion.div>
 
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="flex items-center justify-center gap-2 text-[#86868b] text-sm font-bold mb-24"
+            onClick={handleComingSoon}
+            className="flex items-center justify-center gap-2 text-[#86868b] text-sm font-bold mb-24 cursor-pointer hover:text-[#1d1d1f] transition-colors"
           >
             <Download className="w-4 h-4" />
             <span>Download for Mac and iOS today.</span>
