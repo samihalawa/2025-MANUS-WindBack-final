@@ -26,7 +26,7 @@ export default function LandingOriginal() {
               <div className="w-8 h-8 bg-[#8b5cf6] rounded-lg flex items-center justify-center">
                 <span className="text-white text-xl">✦</span>
               </div>
-              <span className="quincy-heading text-xl font-bold tracking-tight">Rewind</span>
+              <span className="quincy-heading text-xl font-bold tracking-tight">WindBack</span>
             </Link>
             <div className="hidden md:flex items-center gap-6">
               <a href="#features" className="text-sm font-bold text-[#86868b] hover:text-[#1d1d1f] transition-colors">Features</a>
@@ -58,14 +58,6 @@ export default function LandingOriginal() {
           onClick={handleComingSoon}
           className="bg-white/90 backdrop-blur-xl border border-[#e8e8ed] rounded-2xl px-6 py-3 flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
         >
-          <div className="w-8 h-8 bg-[#8b5cf6] rounded-lg flex items-center justify-center">
-            <span className="text-white text-xl">✦</span>
-          </div>
-          <div className="text-left">
-            <div className="text-sm font-bold text-[#1d1d1f]">Introducing Limitless</div>
-            <div className="text-xs text-[#86868b]">A web app, Mac app, Windows app, and wearable.</div>
-          </div>
-          <ChevronRight className="w-4 h-4 text-[#86868b] group-hover:translate-x-1 transition-transform" />
         </motion.div>
       </div>
 
@@ -88,7 +80,7 @@ export default function LandingOriginal() {
             transition={{ delay: 0.1 }}
             className="greycliff-body text-lg md:text-xl text-[#6e6e73] max-w-2xl mb-14 leading-relaxed"
           >
-            Rewind is a personalized AI powered by everything <br className="hidden md:block" />
+            WindBack is a personalized AI powered by everything <br className="hidden md:block" />
             you've seen, said, or heard. Your colleagues will <br className="hidden md:block" />
             wonder how you do it all.
           </motion.p>

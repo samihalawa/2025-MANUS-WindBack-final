@@ -17,8 +17,8 @@ export interface PageMeta {
 
 export const seoPages: Record<string, PageMeta> = {
   home: {
-    title: "Rewind Limitless - AI-Powered Memory & Lifelog App",
-    description: "Rewind is your AI-powered personal assistant that remembers everything you see, say, and hear. Unlimited cloud sync, advanced search, and cross-device access.",
+    title: "WindBack - AI-Powered Memory & Lifelog App",
+    description: "WindBack is your AI-powered personal assistant that remembers everything you see, say, and hear. Unlimited cloud sync, advanced search, and cross-device access.",
     keywords: [
       "AI assistant",
       "lifelog app",
@@ -31,13 +31,13 @@ export const seoPages: Record<string, PageMeta> = {
       "digital memory",
       "Rewind alternative"
     ],
-    ogTitle: "Rewind Limitless - Your AI Memory Assistant",
-    ogDescription: "Never forget a moment. Rewind remembers everything you see, say, and hear with advanced AI search.",
-    canonicalUrl: "https://rewind.limitless.ai"
+    ogTitle: "WindBack - Your AI Memory Assistant",
+    ogDescription: "Never forget a moment. WindBack remembers everything you see, say, and hear with advanced AI search.",
+    canonicalUrl: "https://windback.ai"
   },
 
   app: {
-    title: "Rewind App - Search Your Memory with AI",
+    title: "WindBack App - Search Your Memory with AI",
     description: "Access your complete lifelog with advanced AI-powered search. Find any moment, conversation, or file instantly across all your devices.",
     keywords: [
       "lifelog search",
@@ -49,14 +49,14 @@ export const seoPages: Record<string, PageMeta> = {
       "digital assistant",
       "memory management"
     ],
-    ogTitle: "Rewind App - Your Complete Memory",
+    ogTitle: "WindBack App - Your Complete Memory",
     ogDescription: "Search everything you've seen, said, or heard with powerful AI-driven search.",
-    canonicalUrl: "https://rewind.limitless.ai/app"
+    canonicalUrl: "https://windback.ai/app"
   },
 
   features: {
-    title: "Features - Rewind Limitless AI Memory App",
-    description: "Discover Rewind's powerful features: AI-powered search, cross-device sync, privacy vault, automatic transcription, and more.",
+    title: "Features - WindBack AI Memory App",
+    description: "Discover WindBack's powerful features: AI-powered search, cross-device sync, privacy vault, automatic transcription, and more.",
     keywords: [
       "AI features",
       "lifelog features",
@@ -67,14 +67,14 @@ export const seoPages: Record<string, PageMeta> = {
       "search capabilities",
       "productivity features"
     ],
-    ogTitle: "Rewind Features - Advanced AI Memory Tools",
-    ogDescription: "Explore all the powerful features that make Rewind the ultimate memory app.",
-    canonicalUrl: "https://rewind.limitless.ai/features"
+    ogTitle: "WindBack Features - Advanced AI Memory Tools",
+    ogDescription: "Explore all the powerful features that make WindBack the ultimate memory app.",
+    canonicalUrl: "https://windback.ai/features"
   },
 
   pricing: {
-    title: "Pricing - Rewind Limitless AI Memory App",
-    description: "Simple, transparent pricing for Rewind. Get unlimited AI-powered memory search and cross-device sync for just $99/year.",
+    title: "Pricing - WindBack AI Memory App",
+    description: "Simple, transparent pricing for WindBack. Get unlimited AI-powered memory search and cross-device sync for just $99/year.",
     keywords: [
       "pricing",
       "plans",
@@ -85,14 +85,14 @@ export const seoPages: Record<string, PageMeta> = {
       "cloud storage",
       "affordable pricing"
     ],
-    ogTitle: "Rewind Pricing - $99/Year for Unlimited Memory",
+    ogTitle: "WindBack Pricing - $99/Year for Unlimited Memory",
     ogDescription: "Affordable pricing for unlimited AI-powered memory search and cross-device access.",
-    canonicalUrl: "https://rewind.limitless.ai/pricing"
+    canonicalUrl: "https://windback.ai/pricing"
   },
 
   compatibility: {
-    title: "Compatibility - Rewind Limitless AI Memory App",
-    description: "Rewind works seamlessly across Windows, Mac, iOS, Android, and web. Full cross-device sync and unified search.",
+    title: "Compatibility - WindBack AI Memory App",
+    description: "WindBack works seamlessly across Windows, Mac, iOS, Android, and web. Full cross-device sync and unified search.",
     keywords: [
       "compatibility",
       "cross-platform",
@@ -103,18 +103,18 @@ export const seoPages: Record<string, PageMeta> = {
       "web app",
       "device sync"
     ],
-    ogTitle: "Rewind Compatibility - Works Everywhere",
-    ogDescription: "Rewind works on all your devices: Windows, Mac, iOS, Android, and web.",
-    canonicalUrl: "https://rewind.limitless.ai/compatibility"
+    ogTitle: "WindBack Compatibility - Works Everywhere",
+    ogDescription: "WindBack works on all your devices: Windows, Mac, iOS, Android, and web.",
+    canonicalUrl: "https://windback.ai/compatibility"
   },
 
   notFound: {
-    title: "Page Not Found - Rewind Limitless",
-    description: "The page you're looking for doesn't exist. Return to Rewind and explore our AI-powered memory app.",
+    title: "Page Not Found - WindBack",
+    description: "The page you're looking for doesn't exist. Return to WindBack and explore our AI-powered memory app.",
     keywords: ["404", "not found", "error page"],
     ogTitle: "Page Not Found",
-    ogDescription: "This page doesn't exist. Return to Rewind.",
-    canonicalUrl: "https://rewind.limitless.ai/404"
+    ogDescription: "This page doesn't exist. Return to WindBack.",
+    canonicalUrl: "https://windback.ai/404"
   }
 };
 
@@ -183,18 +183,18 @@ export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Rewind Limitless",
-    "url": "https://rewind.limitless.ai",
-    "logo": "https://rewind.limitless.ai/logo.png",
+    "name": "WindBack",
+    "url": "https://windback.ai",
+    "logo": "https://windback.ai/logo.png",
     "description": "AI-powered personal memory and lifelog application",
     "sameAs": [
-      "https://twitter.com/rewindlimitless",
-      "https://linkedin.com/company/rewind-limitless"
+      "https://twitter.com/windbackai",
+      "https://linkedin.com/company/windback"
     ],
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "Customer Support",
-      "email": "support@rewind.limitless.ai"
+      "email": "support@windback.ai"
     }
   };
 }
@@ -206,9 +206,9 @@ export function generateSoftwareApplicationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Rewind Limitless",
+    "name": "WindBack",
     "description": "AI-powered personal memory and lifelog application",
-    "url": "https://rewind.limitless.ai",
+    "url": "https://windback.ai",
     "applicationCategory": "ProductivityApplication",
     "operatingSystem": ["Windows", "macOS", "iOS", "Android"],
     "offers": {
@@ -232,12 +232,12 @@ export function generateProductSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": "Rewind Limitless",
+    "name": "WindBack",
     "description": "AI-powered personal memory and lifelog application that remembers everything you see, say, and hear",
-    "image": "https://rewind.limitless.ai/product-image.png",
+    "image": "https://windback.ai/product-image.png",
     "brand": {
       "@type": "Brand",
-      "name": "Rewind Limitless"
+      "name": "WindBack"
     },
     "offers": {
       "@type": "Offer",

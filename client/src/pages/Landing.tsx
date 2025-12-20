@@ -47,7 +47,7 @@ export default function Landing() {
             <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
               <History className="text-white w-5 h-5" />
             </div>
-            <span className="text-xl font-bold tracking-tight">Rewind <span className="text-blue-600">Limitless</span></span>
+            <span className="text-xl font-bold tracking-tight">WindBack</span>
           </div>
           <div className="hidden md:flex items-center gap-10 text-sm font-semibold text-gray-500">
             <a href="#features" className="hover:text-blue-600 transition-colors">Features</a>
@@ -81,8 +81,8 @@ export default function Landing() {
                 <span className="text-blue-600">limitations.</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
-                The AI-powered lifelog app that remembers everything. A world-class successor to Rewind and Limitless, 
-                designed for those who never want to forget a single moment. Unlimited cloud sync, advanced AI search, and cross-device access.
+                The AI-powered lifelog app that remembers everything you see, say, and hear. 
+                Designed for those who never want to forget a single moment. Unlimited cloud sync, advanced AI search, and cross-device access.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
                 <Link href="/app">
