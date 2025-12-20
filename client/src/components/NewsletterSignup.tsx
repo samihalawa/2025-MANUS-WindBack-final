@@ -2,10 +2,11 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import { trpc } from "@/_core/trpc";
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const subscribeMutation = trpc.newsletter.subscribe.useMutation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,11 +21,11 @@ export function NewsletterSignup() {
       return;
     }
 
-    setIsLoading(true);
-    
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await subscribeMutation.mutateAsync({
+        email,
+        source: "landing_page"
+      });
       
       toast.success("Welcome to WindBack!", {
         description: "Check your email for exclusive updates and early access.",
@@ -33,8 +34,6 @@ export function NewsletterSignup() {
       setEmail("");
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -56,16 +55,16 @@ export function NewsletterSignup() {
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            disabled={isLoading}
+            disabled={subscribeMutation.isPending}
             className="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
           />
           <Button
             type="submit"
-            disabled={isLoading}
+            disabled={subscribeMutation.isPending}
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold flex items-center justify-center gap-2 whitespace-nowrap"
           >
-            {isLoading ? "Subscribing..." : "Subscribe"}
-            {!isLoading && <ArrowRight className="w-4 h-4" />}
+            {subscribeMutation.isPending ? "Subscribing..." : "Subscribe"}
+            {!subscribeMutation.isPending && <ArrowRight className="w-4 h-4" />}
           </Button>
         </form>
         
