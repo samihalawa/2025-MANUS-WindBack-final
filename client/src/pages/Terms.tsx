@@ -6,7 +6,7 @@ export default function Terms() {
   usePageMeta({
     title: "Terms of Service - WindBack",
     description: "Read WindBack's terms of service and understand your rights and responsibilities when using our AI-powered memory app.",
-    keywords: "terms of service, terms and conditions, user agreement"
+    keywords: ["terms of service", "terms and conditions", "user agreement"]
   });
 
   return (

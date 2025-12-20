@@ -11,6 +11,7 @@ import CheckoutSuccess from "./pages/CheckoutSuccess";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Pricing from "./pages/Pricing";
+import Contact from "./pages/Contact";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -21,6 +22,7 @@ function Router() {
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/privacy"} component={Privacy} />
       <Route path={"/terms"} component={Terms} />
+      <Route path={"/contact"} component={Contact} />
       <Route path={"/app"} component={Home} />
       <Route path={"/checkout/success"} component={CheckoutSuccess} />
       <Route path={"/404"} component={NotFound} />

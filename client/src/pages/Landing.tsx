@@ -31,6 +31,7 @@ import { seoPages } from "@/lib/seoMeta";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
+import { TrustSignals } from "@/components/TrustSignals";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -281,6 +282,9 @@ export default function Landing() {
       {/* Testimonials Section */}
       <Testimonials />
 
+      {/* Trust Signals Section */}
+      <TrustSignals />
+
       {/* FAQ Section */}
       <FAQ />
 
@@ -309,7 +313,9 @@ export default function Landing() {
                 <a className="hover:text-blue-600 transition-colors">Terms</a>
               </Link>
               <a href="#" className="hover:text-blue-600 transition-colors">Security</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Contact</a>
+              <Link href="/contact">
+                <a className="hover:text-blue-600 transition-colors">Contact</a>
+              </Link>
             </div>
             <p className="text-gray-400 text-sm font-medium">© 2025 WindBack. All rights reserved.</p>
           </div>

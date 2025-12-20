@@ -8,7 +8,7 @@ export default function Pricing() {
   usePageMeta({
     title: "Pricing - WindBack",
     description: "Simple, transparent pricing for WindBack. Start free or go premium for unlimited AI-powered memory at $99/year.",
-    keywords: "pricing, subscription, plans, cost, premium"
+    keywords: ["pricing", "subscription", "plans", "cost", "premium"]
   });
 
   return (

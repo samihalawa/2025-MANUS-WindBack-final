@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
-import { trpc } from "@/_core/trpc";
+import { trpc } from "@/lib/trpc";
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");

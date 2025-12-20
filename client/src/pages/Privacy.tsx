@@ -6,7 +6,7 @@ export default function Privacy() {
   usePageMeta({
     title: "Privacy Policy - WindBack",
     description: "Learn how WindBack protects your privacy and handles your personal data with military-grade encryption and local-first storage.",
-    keywords: "privacy policy, data protection, encryption, security"
+    keywords: ["privacy policy", "data protection", "encryption", "security"]
   });
 
   return (
