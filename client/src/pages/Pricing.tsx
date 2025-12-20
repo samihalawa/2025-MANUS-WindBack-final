@@ -189,11 +189,11 @@ export default function Pricing() {
               <span className="text-2xl font-bold tracking-tight">WindBack</span>
             </div>
             <div className="flex gap-10 text-sm font-bold text-gray-400">
-              <Link href="/privacy">
-                <a className="hover:text-blue-600 transition-colors">Privacy</a>
+              <Link href="/privacy" className="hover:text-blue-600 transition-colors">
+                Privacy
               </Link>
-              <Link href="/terms">
-                <a className="hover:text-blue-600 transition-colors">Terms</a>
+              <Link href="/terms" className="hover:text-blue-600 transition-colors">
+                Terms
               </Link>
               <a href="#" className="hover:text-blue-600 transition-colors">Security</a>
               <a href="#" className="hover:text-blue-600 transition-colors">Contact</a>
