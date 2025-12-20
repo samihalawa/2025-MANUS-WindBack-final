@@ -5,8 +5,35 @@ import { Link } from "wouter";
 export default function LandingOriginal() {
   return (
     <div className="min-h-screen warm-gradient-bg selection:bg-[#8b5cf6] selection:text-white overflow-x-hidden">
+      {/* Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-xl border-b border-[#e8e8ed]">
+        <div className="container h-16 flex items-center justify-between">
+          <div className="flex items-center gap-8">
+            <Link href="/" className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#8b5cf6] rounded-lg flex items-center justify-center">
+                <span className="text-white text-xl">✦</span>
+              </div>
+              <span className="quincy-heading text-xl font-bold tracking-tight">Rewind</span>
+            </Link>
+            <div className="hidden md:flex items-center gap-6">
+              <a href="#features" className="text-sm font-bold text-[#86868b] hover:text-[#1d1d1f] transition-colors">Features</a>
+              <a href="#compatibility" className="text-sm font-bold text-[#86868b] hover:text-[#1d1d1f] transition-colors">Compatibility</a>
+              <a href="#pricing" className="text-sm font-bold text-[#86868b] hover:text-[#1d1d1f] transition-colors">Pricing</a>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <button className="text-sm font-bold text-[#1d1d1f] hover:opacity-70 transition-opacity">Sign In</button>
+            <Link href="/app">
+              <button className="bg-[#1d1d1f] text-white text-sm font-bold px-5 py-2 rounded-full hover:bg-[#2c2c2e] transition-colors">
+                Open App
+              </button>
+            </Link>
+          </div>
+        </div>
+      </nav>
+
       {/* Top Announcement */}
-      <div className="pt-16 flex justify-center">
+      <div className="pt-32 flex justify-center">
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
