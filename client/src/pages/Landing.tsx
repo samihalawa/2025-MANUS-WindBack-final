@@ -78,8 +78,8 @@ export default function Landing() {
                 <span className="text-blue-600">limitations.</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-500 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
-                The team that won't let you down. A world-class successor to Rewind and Limitless, 
-                designed for those who never want to forget a single moment.
+                The AI-powered lifelog app that remembers everything. A world-class successor to Rewind and Limitless, 
+                designed for those who never want to forget a single moment. Unlimited cloud sync, advanced AI search, and cross-device access.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-5">
                 <Link href="/app">
