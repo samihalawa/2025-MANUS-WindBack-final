@@ -31,7 +31,9 @@ export default function LandingOriginal() {
             <div className="hidden md:flex items-center gap-6">
               <a href="#features" className="text-sm font-bold text-[#86868b] hover:text-[#1d1d1f] transition-colors">Features</a>
               <a href="#compatibility" className="text-sm font-bold text-[#86868b] hover:text-[#1d1d1f] transition-colors">Compatibility</a>
-              <a href="#pricing" className="text-sm font-bold text-[#86868b] hover:text-[#1d1d1f] transition-colors">Pricing</a>
+              <Link href="/pricing">
+                <a className="text-sm font-bold text-[#86868b] hover:text-[#1d1d1f] transition-colors">Pricing</a>
+              </Link>
             </div>
           </div>
           <div className="flex items-center gap-4">

@@ -8,7 +8,8 @@ const testimonials = [
     role: "Product Manager at TechCorp",
     content: "WindBack has completely transformed how I manage my work. I can instantly recall any conversation or decision without endless scrolling through notes.",
     rating: 5,
-    image: "👩‍💼"
+    image: "👩‍💼",
+    company: "TechCorp"
   },
   {
     id: 2,
@@ -16,7 +17,8 @@ const testimonials = [
     role: "Founder & CEO",
     content: "The AI search is incredibly accurate. I've saved hours every week just by being able to find exactly what I need in seconds.",
     rating: 5,
-    image: "👨‍💼"
+    image: "👨‍💼",
+    company: "StartupXYZ"
   },
   {
     id: 3,
@@ -24,7 +26,8 @@ const testimonials = [
     role: "Software Engineer",
     content: "Cross-device sync works flawlessly. My entire digital memory is always at my fingertips, whether I'm at my desk or on the go.",
     rating: 5,
-    image: "👩‍💻"
+    image: "👩‍💻",
+    company: "DevCo"
   },
   {
     id: 4,
@@ -32,7 +35,26 @@ const testimonials = [
     role: "Consultant",
     content: "The privacy features give me peace of mind. I can capture everything without worrying about security or privacy issues.",
     rating: 5,
-    image: "👨‍💼"
+    image: "👨‍💼",
+    company: "Acme Consulting"
+  },
+  {
+    id: 5,
+    name: "Lisa Wang",
+    role: "Research Scientist",
+    content: "As someone who processes tons of research papers daily, WindBack's AI search has become indispensable. It finds exactly what I need from months of notes.",
+    rating: 5,
+    image: "👩‍🔬",
+    company: "Research Lab"
+  },
+  {
+    id: 6,
+    name: "James Taylor",
+    role: "Creative Director",
+    content: "I love how it captures my creative brainstorming sessions. Being able to revisit those 'aha!' moments weeks later is game-changing.",
+    rating: 5,
+    image: "👨‍🎨",
+    company: "Creative Studio"
   }
 ];
 
@@ -70,7 +92,7 @@ export function Testimonials() {
         </div>
 
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -87,6 +109,7 @@ export function Testimonials() {
                 <div>
                   <h3 className="font-semibold text-gray-900">{testimonial.name}</h3>
                   <p className="text-sm text-gray-600">{testimonial.role}</p>
+                  <p className="text-xs text-gray-500 mt-1">{testimonial.company}</p>
                 </div>
               </div>
 
@@ -110,18 +133,22 @@ export function Testimonials() {
           <p className="text-lg text-gray-600 mb-4">
             Join thousands of professionals using WindBack
           </p>
-          <div className="flex items-center justify-center gap-8">
+          <div className="flex flex-wrap items-center justify-center gap-8">
             <div className="text-center">
-              <p className="text-3xl font-bold text-blue-600">2,500+</p>
+              <p className="text-3xl font-bold text-blue-600">5,000+</p>
               <p className="text-sm text-gray-600">Active Users</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-blue-600">4.8★</p>
+              <p className="text-3xl font-bold text-blue-600">4.9★</p>
               <p className="text-sm text-gray-600">Average Rating</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl font-bold text-blue-600">98%</p>
+              <p className="text-3xl font-bold text-blue-600">99%</p>
               <p className="text-sm text-gray-600">Satisfaction</p>
+            </div>
+            <div className="text-center">
+              <p className="text-3xl font-bold text-blue-600">1M+</p>
+              <p className="text-sm text-gray-600">Hours Recorded</p>
             </div>
           </div>
         </div>

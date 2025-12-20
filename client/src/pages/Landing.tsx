@@ -30,6 +30,9 @@ import { usePageMeta } from "@/hooks/usePageMeta";
 import { seoPages } from "@/lib/seoMeta";
 import { NewsletterSignup } from "@/components/NewsletterSignup";
 import { Testimonials } from "@/components/Testimonials";
+import { FAQ } from "@/components/FAQ";
+import { TrustSignals } from "@/components/TrustSignals";
+import { MobileMenu } from "@/components/MobileMenu";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -55,13 +58,29 @@ export default function Landing() {
             <a href="#features" className="hover:text-blue-600 transition-colors">Features</a>
             <a href="#technical" className="hover:text-blue-600 transition-colors">Technical</a>
             <a href="#compatibility" className="hover:text-blue-600 transition-colors">Ecosystem</a>
-            <a href="#pricing" className="hover:text-blue-600 transition-colors">Pricing</a>
+            <Link href="/pricing">
+              <a className="hover:text-blue-600 transition-colors">Pricing</a>
+            </Link>
           </div>
-          <Link href="/app">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-7 font-bold shadow-md shadow-blue-100 transition-all hover:scale-105">
-              Open App
-            </Button>
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link href="/app">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-7 font-bold shadow-md shadow-blue-100 transition-all hover:scale-105">
+                Open App
+              </Button>
+            </Link>
+            <MobileMenu
+              links={[
+                { label: "Features", href: "#features", isExternal: true },
+                { label: "Technical", href: "#technical", isExternal: true },
+                { label: "Ecosystem", href: "#compatibility", isExternal: true },
+                { label: "Pricing", href: "/pricing" },
+                { label: "Open App", href: "/app" },
+                { label: "Privacy", href: "/privacy" },
+                { label: "Terms", href: "/terms" },
+                { label: "Contact", href: "/contact" }
+              ]}
+            />
+          </div>
         </div>
       </nav>
 
@@ -278,6 +297,12 @@ export default function Landing() {
       {/* Testimonials Section */}
       <Testimonials />
 
+      {/* Trust Signals Section */}
+      <TrustSignals />
+
+      {/* FAQ Section */}
+      <FAQ />
+
       {/* Newsletter Section */}
       <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-2xl mx-auto">
@@ -296,10 +321,16 @@ export default function Landing() {
               <span className="text-2xl font-bold tracking-tight">WindBack</span>
             </div>
             <div className="flex gap-10 text-sm font-bold text-gray-400">
-              <a href="#" className="hover:text-blue-600 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Terms</a>
+              <Link href="/privacy">
+                <a className="hover:text-blue-600 transition-colors">Privacy</a>
+              </Link>
+              <Link href="/terms">
+                <a className="hover:text-blue-600 transition-colors">Terms</a>
+              </Link>
               <a href="#" className="hover:text-blue-600 transition-colors">Security</a>
-              <a href="#" className="hover:text-blue-600 transition-colors">Contact</a>
+              <Link href="/contact">
+                <a className="hover:text-blue-600 transition-colors">Contact</a>
+              </Link>
             </div>
             <p className="text-gray-400 text-sm font-medium">© 2025 WindBack. All rights reserved.</p>
           </div>
