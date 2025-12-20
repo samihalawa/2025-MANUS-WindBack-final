@@ -58,8 +58,8 @@ export default function Landing() {
             <a href="#features" className="hover:text-blue-600 transition-colors">Features</a>
             <a href="#technical" className="hover:text-blue-600 transition-colors">Technical</a>
             <a href="#compatibility" className="hover:text-blue-600 transition-colors">Ecosystem</a>
-            <Link href="/pricing">
-              <a className="hover:text-blue-600 transition-colors">Pricing</a>
+            <Link href="/pricing" className="hover:text-blue-600 transition-colors">
+              Pricing
             </Link>
           </div>
           <div className="flex items-center gap-3">
@@ -321,15 +321,15 @@ export default function Landing() {
               <span className="text-2xl font-bold tracking-tight">WindBack</span>
             </div>
             <div className="flex gap-10 text-sm font-bold text-gray-400">
-              <Link href="/privacy">
-                <a className="hover:text-blue-600 transition-colors">Privacy</a>
+              <Link href="/privacy" className="hover:text-blue-600 transition-colors">
+                Privacy
               </Link>
-              <Link href="/terms">
-                <a className="hover:text-blue-600 transition-colors">Terms</a>
+              <Link href="/terms" className="hover:text-blue-600 transition-colors">
+                Terms
               </Link>
               <a href="#" className="hover:text-blue-600 transition-colors">Security</a>
-              <Link href="/contact">
-                <a className="hover:text-blue-600 transition-colors">Contact</a>
+              <Link href="/contact" className="hover:text-blue-600 transition-colors">
+                Contact
               </Link>
             </div>
             <p className="text-gray-400 text-sm font-medium">© 2025 WindBack. All rights reserved.</p>
