@@ -78,7 +78,7 @@ export function PremiumPaywall({ isOpen, onClose, onUpgrade }: PremiumPaywallPro
           </h2>
 
           <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-            Experience the full power of Rewind with unlimited AI processing, advanced search, and cross-device sync.
+            Experience the full power of WindBack with unlimited AI processing, advanced search, and cross-device sync.
           </p>
 
           {/* Features List */}
