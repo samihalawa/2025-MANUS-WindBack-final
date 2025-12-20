@@ -1,9 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { AlertCircle, Home } from "lucide-react";
+import { AlertCircle, Home, ArrowRight } from "lucide-react";
 import { useLocation } from "wouter";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { seoPages } from "@/lib/seoMeta";
+import { Link } from "wouter";
 
 export default function NotFound() {
+  usePageMeta(seoPages.notFound);
   const [, setLocation] = useLocation();
 
   const handleGoHome = () => {
@@ -32,6 +36,15 @@ export default function NotFound() {
             <br />
             It may have been moved or deleted.
           </p>
+
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8 text-left">
+            <h3 className="font-semibold text-blue-900 mb-3">Helpful Links:</h3>
+            <ul className="space-y-2 text-sm text-blue-800">
+              <li>Home - Explore Rewind Limitless</li>
+              <li>Features - Learn what Rewind can do</li>
+              <li>App - Try the Rewind demo</li>
+            </ul>
+          </div>
 
           <div
             id="not-found-button-group"

@@ -2,6 +2,8 @@ import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { PremiumPaywall } from "@/components/PremiumPaywall";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { seoPages } from "@/lib/seoMeta";
 import { 
   Search, 
   Monitor, 
@@ -27,6 +29,7 @@ export default function Home() {
   // The userAuth hooks provides authentication state
   // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
   let { user, loading, error, isAuthenticated, logout } = useAuth();
+  usePageMeta(seoPages.app);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMoment, setSelectedMoment] = useState<Moment>(mockMoments[0]);

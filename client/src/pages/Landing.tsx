@@ -26,6 +26,8 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { seoPages } from "@/lib/seoMeta";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -35,6 +37,7 @@ const fadeIn = {
 };
 
 export default function Landing() {
+  usePageMeta(seoPages.home);
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-[#1A1A1A] font-sans selection:bg-blue-100">
       {/* Navigation */}
