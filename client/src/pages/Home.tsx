@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/_core/hooks/useAuth";
+import { PremiumPaywall } from "@/components/PremiumPaywall";
 import { 
   Search, 
   Monitor, 
@@ -33,6 +34,7 @@ export default function Home() {
   const [searchType, setSearchType] = useState<'screens' | 'audio' | 'both'>('both');
   const [isAskOpen, setIsAskOpen] = useState(false);
   const [askQuery, setAskQuery] = useState("");
+  const [showPaywall, setShowPaywall] = useState(true);
   const timelineRef = useRef<HTMLDivElement>(null);
 
   const toggleAsk = () => setIsAskOpen(!isAskOpen);
@@ -61,7 +63,13 @@ export default function Home() {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-[#0a0a0b] text-white overflow-hidden font-sans">
+    <>
+      <PremiumPaywall
+        isOpen={showPaywall}
+        onClose={() => setShowPaywall(false)}
+        onUpgrade={() => setShowPaywall(false)}
+      />
+      <div className="h-screen flex flex-col bg-[#0a0a0b] text-white overflow-hidden font-sans">
       {/* Top Navigation / Search Bar */}
       <header className="z-40 px-6 py-4 flex flex-col space-y-4 bg-gradient-to-b from-black/60 to-transparent">
         <div className="flex items-center justify-between">
@@ -287,11 +295,11 @@ export default function Home() {
             </motion.div>
           )}
         </AnimatePresence>
-      </main>
+        </main>
 
-      {/* Bottom Timeline Scrubber */}
-      <footer className="h-32 bg-black/40 backdrop-blur-xl border-t border-white/5 px-8 flex flex-col justify-center">
-        <div className="flex items-center justify-between mb-4">
+        {/* Bottom Timeline Scrubber */}
+        <footer className="h-32 bg-black/40 backdrop-blur-xl border-t border-white/5 px-8 flex flex-col justify-center">
+          <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-4">
             <Button variant="ghost" size="icon" className="w-8 h-8">
               <Play className="w-4 h-4" />
@@ -339,7 +347,8 @@ export default function Home() {
           {/* Scrubber Handle */}
           <div className="absolute top-0 bottom-0 w-0.5 bg-primary shadow-[0_0_15px_rgba(59,130,246,0.5)] z-10 transition-all duration-300" style={{ left: '10%' }} />
         </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </>
   );
 }

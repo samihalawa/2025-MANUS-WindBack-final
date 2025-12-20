@@ -41,18 +41,18 @@ export function PricingCards() {
         </Link>
       </Card>
 
-      {/* Pro Plan */}
+      {/* Premium Plan */}
       <Card className="p-12 border-blue-100 shadow-2xl rounded-[2.5rem] bg-blue-50/30 relative overflow-hidden transition-all hover:shadow-blue-100 hover:-translate-y-1">
         <div className="absolute top-0 right-0 bg-blue-600 text-white text-[11px] font-black px-5 py-2 rounded-bl-2xl uppercase tracking-widest">
           Most Popular
         </div>
         <div className="mb-10">
-          <h3 className="text-2xl font-bold mb-3">Pro</h3>
+          <h3 className="text-2xl font-bold mb-3">Premium</h3>
           <div className="flex items-baseline gap-1">
-            <span className="text-5xl font-bold">$19</span>
-            <span className="text-gray-400 font-semibold">/mo</span>
+            <span className="text-5xl font-bold">$99</span>
+            <span className="text-gray-400 font-semibold">/year</span>
           </div>
-          <p className="text-gray-500 mt-6 font-medium">For those who need total recall.</p>
+          <p className="text-gray-500 mt-6 font-medium">Full access to all features.</p>
         </div>
         <ul className="space-y-5 mb-12">
           {[

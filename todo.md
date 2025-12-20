@@ -26,3 +26,11 @@
 - [ ] Invoice generation and delivery
 - [ ] Email notifications for payments
 - [ ] Analytics dashboard for payment metrics
+
+## Current Work
+- [x] Create premium paywall modal component
+- [x] Update pricing to $99/year only (remove $19/month)
+- [x] Show paywall modal on app load
+- [x] Add "Upgrade Now" button that triggers Stripe checkout
+- [x] Ensure app demo works fully regardless of payment status
+- [x] Test paywall flow end-to-end
