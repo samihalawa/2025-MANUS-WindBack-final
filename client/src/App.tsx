@@ -19,6 +19,7 @@ const Dashboard = lazy(() => import("./pages/Dashboard"));
 const LandingImproved = lazy(() => import("./pages/LandingImproved"));
 const DashboardFull = lazy(() => import("./pages/DashboardFull"));
 const Recording = lazy(() => import("./pages/Recording"));
+const MarketingHomeView = lazy(() => import("./pages/MarketingHomeView"));
 
 // Loading component for suspense fallback
 function PageLoader() {
@@ -34,18 +35,18 @@ function Router() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
-        <Route path={"/"} component={LandingImproved} />
-        <Route path={"/original"} component={LandingOriginal} />
-        <Route path={"/modern"} component={Landing} />
-        <Route path={"/pricing"} component={Pricing} />
-        <Route path={"/privacy"} component={Privacy} />
-        <Route path={"/terms"} component={Terms} />
-        <Route path={"/contact"} component={Contact} />
-        <Route path={"/app"} component={Home} />
-        <Route path={"/dashboard"} component={DashboardFull} />
-        <Route path={"/recording"} component={Recording} />
-        <Route path={"/checkout/success"} component={CheckoutSuccess} />
-        <Route path={"/404"} component={NotFound} />
+        <Route path="/" component={MarketingHomeView} />
+        <Route path="/original" component={LandingOriginal} />
+        <Route path="/modern" component={Landing} />
+        <Route path="/pricing" component={Pricing} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/app" component={Home} />
+        <Route path="/dashboard" component={DashboardFull} />
+        <Route path="/recording" component={Recording} />
+        <Route path="/checkout/success" component={CheckoutSuccess} />
+        <Route path="/404" component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />
       </Switch>
