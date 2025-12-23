@@ -81,6 +81,10 @@ export default function DashboardFull() {
     );
   }
 
+  // 新用户零状态：自动显示创建组织表单
+  const hasNoOrganizations = organizations && organizations.length === 0;
+  const shouldShowCreateForm = hasNoOrganizations || showCreateOrg;
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -147,7 +151,7 @@ export default function DashboardFull() {
 
         {/* Main Content */}
         <main className="flex-1 p-4 md:p-8">
-          {showCreateOrg ? (
+          {shouldShowCreateForm ? (
             <Card className="max-w-md">
               <CardHeader>
                 <CardTitle>Create Organization</CardTitle>
@@ -176,12 +180,14 @@ export default function DashboardFull() {
                   >
                     Create
                   </Button>
-                  <Button
-                    variant="outline"
-                    onClick={() => setShowCreateOrg(false)}
-                  >
-                    Cancel
-                  </Button>
+                  {!hasNoOrganizations && (
+                    <Button
+                      variant="outline"
+                      onClick={() => setShowCreateOrg(false)}
+                    >
+                      Cancel
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
