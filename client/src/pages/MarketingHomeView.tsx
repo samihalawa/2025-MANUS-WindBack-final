@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '@/_core/hooks/useAuth';
 import { getLoginUrl } from '@/const';
+import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Calendar, Zap, Sparkles, Plus, History, Search, MessageSquare } from 'lucide-react';
@@ -65,9 +66,16 @@ const QuickAction: React.FC<QuickActionProps> = ({ icon, label, sub, onClick, co
 
 export default function MarketingHomeView() {
   const { user, isAuthenticated } = useAuth();
+  const [, navigate] = useLocation();
   const [isRecording, setIsRecording] = useState(false);
 
-  const handleStartCapture = () => {
+  // 如果已登录，重定向到应用
+  if (isAuthenticated && user) {
+    navigate("/app/dashboard");
+    return null;
+  }
+
+  const handleStartRecording = () => {
     setIsRecording(!isRecording);
   };
 
@@ -93,9 +101,13 @@ export default function MarketingHomeView() {
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              <Button variant="outline" className="border-gray-300 dark:border-white/20">
-                Sign In
-              </Button>
+              <Button
+              variant="outline"
+              className="border-gray-300 dark:border-white/20"
+              onClick={() => (window.location.href = getLoginUrl())}
+            >
+              Sign In
+            </Button>
               <Button
                 onClick={() => (window.location.href = getLoginUrl())}
                 className="bg-purple-600 hover:bg-purple-700 text-white"
@@ -155,7 +167,7 @@ export default function MarketingHomeView() {
               icon={<Plus className="w-6 h-6" />}
               label="New Note"
               sub="Capture Thought"
-              onClick={handleStartCapture}
+              onClick={() => {}}
               color="text-green-500"
               bg="bg-green-500/10"
             />
@@ -307,7 +319,7 @@ export default function MarketingHomeView() {
       {/* Floating Action Button - Recording Toggle */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40">
         <button
-          onClick={handleStartCapture}
+          onClick={() => setIsRecording(!isRecording)}
           className={`h-14 px-8 rounded-full text-white font-bold text-[13px] uppercase tracking-widest shadow-2xl flex items-center gap-3 transition-all hover:scale-105 active:scale-95 ${
             isRecording
               ? 'bg-red-500 shadow-red-500/30 hover:shadow-red-500/50'

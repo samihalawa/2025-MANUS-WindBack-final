@@ -5,21 +5,30 @@ import { lazy, Suspense } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
-// Lazy load pages for code splitting
-const Home = lazy(() => import("./pages/Home"));
-const LandingOriginal = lazy(() => import("./pages/LandingOriginal"));
-const Landing = lazy(() => import("./pages/Landing"));
-const CheckoutSuccess = lazy(() => import("./pages/CheckoutSuccess"));
+// 公开网站页面
+const MarketingHomeView = lazy(() => import("./pages/MarketingHomeView"));
+const Pricing = lazy(() => import("./pages/Pricing"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
-const Pricing = lazy(() => import("./pages/Pricing"));
 const Contact = lazy(() => import("./pages/Contact"));
+
+// 应用页面（需要登录）
+const AppDashboard = lazy(() => import("./pages/AppDashboard"));
+const AppRecording = lazy(() => import("./pages/AppRecording"));
+const AppSettings = lazy(() => import("./pages/AppSettings"));
+
+// 其他页面
+const CheckoutSuccess = lazy(() => import("./pages/CheckoutSuccess"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+
+// 旧页面（保留兼容性）
+const LandingOriginal = lazy(() => import("./pages/LandingOriginal"));
+const Landing = lazy(() => import("./pages/Landing"));
+const Home = lazy(() => import("./pages/Home"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const LandingImproved = lazy(() => import("./pages/LandingImproved"));
 const DashboardFull = lazy(() => import("./pages/DashboardFull"));
 const Recording = lazy(() => import("./pages/Recording"));
-const MarketingHomeView = lazy(() => import("./pages/MarketingHomeView"));
 
 // Loading component for suspense fallback
 function PageLoader() {
@@ -31,33 +40,38 @@ function PageLoader() {
 }
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
+        {/* ===== 公开网站路由 ===== */}
         <Route path="/" component={MarketingHomeView} />
-        <Route path="/original" component={LandingOriginal} />
-        <Route path="/modern" component={Landing} />
         <Route path="/pricing" component={Pricing} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />
         <Route path="/contact" component={Contact} />
+        <Route path="/checkout/success" component={CheckoutSuccess} />
+
+        {/* ===== 应用路由（需要登录） ===== */}
+        <Route path="/app/dashboard" component={AppDashboard} />
+        <Route path="/app/recording" component={AppRecording} />
+        <Route path="/app/settings" component={AppSettings} />
+
+        {/* ===== 旧路由（保留兼容性） ===== */}
+        <Route path="/original" component={LandingOriginal} />
+        <Route path="/modern" component={Landing} />
         <Route path="/app" component={Home} />
         <Route path="/dashboard" component={DashboardFull} />
-        <Route path="/recording" component={Recording} />
-        <Route path="/checkout/success" component={CheckoutSuccess} />
+        <Route path="/recording-old" component={Recording} />
+        <Route path="/landing-improved" component={LandingImproved} />
+        <Route path="/dashboard-old" component={Dashboard} />
+
+        {/* ===== 404 ===== */}
         <Route path="/404" component={NotFound} />
-        {/* Final fallback route */}
         <Route component={NotFound} />
       </Switch>
     </Suspense>
   );
 }
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
   return (
