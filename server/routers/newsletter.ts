@@ -77,7 +77,7 @@ export const newsletterRouter = router({
           email
         };
       } catch (error) {
-        throw new Error("Failed to subscribe. Please try again.");
+        console.error("Newsletter subscribe error:", error); throw new Error("Failed to subscribe. Please try again.");
       }
     }),
 
@@ -134,7 +134,7 @@ export const newsletterRouter = router({
           message: "Successfully unsubscribed from the newsletter."
         };
       } catch (error) {
-        throw new Error("Failed to unsubscribe. Please try again.");
+        console.error("Newsletter unsubscribe error:", error); throw new Error("Failed to unsubscribe. Please try again.");
       }
     })
 });

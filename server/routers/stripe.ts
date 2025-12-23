@@ -112,9 +112,13 @@ export const stripeRouter = router({
    */
   getSubscriptionStatus: protectedProcedure.query(async ({ ctx }) => {
     if (!ctx.user) {
-      return null;
+      return {
+        status: "free",
+        plan: "Free",
+        customerId: null,
+        subscriptionId: null
+      };
     }
-
     try {
       const db = await getDb();
       if (!db) {
@@ -125,13 +129,11 @@ export const stripeRouter = router({
           subscriptionId: null
         };
       }
-
       const userSubscription = await db
         .select()
         .from(subscriptions)
         .where(eq(subscriptions.userId, ctx.user.id))
         .limit(1);
-
       if (userSubscription.length === 0) {
         return {
           status: "free",
@@ -140,18 +142,23 @@ export const stripeRouter = router({
           subscriptionId: null
         };
       }
-
       const sub = userSubscription[0];
       return {
-        status: sub.status,
+        status: sub.status || "free",
         plan: sub.status === "active" ? "Premium" : "Free",
         customerId: sub.stripeCustomerId,
         subscriptionId: sub.stripeSubscriptionId,
-        currentPeriodEnd: sub.currentPeriodEnd.toISOString(),
+        currentPeriodEnd: sub.currentPeriodEnd?.toISOString(),
         cancelAtPeriodEnd: sub.cancelAtPeriodEnd === 1
       };
     } catch (error) {
-      return null;
+      console.error("Error fetching subscription status:", error);
+      return {
+        status: "free",
+        plan: "Free",
+        customerId: null,
+        subscriptionId: null
+      };
     }
   }),
 
