@@ -2,6 +2,10 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
+import { stripeRouter } from "./routers/stripe";
+import { newsletterRouter } from "./routers/newsletter";
+import { contactRouter } from "./routers/contact";
+import { sumupRouter } from "./routers/sumup";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -16,6 +20,11 @@ export const appRouter = router({
       } as const;
     }),
   }),
+
+  stripe: stripeRouter,
+  newsletter: newsletterRouter,
+  contact: contactRouter,
+  sumup: sumupRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, index } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -25,4 +25,63 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
-// TODO: Add your tables here
+/**
+ * Subscriptions table for tracking Stripe subscription data
+ */
+export const subscriptions = mysqlTable("subscriptions", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+  stripeCustomerId: varchar("stripeCustomerId", { length: 255 }).notNull(),
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 255 }).notNull().unique(),
+  stripePriceId: varchar("stripePriceId", { length: 255 }).notNull(),
+  status: mysqlEnum("status", ["active", "canceled", "past_due", "trialing", "incomplete", "incomplete_expired", "unpaid"]).notNull(),
+  currentPeriodStart: timestamp("currentPeriodStart").notNull(),
+  currentPeriodEnd: timestamp("currentPeriodEnd").notNull(),
+  cancelAtPeriodEnd: int("cancelAtPeriodEnd").default(0).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  userIdIdx: index("userId_idx").on(table.userId),
+  stripeCustomerIdIdx: index("stripeCustomerId_idx").on(table.stripeCustomerId),
+}));
+
+export type Subscription = typeof subscriptions.$inferSelect;
+export type InsertSubscription = typeof subscriptions.$inferInsert;
+
+/**
+ * Newsletter subscribers table
+ */
+export const newsletterSubscribers = mysqlTable("newsletterSubscribers", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  name: text("name"),
+  status: mysqlEnum("status", ["subscribed", "unsubscribed", "bounced"]).default("subscribed").notNull(),
+  subscribedAt: timestamp("subscribedAt").defaultNow().notNull(),
+  unsubscribedAt: timestamp("unsubscribedAt"),
+  source: varchar("source", { length: 64 }).default("website"),
+}, (table) => ({
+  emailIdx: index("email_idx").on(table.email),
+  statusIdx: index("status_idx").on(table.status),
+}));
+
+export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type InsertNewsletterSubscriber = typeof newsletterSubscribers.$inferInsert;
+
+/**
+ * Contact form submissions
+ */
+export const contactSubmissions = mysqlTable("contactSubmissions", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  message: text("message").notNull(),
+  status: mysqlEnum("status", ["new", "read", "replied", "archived"]).default("new").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  statusIdx: index("status_idx").on(table.status),
+  createdAtIdx: index("createdAt_idx").on(table.createdAt),
+}));
+
+export type ContactSubmission = typeof contactSubmissions.$inferSelect;
+export type InsertContactSubmission = typeof contactSubmissions.$inferInsert;

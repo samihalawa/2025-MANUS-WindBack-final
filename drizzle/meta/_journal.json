@@ -1,5 +1,27 @@
 {
   "version": "7",
   "dialect": "mysql",
-  "entries": []
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1766201100494,
+      "tag": "0000_outgoing_kree",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1766224100834,
+      "tag": "0001_smiling_jane_foster",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1766237148393,
+      "tag": "0002_loving_miss_america",
+      "breakpoints": true
+    }
+  ]
 }

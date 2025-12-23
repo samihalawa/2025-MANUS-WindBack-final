@@ -1,30 +1,46 @@
+import { useState } from "react";
 import { useAuth } from "@/_core/hooks/useAuth";
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { getLoginUrl } from "@/const";
-import { Streamdown } from 'streamdown';
+import { usePageMeta } from "@/hooks/usePageMeta";
+import { seoPages } from "@/lib/seoMeta";
+import { View } from "@/types/dashboard";
+import { DashboardNav } from "@/components/DashboardNav";
+import { AppDashboard } from "@/components/AppDashboard";
+import { AskAI } from "@/components/AskAI";
+import { MeetingsPanel } from "@/components/MeetingsPanel";
+import { SettingsPanel } from "@/components/SettingsPanel";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
 export default function Home() {
-  // The userAuth hooks provides authentication state
-  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
+  const { user, loading, error, isAuthenticated, logout } = useAuth();
+  usePageMeta(seoPages.app);
 
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const [currentView, setCurrentView] = useState<View>(View.DASHBOARD);
+
+  // Render the appropriate view based on currentView state
+  const renderView = () => {
+    switch (currentView) {
+      case View.DASHBOARD:
+        return <AppDashboard />;
+      case View.ASK_AI:
+        return <AskAI />;
+      case View.MEETINGS:
+        return <MeetingsPanel />;
+      case View.SETTINGS:
+        return <SettingsPanel />;
+      case View.REWIND:
+      case View.PENDANT:
+      default:
+        return <AppDashboard />;
+    }
+  };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+    <div className="h-screen flex bg-[#f5f5f7] overflow-hidden font-sans">
+      {/* Navigation Sidebar */}
+      <DashboardNav currentView={currentView} setView={setCurrentView} />
+
+      {/* Main Content Area */}
+      <main className="flex-1 overflow-hidden relative">
+        {renderView()}
       </main>
     </div>
   );
