@@ -15,6 +15,7 @@ const Terms = lazy(() => import("./pages/Terms"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Dashboard = lazy(() => import("./pages/Dashboard"));
 
 // Loading component for suspense fallback
 function PageLoader() {
@@ -37,6 +38,7 @@ function Router() {
         <Route path={"/terms"} component={Terms} />
         <Route path={"/contact"} component={Contact} />
         <Route path={"/app"} component={Home} />
+        <Route path={"/dashboard"} component={Dashboard} />
         <Route path={"/checkout/success"} component={CheckoutSuccess} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}

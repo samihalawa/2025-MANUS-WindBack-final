@@ -24,6 +24,7 @@ export async function upsertUser(user: InsertUser): Promise<void> {
 
   const db = await getDb();
   if (!db) {
+    console.warn("[Database] Cannot upsert user: database not available");
     return;
   }
 
@@ -70,8 +71,9 @@ export async function upsertUser(user: InsertUser): Promise<void> {
       set: updateSet,
     });
   } catch (error) {
+    console.error("[Database] Failed to upsert user:", error);
     throw error;
-  }
+   }
 }
 
 export async function getUserByOpenId(openId: string) {

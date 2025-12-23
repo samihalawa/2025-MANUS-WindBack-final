@@ -134,6 +134,7 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription & { cu
 
     } else {
       await db.insert(subscriptions).values({
+        organizationId: 1, // TODO: Get from metadata
         userId: userIdToUse,
         stripeCustomerId: customerId,
         stripeSubscriptionId: subscriptionId,

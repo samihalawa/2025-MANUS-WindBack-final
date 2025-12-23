@@ -6,6 +6,8 @@ import { stripeRouter } from "./routers/stripe";
 import { newsletterRouter } from "./routers/newsletter";
 import { contactRouter } from "./routers/contact";
 import { sumupRouter } from "./routers/sumup";
+import { dashboardRouter } from "./routers/dashboard";
+import { stripeMultiTenantRouter } from "./routers/stripe-multi-tenant";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -22,9 +24,11 @@ export const appRouter = router({
   }),
 
   stripe: stripeRouter,
+  stripeMultiTenant: stripeMultiTenantRouter,
   newsletter: newsletterRouter,
   contact: contactRouter,
   sumup: sumupRouter,
+  dashboard: dashboardRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({
