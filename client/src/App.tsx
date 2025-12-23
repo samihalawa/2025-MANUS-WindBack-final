@@ -18,6 +18,7 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const LandingImproved = lazy(() => import("./pages/LandingImproved"));
 const DashboardFull = lazy(() => import("./pages/DashboardFull"));
+const Recording = lazy(() => import("./pages/Recording"));
 
 // Loading component for suspense fallback
 function PageLoader() {
@@ -42,6 +43,7 @@ function Router() {
         <Route path={"/contact"} component={Contact} />
         <Route path={"/app"} component={Home} />
         <Route path={"/dashboard"} component={DashboardFull} />
+        <Route path={"/recording"} component={Recording} />
         <Route path={"/checkout/success"} component={CheckoutSuccess} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
