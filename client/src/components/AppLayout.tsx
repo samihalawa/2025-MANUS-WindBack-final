@@ -8,7 +8,7 @@ interface AppLayoutProps {
   children: ReactNode;
 }
 
-export function AppLayout({ children }: AppLayoutProps) {
+export default function AppLayout({ children }: AppLayoutProps) {
   const { user, logout } = useAuth();
 
   return (

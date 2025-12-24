@@ -1,4 +1,4 @@
-import { useAuth } from "@/_core/hooks/useAuth";
+import { useAuth } from '@/_core/hooks/useAuth';
 import { getLoginUrl } from "@/const";
 import { ReactNode } from "react";
 
@@ -6,7 +6,7 @@ interface ProtectedRouteProps {
   children: ReactNode;
 }
 
-export function ProtectedRoute({ children }: ProtectedRouteProps) {
+export default function ProtectedRoute({ children }: ProtectedRouteProps) {
   const { user, loading } = useAuth();
 
   if (loading) {
@@ -18,7 +18,6 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
   }
 
   if (!user) {
-    // 重定向到登录
     window.location.href = getLoginUrl();
     return null;
   }
