@@ -1,5 +1,3 @@
-import AppLayout from "@/components/AppLayout";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/_core/hooks/useAuth";
@@ -8,8 +6,6 @@ export default function AppSettings() {
   const { user } = useAuth();
 
   return (
-    <ProtectedRoute>
-      <AppLayout>
         <div className="space-y-8 max-w-2xl">
           <div>
             <h1 className="text-3xl font-bold">Settings</h1>
@@ -77,7 +73,5 @@ export default function AppSettings() {
             </CardContent>
           </Card>
         </div>
-      </AppLayout>
-    </ProtectedRoute>
   );
 }

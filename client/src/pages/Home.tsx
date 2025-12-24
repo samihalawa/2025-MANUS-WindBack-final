@@ -6,13 +6,8 @@ import { getLoginUrl } from '@/const';
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
 
-  if (isAuthenticated && user) {
-    // 已登录，重定向到应用
-    if (typeof window !== 'undefined') {
-      window.location.href = '/app/dashboard';
-    }
-    return null;
-  }
+  // 不要自动重定向已登录用户，让他们看到营销主页
+  // 他们可以通过导航菜单访问应用
 
   return (
     <div className="min-h-screen bg-black text-white">

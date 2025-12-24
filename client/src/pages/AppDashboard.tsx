@@ -1,5 +1,3 @@
-import AppLayout from "@/components/AppLayout";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -7,8 +5,6 @@ import { Mic, BarChart3, Clock, Zap } from "lucide-react";
 
 export default function AppDashboard() {
   return (
-    <ProtectedRoute>
-      <AppLayout>
         <div className="space-y-8">
           {/* 欢迎部分 */}
           <div>
@@ -91,7 +87,5 @@ export default function AppDashboard() {
             </CardContent>
           </Card>
         </div>
-      </AppLayout>
-    </ProtectedRoute>
   );
 }

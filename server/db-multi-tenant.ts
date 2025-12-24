@@ -141,13 +141,28 @@ export async function searchMemories(organizationId: number, query: string): Pro
   if (!db) return [];
 
   try {
+    // If no search query, return all memories for the organization
+    if (!query || query.trim() === '') {
+      return await db
+        .select()
+        .from(memories)
+        .where(eq(memories.organizationId, organizationId))
+        .limit(50);
+    }
+
+    // Simple text search in title and content
+    // Note: This is a basic LIKE search. For production, consider using MySQL full-text search
+    const searchPattern = `%${query}%`;
+    const { sql } = await import('drizzle-orm');
+
     return await db
       .select()
       .from(memories)
       .where(and(
         eq(memories.organizationId, organizationId),
-        // Note: This is a simple LIKE search, consider using full-text search for production
-      ));
+        sql`(${memories.title} LIKE ${searchPattern} OR ${memories.content} LIKE ${searchPattern})`
+      ))
+      .limit(50);
   } catch (error) {
     console.error("[Database] Failed to search memories:", error);
     return [];

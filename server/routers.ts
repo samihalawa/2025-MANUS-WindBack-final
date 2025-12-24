@@ -35,13 +35,6 @@ export const appRouter = router({
   organizations: organizationsRouter,
   members: membersRouter,
   subscriptions: subscriptionsRouter,
-
-  // TODO: add feature routers here, e.g.
-  // todo: router({
-  //   list: protectedProcedure.query(({ ctx }) =>
-  //     db.getUserTodos(ctx.user.id)
-  //   ),
-  // }),
 });
 
 export type AppRouter = typeof appRouter;

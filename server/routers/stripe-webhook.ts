@@ -133,14 +133,24 @@ async function handleSubscriptionUpdate(subscription: Stripe.Subscription & { cu
         .where(eq(subscriptions.stripeSubscriptionId, subscriptionId));
 
     } else {
+      // Get organizationId from metadata or user's current organization
+      const organizationId = subscription.metadata?.organizationId
+        ? parseInt(subscription.metadata.organizationId)
+        : null;
+
+      if (!organizationId) {
+        console.error("[Stripe Webhook] Missing organizationId in subscription metadata");
+        return;
+      }
+
       await db.insert(subscriptions).values({
-        organizationId: 1, // TODO: Get from metadata
+        organizationId,
         userId: userIdToUse,
         stripeCustomerId: customerId,
         stripeSubscriptionId: subscriptionId,
         stripePriceId: priceId,
         status: status as any,
-                currentPeriodStart: new Date((subscription.current_period_start || 0) * 1000),
+        currentPeriodStart: new Date((subscription.current_period_start || 0) * 1000),
         currentPeriodEnd: new Date((subscription.current_period_end || 0) * 1000),
         cancelAtPeriodEnd: subscription.cancel_at_period_end ? 1 : 0,
       });

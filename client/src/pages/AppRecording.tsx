@@ -1,10 +1,8 @@
-import AppLayout from "@/components/AppLayout";
-import ProtectedRoute from "@/components/ProtectedRoute";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useScreenRecorder } from "@/features/recording/useScreenRecorder";
 import { useAudioRecorder } from "@/features/recording/useAudioRecorder";
-import { Mic, Square, Play } from "lucide-react";
+import { Mic, Square } from "lucide-react";
 import { useState } from "react";
 
 export default function AppRecording() {
@@ -28,17 +26,16 @@ export default function AppRecording() {
       const audioBlob = await audio.stopRecording();
       setRecordingMode("idle");
 
-      // 这里可以保存录制到服务器
-      console.log("Screen recording:", screenBlob);
-      console.log("Audio recording:", audioBlob);
+      if (screenBlob && audioBlob) {
+        // Future: Upload to server
+        console.log("Recording completed successfully");
+      }
     } catch (error) {
       console.error("Failed to stop recording:", error);
     }
   };
 
   return (
-    <ProtectedRoute>
-      <AppLayout>
         <div className="space-y-8">
           <div>
             <h1 className="text-3xl font-bold">Recording</h1>
@@ -121,7 +118,5 @@ export default function AppRecording() {
             </CardContent>
           </Card>
         </div>
-      </AppLayout>
-    </ProtectedRoute>
   );
 }
