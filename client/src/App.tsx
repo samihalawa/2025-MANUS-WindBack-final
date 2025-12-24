@@ -14,6 +14,7 @@ const Terms = lazy(() => import("./pages/Terms"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const Import = lazy(() => import("./pages/Import"));
 const AppDashboard = lazy(() => import("./pages/AppDashboard"));
 const AppRecording = lazy(() => import("./pages/AppRecording"));
 const AppSettings = lazy(() => import("./pages/AppSettings"));
@@ -37,6 +38,7 @@ function Router() {
         <Route path={"/privacy"} component={Privacy} />
         <Route path={"/terms"} component={Terms} />
         <Route path={"/contact"} component={Contact} />
+        <Route path={"/import"} component={Import} />
 
         {/* Protected App Routes */}
         <Route path={"/app"}>
