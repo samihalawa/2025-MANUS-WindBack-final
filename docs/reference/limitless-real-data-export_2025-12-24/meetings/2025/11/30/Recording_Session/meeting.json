@@ -1,0 +1,17 @@
+{
+  "title": "Recording Session",
+  "description": null,
+  "startTime": "2025-11-30T11:32:00.130Z",
+  "endTime": "2025-11-30T11:32:28.035Z",
+  "participants": [
+    {
+      "email": "",
+      "name": "You",
+      "isSelf": true,
+      "isOrganizer": true,
+      "responseStatus": "accepted"
+    }
+  ],
+  "url": null,
+  "conferenceUrl": null
+}

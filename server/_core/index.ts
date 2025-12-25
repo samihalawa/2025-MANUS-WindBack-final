@@ -8,6 +8,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { handleStripeWebhook } from "../routers/stripe-webhook";
+import { limitlessRestRouter } from "../routers/limitless-rest-api";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -64,6 +65,11 @@ async function startServer() {
       createContext,
     })
   );
+
+  // Limitless-compatible REST API (clone of Limitless API format)
+  // Can switch between https://api.limitless.ai/v1 and our /api/limitless/v1
+  app.use("/api/limitless/v1", limitlessRestRouter);
+
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);

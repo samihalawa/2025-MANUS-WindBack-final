@@ -694,6 +694,499 @@ export const limitlessRouter = router({
         syncStatus: syncStatus[0]?.status || "idle",
       };
     }),
+
+  // ============================================
+  // IMPORT ENDPOINTS - For uploading Limitless exports
+  // ============================================
+
+  /**
+   * Import a contact from JSON export
+   */
+  importContact: protectedProcedure
+    .input(
+      z.object({
+        organizationId: z.number(),
+        contact: z.object({
+          name: z.string(),
+          externalContactId: z.string().optional(),
+          primaryEmail: z.string().optional(),
+          emails: z.array(z.string()).optional(),
+          photoUrl: z.string().nullable().optional(),
+        }),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (!ctx.user) throw new Error("User not authenticated");
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      const externalId = input.contact.externalContactId || `imported_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
+      // Check if exists
+      const existing = await db
+        .select()
+        .from(limitlessContacts)
+        .where(eq(limitlessContacts.externalId, externalId))
+        .limit(1);
+
+      const contactData = {
+        externalId,
+        organizationId: input.organizationId,
+        userId: ctx.user.id,
+        name: input.contact.name,
+        primaryEmail: input.contact.primaryEmail || null,
+        emails: input.contact.emails ? JSON.stringify(input.contact.emails) : null,
+        photoUrl: input.contact.photoUrl || null,
+      };
+
+      if (existing.length > 0) {
+        await db.update(limitlessContacts).set(contactData).where(eq(limitlessContacts.id, existing[0].id));
+        return { success: true, id: existing[0].id, action: "updated" };
+      } else {
+        const result = await db.insert(limitlessContacts).values(contactData);
+        return { success: true, id: result[0].insertId, action: "created" };
+      }
+    }),
+
+  /**
+   * Import a person from JSON export
+   */
+  importPerson: protectedProcedure
+    .input(
+      z.object({
+        organizationId: z.number(),
+        person: z.object({
+          name: z.string(),
+          email: z.string().optional(),
+          photoUrl: z.string().nullable().optional(),
+          contactDocId: z.string().optional(),
+        }),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (!ctx.user) throw new Error("User not authenticated");
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      const externalId = input.person.contactDocId || `person_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
+      const existing = await db
+        .select()
+        .from(limitlessPersons)
+        .where(eq(limitlessPersons.externalId, externalId))
+        .limit(1);
+
+      const personData = {
+        externalId,
+        organizationId: input.organizationId,
+        userId: ctx.user.id,
+        name: input.person.name,
+        email: input.person.email || null,
+        photoUrl: input.person.photoUrl || null,
+        contactDocId: input.person.contactDocId || null,
+      };
+
+      if (existing.length > 0) {
+        await db.update(limitlessPersons).set(personData).where(eq(limitlessPersons.id, existing[0].id));
+        return { success: true, id: existing[0].id, action: "updated" };
+      } else {
+        const result = await db.insert(limitlessPersons).values(personData);
+        return { success: true, id: result[0].insertId, action: "created" };
+      }
+    }),
+
+  /**
+   * Import a meeting from JSON export
+   */
+  importMeeting: protectedProcedure
+    .input(
+      z.object({
+        organizationId: z.number(),
+        meeting: z.object({
+          title: z.string(),
+          description: z.string().nullable().optional(),
+          startTime: z.string(),
+          endTime: z.string().nullable().optional(),
+          participants: z.array(z.object({
+            email: z.string(),
+            name: z.string(),
+            isSelf: z.boolean().optional(),
+            isOrganizer: z.boolean().optional(),
+            responseStatus: z.string().optional(),
+          })).optional(),
+          url: z.string().nullable().optional(),
+          conferenceUrl: z.string().nullable().optional(),
+        }),
+        externalId: z.string().optional(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (!ctx.user) throw new Error("User not authenticated");
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      const externalId = input.externalId || `meeting_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
+      const existing = await db
+        .select()
+        .from(limitlessMeetings)
+        .where(eq(limitlessMeetings.externalId, externalId))
+        .limit(1);
+
+      const meetingData = {
+        externalId,
+        organizationId: input.organizationId,
+        userId: ctx.user.id,
+        title: input.meeting.title,
+        description: input.meeting.description || null,
+        startTime: new Date(input.meeting.startTime),
+        endTime: input.meeting.endTime ? new Date(input.meeting.endTime) : null,
+        participants: input.meeting.participants ? JSON.stringify(input.meeting.participants) : null,
+        url: input.meeting.url || null,
+        conferenceUrl: input.meeting.conferenceUrl || null,
+      };
+
+      if (existing.length > 0) {
+        await db.update(limitlessMeetings).set(meetingData).where(eq(limitlessMeetings.id, existing[0].id));
+        return { success: true, id: existing[0].id, action: "updated" };
+      } else {
+        const result = await db.insert(limitlessMeetings).values(meetingData);
+        return { success: true, id: result[0].insertId, action: "created" };
+      }
+    }),
+
+  /**
+   * Import a lifelog from markdown or structured data
+   */
+  importLifelog: protectedProcedure
+    .input(
+      z.object({
+        organizationId: z.number(),
+        lifelog: z.object({
+          title: z.string(),
+          markdown: z.string().optional(),
+          contents: z.array(z.any()).optional(),
+          startTime: z.string(),
+          endTime: z.string().optional(),
+          isStarred: z.boolean().optional(),
+        }),
+        externalId: z.string().optional(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (!ctx.user) throw new Error("User not authenticated");
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      const externalId = input.externalId || `lifelog_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+
+      const existing = await db
+        .select()
+        .from(lifelogs)
+        .where(eq(lifelogs.externalId, externalId))
+        .limit(1);
+
+      const lifelogData = {
+        externalId,
+        organizationId: input.organizationId,
+        userId: ctx.user.id,
+        title: input.lifelog.title,
+        markdown: input.lifelog.markdown || null,
+        contents: input.lifelog.contents ? JSON.stringify(input.lifelog.contents) : null,
+        startTime: new Date(input.lifelog.startTime),
+        endTime: input.lifelog.endTime ? new Date(input.lifelog.endTime) : null,
+        isStarred: input.lifelog.isStarred || false,
+        source: "import",
+        syncedAt: new Date(),
+      };
+
+      if (existing.length > 0) {
+        await db.update(lifelogs).set(lifelogData).where(eq(lifelogs.id, existing[0].id));
+        return { success: true, id: existing[0].id, action: "updated" };
+      } else {
+        const result = await db.insert(lifelogs).values(lifelogData);
+        return { success: true, id: result[0].insertId, action: "created" };
+      }
+    }),
+
+  /**
+   * Bulk import from Limitless export structure
+   * Accepts the entire export data in one call
+   */
+  importBulk: protectedProcedure
+    .input(
+      z.object({
+        organizationId: z.number(),
+        data: z.object({
+          contacts: z.array(z.object({
+            name: z.string(),
+            externalContactId: z.string().optional(),
+            primaryEmail: z.string().optional(),
+            emails: z.array(z.string()).optional(),
+            photoUrl: z.string().nullable().optional(),
+          })).optional(),
+          persons: z.array(z.object({
+            name: z.string(),
+            email: z.string().optional(),
+            photoUrl: z.string().nullable().optional(),
+            contactDocId: z.string().optional(),
+          })).optional(),
+          meetings: z.array(z.object({
+            title: z.string(),
+            description: z.string().nullable().optional(),
+            startTime: z.string(),
+            endTime: z.string().nullable().optional(),
+            participants: z.array(z.any()).optional(),
+            url: z.string().nullable().optional(),
+            conferenceUrl: z.string().nullable().optional(),
+            externalId: z.string().optional(),
+          })).optional(),
+          lifelogs: z.array(z.object({
+            title: z.string(),
+            markdown: z.string().optional(),
+            contents: z.array(z.any()).optional(),
+            startTime: z.string(),
+            endTime: z.string().optional(),
+            isStarred: z.boolean().optional(),
+            externalId: z.string().optional(),
+          })).optional(),
+          userProfile: z.object({
+            displayName: z.string().optional(),
+            job: z.string().optional(),
+            traits: z.string().optional(),
+            customTraits: z.string().optional(),
+            additionalInfo: z.string().nullable().optional(),
+            languageCode: z.string().optional(),
+            verbosity: z.string().optional(),
+          }).optional(),
+        }),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      if (!ctx.user) throw new Error("User not authenticated");
+      const db = await getDb();
+      if (!db) throw new Error("Database not available");
+
+      const results = {
+        contacts: { created: 0, updated: 0 },
+        persons: { created: 0, updated: 0 },
+        meetings: { created: 0, updated: 0 },
+        lifelogs: { created: 0, updated: 0 },
+        userProfile: false,
+      };
+
+      // Import contacts
+      if (input.data.contacts) {
+        for (const contact of input.data.contacts) {
+          const externalId = contact.externalContactId || `imported_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+          const existing = await db.select().from(limitlessContacts).where(eq(limitlessContacts.externalId, externalId)).limit(1);
+
+          const contactData = {
+            externalId,
+            organizationId: input.organizationId,
+            userId: ctx.user.id,
+            name: contact.name,
+            primaryEmail: contact.primaryEmail || null,
+            emails: contact.emails ? JSON.stringify(contact.emails) : null,
+            photoUrl: contact.photoUrl || null,
+          };
+
+          if (existing.length > 0) {
+            await db.update(limitlessContacts).set(contactData).where(eq(limitlessContacts.id, existing[0].id));
+            results.contacts.updated++;
+          } else {
+            await db.insert(limitlessContacts).values(contactData);
+            results.contacts.created++;
+          }
+        }
+      }
+
+      // Import persons
+      if (input.data.persons) {
+        for (const person of input.data.persons) {
+          const externalId = person.contactDocId || `person_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+          const existing = await db.select().from(limitlessPersons).where(eq(limitlessPersons.externalId, externalId)).limit(1);
+
+          const personData = {
+            externalId,
+            organizationId: input.organizationId,
+            userId: ctx.user.id,
+            name: person.name,
+            email: person.email || null,
+            photoUrl: person.photoUrl || null,
+            contactDocId: person.contactDocId || null,
+          };
+
+          if (existing.length > 0) {
+            await db.update(limitlessPersons).set(personData).where(eq(limitlessPersons.id, existing[0].id));
+            results.persons.updated++;
+          } else {
+            await db.insert(limitlessPersons).values(personData);
+            results.persons.created++;
+          }
+        }
+      }
+
+      // Import meetings
+      if (input.data.meetings) {
+        for (const meeting of input.data.meetings) {
+          const externalId = meeting.externalId || `meeting_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+          const existing = await db.select().from(limitlessMeetings).where(eq(limitlessMeetings.externalId, externalId)).limit(1);
+
+          const meetingData = {
+            externalId,
+            organizationId: input.organizationId,
+            userId: ctx.user.id,
+            title: meeting.title,
+            description: meeting.description || null,
+            startTime: new Date(meeting.startTime),
+            endTime: meeting.endTime ? new Date(meeting.endTime) : null,
+            participants: meeting.participants ? JSON.stringify(meeting.participants) : null,
+            url: meeting.url || null,
+            conferenceUrl: meeting.conferenceUrl || null,
+          };
+
+          if (existing.length > 0) {
+            await db.update(limitlessMeetings).set(meetingData).where(eq(limitlessMeetings.id, existing[0].id));
+            results.meetings.updated++;
+          } else {
+            await db.insert(limitlessMeetings).values(meetingData);
+            results.meetings.created++;
+          }
+        }
+      }
+
+      // Import lifelogs
+      if (input.data.lifelogs) {
+        for (const lifelog of input.data.lifelogs) {
+          const externalId = lifelog.externalId || `lifelog_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+          const existing = await db.select().from(lifelogs).where(eq(lifelogs.externalId, externalId)).limit(1);
+
+          const lifelogData = {
+            externalId,
+            organizationId: input.organizationId,
+            userId: ctx.user.id,
+            title: lifelog.title,
+            markdown: lifelog.markdown || null,
+            contents: lifelog.contents ? JSON.stringify(lifelog.contents) : null,
+            startTime: new Date(lifelog.startTime),
+            endTime: lifelog.endTime ? new Date(lifelog.endTime) : null,
+            isStarred: lifelog.isStarred || false,
+            source: "import",
+            syncedAt: new Date(),
+          };
+
+          if (existing.length > 0) {
+            await db.update(lifelogs).set(lifelogData).where(eq(lifelogs.id, existing[0].id));
+            results.lifelogs.updated++;
+          } else {
+            await db.insert(lifelogs).values(lifelogData);
+            results.lifelogs.created++;
+          }
+        }
+      }
+
+      // Update user profile
+      if (input.data.userProfile) {
+        const profile = await db
+          .select()
+          .from(limitlessProfiles)
+          .where(and(
+            eq(limitlessProfiles.organizationId, input.organizationId),
+            eq(limitlessProfiles.userId, ctx.user.id)
+          ))
+          .limit(1);
+
+        const profileData = {
+          displayName: input.data.userProfile.displayName || null,
+          job: input.data.userProfile.job || null,
+          traits: input.data.userProfile.traits || null,
+          customTraits: input.data.userProfile.customTraits || null,
+          additionalInfo: input.data.userProfile.additionalInfo || null,
+          languageCode: input.data.userProfile.languageCode || null,
+          verbosity: input.data.userProfile.verbosity || null,
+        };
+
+        if (profile.length > 0) {
+          await db.update(limitlessProfiles).set(profileData).where(eq(limitlessProfiles.id, profile[0].id));
+        } else {
+          await db.insert(limitlessProfiles).values({
+            organizationId: input.organizationId,
+            userId: ctx.user.id,
+            ...profileData,
+          });
+        }
+        results.userProfile = true;
+      }
+
+      return { success: true, results };
+    }),
+
+  /**
+   * Get all contacts for current user
+   */
+  getContacts: protectedProcedure
+    .input(z.object({ organizationId: z.number() }))
+    .query(async ({ ctx, input }) => {
+      if (!ctx.user) return [];
+      const db = await getDb();
+      if (!db) return [];
+
+      return db
+        .select()
+        .from(limitlessContacts)
+        .where(and(
+          eq(limitlessContacts.organizationId, input.organizationId),
+          eq(limitlessContacts.userId, ctx.user.id)
+        ))
+        .orderBy(asc(limitlessContacts.name));
+    }),
+
+  /**
+   * Get all persons for current user
+   */
+  getPersons: protectedProcedure
+    .input(z.object({ organizationId: z.number() }))
+    .query(async ({ ctx, input }) => {
+      if (!ctx.user) return [];
+      const db = await getDb();
+      if (!db) return [];
+
+      return db
+        .select()
+        .from(limitlessPersons)
+        .where(and(
+          eq(limitlessPersons.organizationId, input.organizationId),
+          eq(limitlessPersons.userId, ctx.user.id)
+        ))
+        .orderBy(asc(limitlessPersons.name));
+    }),
+
+  /**
+   * Get all meetings for current user
+   */
+  getMeetings: protectedProcedure
+    .input(z.object({
+      organizationId: z.number(),
+      limit: z.number().default(50),
+      offset: z.number().default(0),
+    }))
+    .query(async ({ ctx, input }) => {
+      if (!ctx.user) return [];
+      const db = await getDb();
+      if (!db) return [];
+
+      return db
+        .select()
+        .from(limitlessMeetings)
+        .where(and(
+          eq(limitlessMeetings.organizationId, input.organizationId),
+          eq(limitlessMeetings.userId, ctx.user.id)
+        ))
+        .orderBy(desc(limitlessMeetings.startTime))
+        .limit(input.limit)
+        .offset(input.offset);
+    }),
 });
 
 export type LimitlessRouter = typeof limitlessRouter;
