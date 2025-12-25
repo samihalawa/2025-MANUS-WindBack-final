@@ -11,6 +11,7 @@ import { stripeMultiTenantRouter } from "./routers/stripe-multi-tenant";
 import { organizationsRouter } from "./routers/organizations";
 import { membersRouter } from "./routers/members";
 import { subscriptionsRouter } from "./routers/subscriptions";
+import { limitlessRouter } from "./routers/limitless";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -35,6 +36,7 @@ export const appRouter = router({
   organizations: organizationsRouter,
   members: membersRouter,
   subscriptions: subscriptionsRouter,
+  limitless: limitlessRouter,
 });
 
 export type AppRouter = typeof appRouter;

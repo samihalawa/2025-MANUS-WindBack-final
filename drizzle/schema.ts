@@ -174,3 +174,163 @@ export const contactSubmissions: any = mysqlTable("contactSubmissions", {
 
 export type ContactSubmission = typeof contactSubmissions.$inferSelect;
 export type InsertContactSubmission = typeof contactSubmissions.$inferInsert;
+
+/**
+ * Limitless Lifelogs table - stores imported lifelogs from Limitless API
+ */
+export const lifelogs: any = mysqlTable("lifelogs", {
+  id: int("id").autoincrement().primaryKey(),
+  externalId: varchar("externalId", { length: 255 }).notNull().unique(),
+  organizationId: int("organizationId").notNull().references(() => organizations.id, { onDelete: "cascade" }),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+  title: varchar("title", { length: 512 }),
+  markdown: text("markdown"),
+  contents: text("contents"), // JSON array of ContentNodes
+  startTime: timestamp("startTime"),
+  endTime: timestamp("endTime"),
+  isStarred: boolean("isStarred").default(false),
+  source: varchar("source", { length: 64 }).default("limitless"),
+  syncedAt: timestamp("syncedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  orgIdIdx: index("lifelog_orgId_idx").on(table.organizationId),
+  userIdIdx: index("lifelog_userId_idx").on(table.userId),
+  externalIdIdx: index("lifelog_externalId_idx").on(table.externalId),
+  startTimeIdx: index("lifelog_startTime_idx").on(table.startTime),
+}));
+
+export type Lifelog = typeof lifelogs.$inferSelect;
+export type InsertLifelog = typeof lifelogs.$inferInsert;
+
+/**
+ * Limitless Contacts table - stores imported contacts
+ */
+export const limitlessContacts: any = mysqlTable("limitlessContacts", {
+  id: int("id").autoincrement().primaryKey(),
+  externalId: varchar("externalId", { length: 255 }).notNull().unique(),
+  organizationId: int("organizationId").notNull().references(() => organizations.id, { onDelete: "cascade" }),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+  name: varchar("name", { length: 255 }),
+  primaryEmail: varchar("primaryEmail", { length: 320 }),
+  emails: text("emails"), // JSON array
+  photoUrl: varchar("photoUrl", { length: 512 }),
+  externalContactId: varchar("externalContactId", { length: 255 }),
+  syncedAt: timestamp("syncedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  orgIdIdx: index("lcontact_orgId_idx").on(table.organizationId),
+  userIdIdx: index("lcontact_userId_idx").on(table.userId),
+  externalIdIdx: index("lcontact_externalId_idx").on(table.externalId),
+}));
+
+export type LimitlessContact = typeof limitlessContacts.$inferSelect;
+export type InsertLimitlessContact = typeof limitlessContacts.$inferInsert;
+
+/**
+ * Limitless Persons table - identified speakers
+ */
+export const limitlessPersons: any = mysqlTable("limitlessPersons", {
+  id: int("id").autoincrement().primaryKey(),
+  externalId: varchar("externalId", { length: 255 }).notNull().unique(),
+  organizationId: int("organizationId").notNull().references(() => organizations.id, { onDelete: "cascade" }),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+  name: varchar("name", { length: 255 }),
+  email: varchar("email", { length: 320 }),
+  photoUrl: varchar("photoUrl", { length: 512 }),
+  contactDocId: varchar("contactDocId", { length: 255 }),
+  syncedAt: timestamp("syncedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  orgIdIdx: index("lperson_orgId_idx").on(table.organizationId),
+  userIdIdx: index("lperson_userId_idx").on(table.userId),
+}));
+
+export type LimitlessPerson = typeof limitlessPersons.$inferSelect;
+export type InsertLimitlessPerson = typeof limitlessPersons.$inferInsert;
+
+/**
+ * Limitless Meetings table - stores meeting data
+ */
+export const limitlessMeetings: any = mysqlTable("limitlessMeetings", {
+  id: int("id").autoincrement().primaryKey(),
+  externalId: varchar("externalId", { length: 255 }).notNull().unique(),
+  organizationId: int("organizationId").notNull().references(() => organizations.id, { onDelete: "cascade" }),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+  title: varchar("title", { length: 512 }),
+  description: text("description"),
+  startTime: timestamp("startTime"),
+  endTime: timestamp("endTime"),
+  participants: text("participants"), // JSON array
+  url: varchar("url", { length: 512 }),
+  conferenceUrl: varchar("conferenceUrl", { length: 512 }),
+  summaries: text("summaries"), // JSON array
+  notes: text("notes"), // JSON array
+  syncedAt: timestamp("syncedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  orgIdIdx: index("lmeeting_orgId_idx").on(table.organizationId),
+  userIdIdx: index("lmeeting_userId_idx").on(table.userId),
+  startTimeIdx: index("lmeeting_startTime_idx").on(table.startTime),
+}));
+
+export type LimitlessMeeting = typeof limitlessMeetings.$inferSelect;
+export type InsertLimitlessMeeting = typeof limitlessMeetings.$inferInsert;
+
+/**
+ * Limitless User Profile table - stores user profile from Limitless
+ */
+export const limitlessProfiles: any = mysqlTable("limitlessProfiles", {
+  id: int("id").autoincrement().primaryKey(),
+  organizationId: int("organizationId").notNull().references(() => organizations.id, { onDelete: "cascade" }),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+  displayName: varchar("displayName", { length: 255 }),
+  job: varchar("job", { length: 512 }),
+  traits: text("traits"),
+  customTraits: text("customTraits"),
+  additionalInfo: text("additionalInfo"),
+  selectedPersonality: varchar("selectedPersonality", { length: 64 }),
+  languageCode: varchar("languageCode", { length: 10 }),
+  summarizationLanguageCode: varchar("summarizationLanguageCode", { length: 10 }),
+  utcOffsetMinutes: int("utcOffsetMinutes"),
+  customDictionaryWords: text("customDictionaryWords"),
+  customPrompts: text("customPrompts"), // JSON array
+  verbosity: varchar("verbosity", { length: 32 }),
+  limitlessApiKey: varchar("limitlessApiKey", { length: 255 }),
+  syncedAt: timestamp("syncedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  orgIdIdx: index("lprofile_orgId_idx").on(table.organizationId),
+  userIdIdx: index("lprofile_userId_idx").on(table.userId),
+}));
+
+export type LimitlessProfile = typeof limitlessProfiles.$inferSelect;
+export type InsertLimitlessProfile = typeof limitlessProfiles.$inferInsert;
+
+/**
+ * Limitless Sync Status table - tracks sync status
+ */
+export const limitlessSyncStatus: any = mysqlTable("limitlessSyncStatus", {
+  id: int("id").autoincrement().primaryKey(),
+  organizationId: int("organizationId").notNull().references(() => organizations.id, { onDelete: "cascade" }),
+  userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+  entityType: varchar("entityType", { length: 64 }).notNull(), // lifelogs, contacts, meetings, etc.
+  lastSyncedAt: timestamp("lastSyncedAt"),
+  lastCursor: varchar("lastCursor", { length: 255 }),
+  totalSynced: int("totalSynced").default(0),
+  status: mysqlEnum("status", ["idle", "syncing", "error", "completed"]).default("idle"),
+  errorMessage: text("errorMessage"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+}, (table) => ({
+  orgIdIdx: index("lsync_orgId_idx").on(table.organizationId),
+  userIdIdx: index("lsync_userId_idx").on(table.userId),
+  entityTypeIdx: index("lsync_entityType_idx").on(table.entityType),
+}));
+
+export type LimitlessSyncStatus = typeof limitlessSyncStatus.$inferSelect;
+export type InsertLimitlessSyncStatus = typeof limitlessSyncStatus.$inferInsert;
